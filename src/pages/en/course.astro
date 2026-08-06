@@ -1,0 +1,74 @@
+---
+import SiteHeader from '../../components/SiteHeader.astro';
+const base = import.meta.env.BASE_URL;
+
+const course = {
+  name: 'Xiaobei Fund Strategy · Four-Step DCA',
+  en: '小倍基金策略',
+  desc: 'A practical DCA system across sector, active, bond and index funds.',
+  chapters: [
+    { slug: 'ch1-intro', title: 'Intro: why a system beats guessing', desc: 'Adopt "respond, do not predict".', free: true },
+    { slug: 'ch2-four-step', title: 'Four-step DCA: sector / active / bond / index', desc: 'Roles and sizing of four fund types.', free: true },
+    { slug: 'ch3-pick-fund', title: 'How to pick a fund: fees, tracking error, benchmark', desc: 'Low fees compound in your favor.', free: true },
+    { slug: 'ch4-position', title: 'Position & timing: when and how much', desc: 'Stagger buys instead of going all-in.', free: true },
+    { slug: 'ch5-sector', title: 'Sector rotation: ride the up-cycle', desc: 'Entry, exit and taking profit on sector ETFs.', free: false },
+    { slug: 'ch6-active', title: 'Active funds: manager, style, drawdown', desc: 'Spot managers who outperform long-term.', free: false },
+    { slug: 'ch7-bond', title: 'Bond funds: duration & credit', desc: 'Use bonds to dampen portfolio volatility.', free: false },
+    { slug: 'ch8-index', title: 'Hold index funds: valuation & DCA multiples', desc: 'Multipliers and profit-taking rules.', free: false },
+  ],
+};
+const freeCount = course.chapters.filter((c) => c.free).length;
+---
+
+<SiteHeader lang="en" altLang="中文" altHref="/course" />
+<main class="course">
+  <p class="kicker">✦ Course · {course.chapters.length} chapters</p>
+  <h1>{course.name}</h1>
+  <p class="sub">{course.desc}</p>
+  <p class="rule">First <b>{freeCount}</b> chapters free; from chapter {freeCount + 1} a <b>tip</b> (min ¥1) unlocks all paid content at once. Author is exempt.</p>
+
+  <ol class="ch-list">
+    {course.chapters.map((c, i) => (
+      <li class={c.free ? 'free' : 'paid'}>
+        <span class="no">{(i + 1).toString().padStart(2, '0')}</span>
+        <a href={`${base}en/blog/${c.slug}`} class="title">{c.title}</a>
+        {c.free ? <span class="tag free">Free</span> : <span class="tag paid">Paid</span>}
+        <p class="desc">{c.desc}</p>
+      </li>
+    ))}
+  </ol>
+
+  <section class="sel-cta">
+    <h2>📈 Want it easier?</h2>
+    <p>Use the <b>Stock Picker</b>: enter a ticker + your investable amount, and it reads the cycle, suggests how to invest, how much, and a DCA plan. Subscription only: $10/mo or $100/yr.</p>
+    <a class="btn" href={`${base}en/selector`}>Open Stock Picker</a>
+  </section>
+
+  <p class="foot-note">⚠️ For learning and entertainment only — not investment advice.</p>
+</main>
+
+<style is:global>
+  .course { max-width: 760px; margin: 0 auto; padding: 48px 16px 40px; }
+  .kicker { color: var(--accent); letter-spacing: 2px; font-size: 13px; margin: 0 0 8px; }
+  .course h1 { font-size: 32px; margin: 0 0 10px; letter-spacing: 1px; }
+  .sub { color: var(--muted); font-size: 16px; line-height: 1.8; margin: 0 0 8px; }
+  .rule { background: var(--code-bg); border: 1px dashed var(--border); border-radius: 8px; padding: 10px 14px; font-size: 14px; color: var(--fg); }
+  .rule b { color: var(--accent); }
+  .ch-list { list-style: none; padding: 0; margin: 22px 0 0; }
+  .ch-list li { padding: 16px; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 12px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .ch-list li.paid { border-left: 4px solid #d63031; }
+  .ch-list li.free { border-left: 4px solid var(--accent); }
+  .no { color: var(--accent); font-weight: 800; font-size: 15px; }
+  .title { font-weight: 600; color: var(--fg); text-decoration: none; font-size: 17px; }
+  .tag { font-size: 12px; padding: 1px 9px; border-radius: 999px; font-weight: 600; }
+  .tag.free { background: rgba(21,101,192,0.10); color: var(--accent); }
+  .tag.paid { background: rgba(214,48,49,0.12); color: #d63031; }
+  .desc { width: 100%; color: var(--muted); font-size: 13px; margin: 4px 0 0; }
+  .sel-cta { margin-top: 30px; padding: 22px; border: 1px solid var(--border); border-radius: 12px; background: var(--code-bg); }
+  .sel-cta h2 { margin: 0 0 8px; font-size: 20px; }
+  .sel-cta p { color: var(--fg); font-size: 15px; line-height: 1.8; }
+  .sel-cta b { color: var(--accent); }
+  .btn { display: inline-block; margin-top: 12px; padding: 11px 24px; border-radius: 999px; background: var(--accent); color: #fff; text-decoration: none; font-size: 15px; }
+  .btn:hover { opacity: .92; }
+  .foot-note { color: var(--muted); font-size: 13px; margin-top: 28px; text-align: center; }
+</style>

@@ -1,0 +1,90 @@
+<!DOCTYPE html><link rel="stylesheet" href="/stock-blog/_astro/ch1-intro.b8wxSEGk.css">
+<style>.course{max-width:760px;margin:0 auto;padding:48px 16px 40px}.kicker{color:var(--accent);letter-spacing:2px;font-size:13px;margin:0 0 8px}.course h1{font-size:32px;margin:0 0 10px;letter-spacing:1px}.sub{color:var(--muted);font-size:16px;line-height:1.8;margin:0 0 8px}.rule{background:var(--code-bg);border:1px dashed var(--border);border-radius:8px;padding:10px 14px;font-size:14px;color:var(--fg)}.rule b{color:var(--accent)}.ch-list{list-style:none;padding:0;margin:22px 0 0;counter-reset:none}.ch-list li{padding:16px;border:1px solid var(--border);border-radius:10px;margin-bottom:12px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}.ch-list li.paid{border-left:4px solid #d63031}.ch-list li.free{border-left:4px solid var(--accent)}.no{color:var(--accent);font-weight:800;font-size:15px}.title{font-weight:600;color:var(--fg);text-decoration:none;font-size:17px}.tag{font-size:12px;padding:1px 9px;border-radius:999px;font-weight:600}.tag.free{background:#1565c01a;color:var(--accent)}.tag.paid{background:#d630311f;color:#d63031}.desc{width:100%;color:var(--muted);font-size:13px;margin:4px 0 0}.sel-cta{margin-top:30px;padding:22px;border:1px solid var(--border);border-radius:12px;background:var(--code-bg)}.sel-cta h2{margin:0 0 8px;font-size:20px}.sel-cta p{color:var(--fg);font-size:15px;line-height:1.8}.sel-cta b{color:var(--accent)}.btn{display:inline-block;margin-top:12px;padding:11px 24px;border-radius:999px;background:var(--accent);color:#fff;text-decoration:none;font-size:15px}.btn:hover{opacity:.92}.foot-note{color:var(--muted);font-size:13px;margin-top:28px;text-align:center}
+</style><header class="site-header"> <a href="/stock-blog/" class="brand">股市笔记</a> <nav>  <span class="lang-switch"> <span class="cur">中文</span><span class="sep">/</span><a href="/stock-blog/en/course">English</a> </span> <button id="bookmark-toggle" class="header-btn" type="button" aria-label="书签" title="书签">🔖</button> <button id="theme-toggle" class="theme-toggle" type="button" aria-label="切换日间/夜间模式">🌙</button> </nav> </header> <div id="bookmarks-panel" class="bookmarks-panel" hidden> <div class="bookmarks-head"> <strong>书签</strong> <button id="bookmarks-close" type="button" aria-label="关闭">×</button> </div> <ul id="bookmarks-list" class="bookmarks-list"></ul> <p id="bookmarks-empty" class="bookmarks-empty">暂无书签，在文章页点击「收藏」按钮即可添加。</p> </div> <div id="hl-toolbar" class="hl-toolbar" hidden> <button data-type="highlight" type="button" title="高亮">🖍️ 高亮</button> <button data-type="underline" type="button" title="下划线">➖ 下划线</button> <button data-type="clear" type="button" title="清除本页标记">❌ 清除</button> </div> <script>
+  (function () {
+    var btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    function sync() {
+      var t = document.documentElement.getAttribute('data-theme');
+      btn.textContent = t === 'dark' ? '☀️' : '🌙';
+      syncGiscus(t);
+    }
+    btn.addEventListener('click', function () {
+      var cur = document.documentElement.getAttribute('data-theme');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      sync();
+    });
+    sync();
+  })();
+
+  // 书签面板
+  (function () {
+    var toggle = document.getElementById('bookmark-toggle');
+    var panel = document.getElementById('bookmarks-panel');
+    var close = document.getElementById('bookmarks-close');
+    var list = document.getElementById('bookmarks-list');
+    var empty = document.getElementById('bookmarks-empty');
+    if (!toggle || !panel) return;
+
+    function getBookmarks() {
+      try { return JSON.parse(localStorage.getItem('blog-bookmarks') || '[]'); }
+      catch (e) { return []; }
+    }
+    function saveBookmarks(arr) {
+      try { localStorage.setItem('blog-bookmarks', JSON.stringify(arr)); } catch (e) {}
+    }
+    function render() {
+      var bm = getBookmarks();
+      list.innerHTML = '';
+      if (!bm.length) {
+        empty.style.display = 'block';
+        list.style.display = 'none';
+        return;
+      }
+      empty.style.display = 'none';
+      list.style.display = 'block';
+      bm.forEach(function (b) {
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = b.url;
+        a.textContent = b.title || b.url;
+        a.title = b.title || b.url;
+        var del = document.createElement('button');
+        del.type = 'button';
+        del.textContent = '删除';
+        del.title = '删除书签';
+        del.addEventListener('click', function () {
+          saveBookmarks(getBookmarks().filter(function (x) { return x.url !== b.url; }));
+          render();
+        });
+        li.appendChild(a);
+        li.appendChild(del);
+        list.appendChild(li);
+      });
+    }
+    function open() { panel.hidden = false; render(); }
+    function closeFn() { panel.hidden = true; }
+    toggle.addEventListener('click', function () { panel.hidden ? open() : closeFn(); });
+    close && close.addEventListener('click', closeFn);
+    document.addEventListener('click', function (e) {
+      if (!panel.hidden && !panel.contains(e.target) && e.target !== toggle) closeFn();
+    });
+    window.__renderBookmarks = render;
+  })();
+
+  function syncGiscus(theme) {
+    var iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+    try {
+      iframe.contentWindow.postMessage({ giscus: { setConfig: { theme: theme === 'dark' ? 'dark' : 'light' } } }, 'https://giscus.app');
+    } catch (e) {}
+  }
+
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      syncGiscus(document.documentElement.getAttribute('data-theme'));
+    }, 1200);
+  });
+</script>  <main class="course"> <p class="kicker">✦ 专栏 · 共 8 节</p> <h1>小倍基金策略 · 四步定投实战</h1> <p class="sub">从行业、主动、债券到指数基金，一套普通人能落地的定投体系。</p> <p class="rule">前 <b>4</b> 节免费阅读；第 5 节起需<b>打赏</b>（最低 ¥1，上不封顶）一次性解锁全部付费内容。作者本人免付费。</p> <ol class="ch-list"> <li class="free"> <span class="no">01</span> <a href="/stock-blog/blog/ch1-intro" class="title">开篇：普通人为什么该用策略而非猜涨跌</a> <span class="tag free">免费</span> <p class="desc">建立「不预测、只应对」的定投心智。</p> </li><li class="free"> <span class="no">02</span> <a href="/stock-blog/blog/ch2-four-step" class="title">四步定投法总览：行业 / 主动 / 债券 / 指数怎么投</a> <span class="tag free">免费</span> <p class="desc">一图看懂四类基金的角色与仓位。</p> </li><li class="free"> <span class="no">03</span> <a href="/stock-blog/blog/ch3-pick-fund" class="title">如何选基金：费率、跟踪误差与业绩基准</a> <span class="tag free">免费</span> <p class="desc">低费率是长期复利的朋友。</p> </li><li class="free"> <span class="no">04</span> <a href="/stock-blog/blog/ch4-position" class="title">仓位与节奏：什么时候买、买多少</a> <span class="tag free">免费</span> <p class="desc">用估值与分批摊薄替代一把梭。</p> </li><li class="paid"> <span class="no">05</span> <a href="/stock-blog/blog/ch5-sector" class="title">行业基金轮动：抓住景气上行</a> <span class="tag paid">付费</span> <p class="desc">行业 ETF 的买点、卖点与止盈。</p> </li><li class="paid"> <span class="no">06</span> <a href="/stock-blog/blog/ch6-active" class="title">主动基金淘金：经理、风格与回撤</a> <span class="tag paid">付费</span> <p class="desc">如何识别长期能打的主动基金。</p> </li><li class="paid"> <span class="no">07</span> <a href="/stock-blog/blog/ch7-bond" class="title">债券基金稳收益：久期与信用</a> <span class="tag paid">付费</span> <p class="desc">用债基给组合压住波动。</p> </li><li class="paid"> <span class="no">08</span> <a href="/stock-blog/blog/ch8-index" class="title">指数基金长期持有：估值与定投倍数</a> <span class="tag paid">付费</span> <p class="desc">宽基定投的加倍与止盈规则。</p> </li> </ol> <section class="sel-cta"> <h2>📈 还想更省心？</h2> <p>用「动态选股」工具：输入一只股票 + 你的可投金额，自动判断当前处在什么周期、该怎么投、投多少、如何定投。该工具为<b>订阅制</b>（月 $10 / 年 $100）。</p> <a class="btn" href="/stock-blog/selector">前往动态选股</a> </section> <p class="foot-note">⚠️ 本站内容仅供学习娱乐，不构成任何投资或交易建议。</p> </main> 

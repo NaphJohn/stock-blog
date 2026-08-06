@@ -1,0 +1,108 @@
+---
+import SiteHeader from '../../components/SiteHeader.astro';
+const base = import.meta.env.BASE_URL;
+
+const course = {
+  name: 'Xiaobei Fund Strategy · Four-Step DCA',
+  en: '小倍基金策略',
+  desc: 'A practical DCA system across sector, active, bond and index funds.',
+  chapters: [
+    { slug: 'ch1-intro', title: 'Intro: why a system beats guessing', desc: 'Adopt "respond, do not predict".', free: true },
+    { slug: 'ch2-four-step', title: 'Four-step DCA: sector / active / bond / index', desc: 'Roles and sizing of four fund types.', free: true },
+    { slug: 'ch3-pick-fund', title: 'How to pick a fund: fees, tracking error, benchmark', desc: 'Low fees compound in your favor.', free: true },
+    { slug: 'ch4-position', title: 'Position & timing: when and how much', desc: 'Stagger buys instead of going all-in.', free: true },
+    { slug: 'ch5-sector', title: 'Sector rotation: ride the up-cycle', desc: 'Entry, exit and taking profit on sector ETFs.', free: false },
+    { slug: 'ch6-active', title: 'Active funds: manager, style, drawdown', desc: 'Spot managers who outperform long-term.', free: false },
+    { slug: 'ch7-bond', title: 'Bond funds: duration & credit', desc: 'Use bonds to dampen portfolio volatility.', free: false },
+    { slug: 'ch8-index', title: 'Hold index funds: valuation & DCA multiples', desc: 'Multipliers and profit-taking rules.', free: false },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <script is:inline>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          if (t !== 'light' && t !== 'dark') {
+            t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
+    <title>Market Notes · Fund DCA · Stock Picker</title>
+    <meta name="description" content="Market Notes: a fund-DCA course plus a dynamic stock picker that reads the cycle and suggests sizing & DCA." />
+  </head>
+  <body>
+    <SiteHeader lang="en" altLang="中文" altHref="/" />
+    <main>
+      <section class="hero">
+        <p class="kicker">✦ Fund DCA · Stock Picker · Cycle Reading</p>
+        <h1>Market Notes</h1>
+        <p class="hero-sub">Turning a messy market into steps you can actually follow.<br />For learning and entertainment — not investment advice.</p>
+        <a class="hero-cta" href={`${base}en/course`}>📚 The Course</a>
+        <a class="hero-cta alt" href={`${base}en/selector`}>📈 Stock Picker</a>
+      </section>
+
+      <section class="banner">
+        <span>Course "{course.name}": {course.chapters.length} chapters — </span>
+        <a href={`${base}en/course`}>first 4 free</a> · <a href={`${base}en/course`}>rest behind a tip</a> · <a href={`${base}en/selector`}>Stock Picker (subscription)</a>
+      </section>
+
+      <section class="series-block">
+        <h2>{course.name} <span class="en">{course.en}</span></h2>
+        <p class="series-desc">{course.desc}</p>
+        <ul class="post-list">
+          {course.chapters.map((c, i) => (
+            <li>
+              <a href={`${base}en/blog/${c.slug}`}>
+                <span class="ch-no">{(i + 1).toString().padStart(2, '0')}</span>
+                {c.title}
+                {c.free
+                  ? <span class="badge free">Free</span>
+                  : <span class="badge paid">Paid</span>}
+              </a>
+              <div class="date">{c.desc}</div>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <p class="foot-note">⚠️ Everything here is for learning and entertainment only — not investment, financial or trading advice.</p>
+    </main>
+    <footer>© 2026 Market Notes · Hosted on GitHub Pages</footer>
+
+    <style is:global>
+      .hero { text-align: center; padding: 56px 16px 28px; }
+      .kicker { color: var(--accent); letter-spacing: 2px; font-size: 13px; margin: 0 0 8px; }
+      .hero h1 { font-size: 44px; margin: 0 0 12px; letter-spacing: 2px; }
+      .hero-sub { color: var(--muted); font-size: 16px; line-height: 1.9; margin: 0 auto 22px; max-width: 560px; }
+      .hero-cta { display: inline-block; padding: 12px 28px; border-radius: 999px; background: var(--accent); color: #fff; text-decoration: none; font-size: 16px; transition: transform .15s, opacity .15s; margin: 0 6px; }
+      .hero-cta.alt { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+      .hero-cta:hover { transform: translateY(-2px); opacity: .92; }
+      .banner { text-align: center; color: var(--muted); font-size: 14px; margin: 12px 0 8px; }
+      .banner a { color: var(--accent); text-decoration: none; }
+      .series-block { margin-top: 30px; }
+      .series-block h2 { font-size: 22px; border-left: 4px solid var(--accent); padding-left: 10px; }
+      .series-block h2 .en { font-size: 14px; color: var(--muted); font-weight: 400; margin-left: 6px; }
+      .series-desc { color: var(--muted); font-size: 14px; margin: 6px 0 14px; }
+      .post-list { list-style: none; padding: 0; }
+      .post-list li { padding: 14px 16px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px; transition: border-color .15s; }
+      .post-list li:hover { border-color: var(--accent); }
+      .post-list a { font-weight: 600; color: var(--fg); text-decoration: none; font-size: 17px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+      .post-list .ch-no { color: var(--accent); font-weight: 800; font-size: 14px; }
+      .post-list .date { color: var(--muted); font-size: 13px; margin-top: 4px; }
+      .badge { display: inline-block; padding: 1px 9px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+      .badge.free { background: rgba(21,101,192,0.10); color: var(--accent); }
+      .badge.paid { background: rgba(214,48,49,0.12); color: #d63031; }
+      .foot-note { color: var(--muted); font-size: 13px; margin-top: 36px; text-align: center; }
+      footer { text-align: center; color: var(--muted); font-size: 13px; padding: 32px 16px; border-top: 1px solid var(--border); margin-top: 24px; }
+    </style>
+  </body>
+</html>

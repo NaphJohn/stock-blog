@@ -1,0 +1,109 @@
+---
+import SiteHeader from '../components/SiteHeader.astro';
+const base = import.meta.env.BASE_URL;
+
+// 专栏章节：前 4 节免费，后面打赏付费。slug 对应 src/pages/blog/<slug>.md
+const course = {
+  name: '小倍基金策略 · 四步定投实战',
+  en: 'Xiaobei Fund Strategy',
+  desc: '从行业、主动、债券到指数基金，一套普通人能落地的定投体系。',
+  chapters: [
+    { slug: 'ch1-intro', title: '开篇：普通人为什么该用策略而非猜涨跌', desc: '建立「不预测、只应对」的定投心智。', free: true },
+    { slug: 'ch2-four-step', title: '四步定投法总览：行业 / 主动 / 债券 / 指数怎么投', desc: '一图看懂四类基金的角色与仓位。', free: true },
+    { slug: 'ch3-pick-fund', title: '如何选基金：费率、跟踪误差与业绩基准', desc: '低费率是长期复利的朋友。', free: true },
+    { slug: 'ch4-position', title: '仓位与节奏：什么时候买、买多少', desc: '用估值与分批摊薄替代一把梭。', free: true },
+    { slug: 'ch5-sector', title: '行业基金轮动：抓住景气上行', desc: '行业 ETF 的买点、卖点与止盈。', free: false },
+    { slug: 'ch6-active', title: '主动基金淘金：经理、风格与回撤', desc: '如何识别长期能打的主动基金。', free: false },
+    { slug: 'ch7-bond', title: '债券基金稳收益：久期与信用', desc: '用债基给组合压住波动。', free: false },
+    { slug: 'ch8-index', title: '指数基金长期持有：估值与定投倍数', desc: '宽基定投的加倍与止盈规则。', free: false },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <script is:inline>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          if (t !== 'light' && t !== 'dark') {
+            t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
+    <title>股市笔记 · 基金定投实战 · 动态选股</title>
+    <meta name="description" content="股市笔记：基金定投实战专栏 + 动态选股工具，判断周期、给出仓位与定投方案。" />
+  </head>
+  <body>
+    <SiteHeader lang="zh" altLang="English" altHref="/en/" />
+    <main>
+      <section class="hero">
+        <p class="kicker">✦ 基金定投 · 动态选股 · 周期判断</p>
+        <h1>股市笔记</h1>
+        <p class="hero-sub">把复杂的市场，讲成你能照着做的定投与选股方法。<br />娱乐与学习为主，不构成投资建议。</p>
+        <a class="hero-cta" href={`${base}course`}>📚 进入专栏</a>
+        <a class="hero-cta alt" href={`${base}selector`}>📈 动态选股工具</a>
+      </section>
+
+      <section class="banner">
+        <span>专栏《{course.name}》共 {course.chapters.length} 节：</span>
+        <a href={`${base}course`}>前 4 节免费</a> · <a href={`${base}course`}>后 {course.chapters.length - 4} 节打赏解锁</a> · <a href={`${base}selector`}>动态选股（订阅）</a>
+      </section>
+
+      <section class="series-block">
+        <h2>{course.name} <span class="en">{course.en}</span></h2>
+        <p class="series-desc">{course.desc}</p>
+        <ul class="post-list">
+          {course.chapters.map((c, i) => (
+            <li>
+              <a href={`${base}blog/${c.slug}`}>
+                <span class="ch-no">{(i + 1).toString().padStart(2, '0')}</span>
+                {c.title}
+                {c.free
+                  ? <span class="badge free">免费</span>
+                  : <span class="badge paid">付费</span>}
+              </a>
+              <div class="date">{c.desc}</div>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <p class="foot-note">⚠️ 本站所有内容仅供学习与娱乐，不构成任何投资、理财或交易建议。市场有风险，决策需谨慎。</p>
+    </main>
+    <footer>© 2026 股市笔记 · 托管于 GitHub Pages</footer>
+
+    <style is:global>
+      .hero { text-align: center; padding: 56px 16px 28px; }
+      .kicker { color: var(--accent); letter-spacing: 2px; font-size: 13px; margin: 0 0 8px; }
+      .hero h1 { font-size: 44px; margin: 0 0 12px; letter-spacing: 4px; }
+      .hero-sub { color: var(--muted); font-size: 16px; line-height: 1.9; margin: 0 auto 22px; max-width: 560px; }
+      .hero-cta { display: inline-block; padding: 12px 28px; border-radius: 999px; background: var(--accent); color: #fff; text-decoration: none; font-size: 16px; transition: transform .15s, opacity .15s; margin: 0 6px; }
+      .hero-cta.alt { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+      .hero-cta:hover { transform: translateY(-2px); opacity: .92; }
+      .banner { text-align: center; color: var(--muted); font-size: 14px; margin: 12px 0 8px; }
+      .banner a { color: var(--accent); text-decoration: none; }
+      .series-block { margin-top: 30px; }
+      .series-block h2 { font-size: 22px; border-left: 4px solid var(--accent); padding-left: 10px; }
+      .series-block h2 .en { font-size: 14px; color: var(--muted); font-weight: 400; margin-left: 6px; }
+      .series-desc { color: var(--muted); font-size: 14px; margin: 6px 0 14px; }
+      .post-list { list-style: none; padding: 0; }
+      .post-list li { padding: 14px 16px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px; transition: border-color .15s; }
+      .post-list li:hover { border-color: var(--accent); }
+      .post-list a { font-weight: 600; color: var(--fg); text-decoration: none; font-size: 17px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+      .post-list .ch-no { color: var(--accent); font-weight: 800; font-size: 14px; }
+      .post-list .date { color: var(--muted); font-size: 13px; margin-top: 4px; }
+      .badge { display: inline-block; padding: 1px 9px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+      .badge.free { background: rgba(21,101,192,0.10); color: var(--accent); }
+      .badge.paid { background: rgba(214,48,49,0.12); color: #d63031; }
+      .foot-note { color: var(--muted); font-size: 13px; margin-top: 36px; text-align: center; }
+      footer { text-align: center; color: var(--muted); font-size: 13px; padding: 32px 16px; border-top: 1px solid var(--border); margin-top: 24px; }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light dark"><script>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          if (t !== 'light' && t !== 'dark') {
+            t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script><title>Market Notes · Fund DCA · Stock Picker</title><meta name="description" content="Market Notes: a fund-DCA course plus a dynamic stock picker that reads the cycle and suggests sizing & DCA."><link rel="stylesheet" href="/stock-blog/_astro/ch1-intro.b8wxSEGk.css">
+<style>.hero{text-align:center;padding:56px 16px 28px}.kicker{color:var(--accent);letter-spacing:2px;font-size:13px;margin:0 0 8px}.hero h1{font-size:44px;margin:0 0 12px;letter-spacing:2px}.hero-sub{color:var(--muted);font-size:16px;line-height:1.9;margin:0 auto 22px;max-width:560px}.hero-cta{display:inline-block;padding:12px 28px;border-radius:999px;background:var(--accent);color:#fff;text-decoration:none;font-size:16px;transition:transform .15s,opacity .15s;margin:0 6px}.hero-cta.alt{background:transparent;color:var(--accent);border:1px solid var(--accent)}.hero-cta:hover{transform:translateY(-2px);opacity:.92}.banner{text-align:center;color:var(--muted);font-size:14px;margin:12px 0 8px}.banner a{color:var(--accent);text-decoration:none}.series-block{margin-top:30px}.series-block h2{font-size:22px;border-left:4px solid var(--accent);padding-left:10px}.series-block h2 .en{font-size:14px;color:var(--muted);font-weight:400;margin-left:6px}.series-desc{color:var(--muted);font-size:14px;margin:6px 0 14px}.post-list{list-style:none;padding:0}.post-list li{padding:14px 16px;border:1px solid var(--border);border-radius:8px;margin-bottom:10px;transition:border-color .15s}.post-list li:hover{border-color:var(--accent)}.post-list a{font-weight:600;color:var(--fg);text-decoration:none;font-size:17px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}.post-list .ch-no{color:var(--accent);font-weight:800;font-size:14px}.post-list .date{color:var(--muted);font-size:13px;margin-top:4px}.badge{display:inline-block;padding:1px 9px;border-radius:999px;font-size:12px;font-weight:600}.badge.free{background:#1565c01a;color:var(--accent)}.badge.paid{background:#d630311f;color:#d63031}.foot-note{color:var(--muted);font-size:13px;margin-top:36px;text-align:center}footer{text-align:center;color:var(--muted);font-size:13px;padding:32px 16px;border-top:1px solid var(--border);margin-top:24px}
+</style></head> <body> <header class="site-header"> <a href="/stock-blog/en/" class="brand">Market Notes</a> <nav>  <span class="lang-switch"> <a href="/stock-blog/">中文</a><span class="sep">/</span><span class="cur">English</span> </span> <button id="bookmark-toggle" class="header-btn" type="button" aria-label="书签" title="书签">🔖</button> <button id="theme-toggle" class="theme-toggle" type="button" aria-label="切换日间/夜间模式">🌙</button> </nav> </header> <div id="bookmarks-panel" class="bookmarks-panel" hidden> <div class="bookmarks-head"> <strong>书签</strong> <button id="bookmarks-close" type="button" aria-label="关闭">×</button> </div> <ul id="bookmarks-list" class="bookmarks-list"></ul> <p id="bookmarks-empty" class="bookmarks-empty">暂无书签，在文章页点击「收藏」按钮即可添加。</p> </div> <div id="hl-toolbar" class="hl-toolbar" hidden> <button data-type="highlight" type="button" title="高亮">🖍️ 高亮</button> <button data-type="underline" type="button" title="下划线">➖ 下划线</button> <button data-type="clear" type="button" title="清除本页标记">❌ 清除</button> </div> <script>
+  (function () {
+    var btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    function sync() {
+      var t = document.documentElement.getAttribute('data-theme');
+      btn.textContent = t === 'dark' ? '☀️' : '🌙';
+      syncGiscus(t);
+    }
+    btn.addEventListener('click', function () {
+      var cur = document.documentElement.getAttribute('data-theme');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      sync();
+    });
+    sync();
+  })();
+
+  // 书签面板
+  (function () {
+    var toggle = document.getElementById('bookmark-toggle');
+    var panel = document.getElementById('bookmarks-panel');
+    var close = document.getElementById('bookmarks-close');
+    var list = document.getElementById('bookmarks-list');
+    var empty = document.getElementById('bookmarks-empty');
+    if (!toggle || !panel) return;
+
+    function getBookmarks() {
+      try { return JSON.parse(localStorage.getItem('blog-bookmarks') || '[]'); }
+      catch (e) { return []; }
+    }
+    function saveBookmarks(arr) {
+      try { localStorage.setItem('blog-bookmarks', JSON.stringify(arr)); } catch (e) {}
+    }
+    function render() {
+      var bm = getBookmarks();
+      list.innerHTML = '';
+      if (!bm.length) {
+        empty.style.display = 'block';
+        list.style.display = 'none';
+        return;
+      }
+      empty.style.display = 'none';
+      list.style.display = 'block';
+      bm.forEach(function (b) {
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = b.url;
+        a.textContent = b.title || b.url;
+        a.title = b.title || b.url;
+        var del = document.createElement('button');
+        del.type = 'button';
+        del.textContent = '删除';
+        del.title = '删除书签';
+        del.addEventListener('click', function () {
+          saveBookmarks(getBookmarks().filter(function (x) { return x.url !== b.url; }));
+          render();
+        });
+        li.appendChild(a);
+        li.appendChild(del);
+        list.appendChild(li);
+      });
+    }
+    function open() { panel.hidden = false; render(); }
+    function closeFn() { panel.hidden = true; }
+    toggle.addEventListener('click', function () { panel.hidden ? open() : closeFn(); });
+    close && close.addEventListener('click', closeFn);
+    document.addEventListener('click', function (e) {
+      if (!panel.hidden && !panel.contains(e.target) && e.target !== toggle) closeFn();
+    });
+    window.__renderBookmarks = render;
+  })();
+
+  function syncGiscus(theme) {
+    var iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+    try {
+      iframe.contentWindow.postMessage({ giscus: { setConfig: { theme: theme === 'dark' ? 'dark' : 'light' } } }, 'https://giscus.app');
+    } catch (e) {}
+  }
+
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      syncGiscus(document.documentElement.getAttribute('data-theme'));
+    }, 1200);
+  });
+</script>  <main> <section class="hero"> <p class="kicker">✦ Fund DCA · Stock Picker · Cycle Reading</p> <h1>Market Notes</h1> <p class="hero-sub">Turning a messy market into steps you can actually follow.<br>For learning and entertainment — not investment advice.</p> <a class="hero-cta" href="/stock-blog/en/course">📚 The Course</a> <a class="hero-cta alt" href="/stock-blog/en/selector">📈 Stock Picker</a> </section> <section class="banner"> <span>Course "Xiaobei Fund Strategy · Four-Step DCA": 8 chapters — </span> <a href="/stock-blog/en/course">first 4 free</a> · <a href="/stock-blog/en/course">rest behind a tip</a> · <a href="/stock-blog/en/selector">Stock Picker (subscription)</a> </section> <section class="series-block"> <h2>Xiaobei Fund Strategy · Four-Step DCA <span class="en">小倍基金策略</span></h2> <p class="series-desc">A practical DCA system across sector, active, bond and index funds.</p> <ul class="post-list"> <li> <a href="/stock-blog/en/blog/ch1-intro"> <span class="ch-no">01</span> Intro: why a system beats guessing <span class="badge free">Free</span> </a> <div class="date">Adopt &quot;respond, do not predict&quot;.</div> </li><li> <a href="/stock-blog/en/blog/ch2-four-step"> <span class="ch-no">02</span> Four-step DCA: sector / active / bond / index <span class="badge free">Free</span> </a> <div class="date">Roles and sizing of four fund types.</div> </li><li> <a href="/stock-blog/en/blog/ch3-pick-fund"> <span class="ch-no">03</span> How to pick a fund: fees, tracking error, benchmark <span class="badge free">Free</span> </a> <div class="date">Low fees compound in your favor.</div> </li><li> <a href="/stock-blog/en/blog/ch4-position"> <span class="ch-no">04</span> Position &amp; timing: when and how much <span class="badge free">Free</span> </a> <div class="date">Stagger buys instead of going all-in.</div> </li><li> <a href="/stock-blog/en/blog/ch5-sector"> <span class="ch-no">05</span> Sector rotation: ride the up-cycle <span class="badge paid">Paid</span> </a> <div class="date">Entry, exit and taking profit on sector ETFs.</div> </li><li> <a href="/stock-blog/en/blog/ch6-active"> <span class="ch-no">06</span> Active funds: manager, style, drawdown <span class="badge paid">Paid</span> </a> <div class="date">Spot managers who outperform long-term.</div> </li><li> <a href="/stock-blog/en/blog/ch7-bond"> <span class="ch-no">07</span> Bond funds: duration &amp; credit <span class="badge paid">Paid</span> </a> <div class="date">Use bonds to dampen portfolio volatility.</div> </li><li> <a href="/stock-blog/en/blog/ch8-index"> <span class="ch-no">08</span> Hold index funds: valuation &amp; DCA multiples <span class="badge paid">Paid</span> </a> <div class="date">Multipliers and profit-taking rules.</div> </li> </ul> </section> <p class="foot-note">⚠️ Everything here is for learning and entertainment only — not investment, financial or trading advice.</p> </main> <footer>© 2026 Market Notes · Hosted on GitHub Pages</footer>  </body> </html>
