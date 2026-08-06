@@ -1,6 +1,6 @@
 ---
-title: "Four-step DCA overview: sector / active / bond / index"
-description: "一图看懂四类基金的角色与仓位。"
+title: "How to pick a quality sector index fund?"
+description: "A two-stage filter: pick the sector first, then the fund."
 layout: ../../../layouts/BlogPost.astro
 series: Xiaobei Fund Strategy
 free: true
@@ -10,16 +10,31 @@ altHref: /
 pubDate: 2026-08-06
 ---
 
-# Four-step DCA overview: sector / active / bond / index
+# How to pick a quality sector index fund?
 
-> ⚠️ Placeholder: this section will be replaced with the translated article. Outline only.
+> This is Lesson 2 (free) of the *Xiaobei Fund Strategy* series. Picking a sector fund has two stages: **pick the sector first, then the fund**.
 
-## Key points
+Most losses come not from a bad fund but from a wrong sector chosen up front. So order matters: judge whether the sector is worth owning, then pick a good fund within it.
 
-- (TBD) 一图看懂四类基金的角色与仓位。
-- Use a system instead of predictions: stagger buys, DCA, stop-loss.
-- Set executable buy/sell rules from valuation and your cash flow.
+## Stage 1: Pick the sector (the sector itself)
+
+- **Sector headroom**: look at penetration and the ceiling. Sectors in a fast-rising penetration phase carry friendlier long-term beta; mature, saturated sectors are more cyclical.
+- **Prosperity direction**: are revenue and profit growth still rising, or already peaked?
+- **Policy and catalysts**: industry policy support, tech iteration, or demand inflection (new-product cycle, localization).
+- **Valuation position**: even a great sector bought at a valuation peak gets trapped. Compare historical PE/PB percentiles and the 52-week range; avoid chasing at the euphoria.
+
+## Stage 2: Pick the fund (within the same sector)
+
+Several index funds track the same sector; the difference is in the details:
+
+- **Low tracking error**: the NAV should hug the index; lower error is better.
+- **Moderate-to-large size**: too small risks liquidation, too large hurts agility; pick liquid, stable products.
+- **Low fees**: management + custody is deducted every year; over compounding it matters — prefer low fees.
+- **Issuer strength**: a big shop's index team handles reconstitution and subscriptions more smoothly.
+- **Premium/discount**: for ETFs, check the premium over NAV; buying at a high premium is an upfront loss.
 
 ## Recap
 
-Full text to be added. Paid sections unlock after a tip (min ¥1).
+The rule of thumb: **sector by headroom and prosperity, fund by error, size, fee, and premium**. Run both stages and you avoid most "good sector, lousy fund" traps.
+
+> ⚠️ This article is a framework illustration and not investment or trading advice. Markets are risky; decide with care.

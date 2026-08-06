@@ -57,14 +57,19 @@ const base = import.meta.env.BASE_URL;
     if (subBtn) subBtn.addEventListener('click', function () {
       MingLiPay.showSubModal({
         title: '订阅动态选股',
-        desc: '月 $10 / 年 $100（省 $20）。订阅后可使用周期判断、仓位与定投方案。'
+        desc: '月 $10 / 年 $100（省 $20）。订阅后可使用周期判断、仓位与定投方案。扫码付款后输入作者私发的解锁码。',
+        subCode: btoa('gushi2026sub')
       }, function () { gateCheck(); });
     });
 
     // 点击分析：未订阅先弹订阅
     runBtn.addEventListener('click', function () {
       if (window.MingLiPay && !MingLiPay.isSubActive()) {
-        MingLiPay.showSubModal({ title: '订阅动态选股', desc: '月 $10 / 年 $100。订阅后解锁分析。' }, function () { gateCheck(); });
+        MingLiPay.showSubModal({
+          title: '订阅动态选股',
+          desc: '月 $10 / 年 $100。订阅后解锁分析。扫码付款后输入作者私发的解锁码。',
+          subCode: btoa('gushi2026sub')
+        }, function () { gateCheck(); });
         return;
       }
       analyze();

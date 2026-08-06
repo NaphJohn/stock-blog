@@ -51,7 +51,7 @@ const giscusLang = lang === 'zh' ? 'zh-CN' : 'en';
         </article>
         <div class="paywall-veil" id="paywall-veil" hidden>
           <h3>🔒 付费章节</h3>
-          <p>打赏最低 ¥1 即可解锁本专栏全部付费内容。</p>
+          <p>扫码打赏后，输入作者私发的解锁码即可解锁本专栏全部付费内容。</p>
           <button class="pbtn" id="veil-btn" type="button">打赏解锁</button>
         </div>
       </div>
@@ -328,7 +328,11 @@ const giscusLang = lang === 'zh' ? 'zh-CN' : 'en';
         if (veil) veil.hidden = false;
         var btn = document.getElementById('veil-btn');
         if (btn) btn.addEventListener('click', function () {
-          MingLiPay.showTipModal({ title: '解锁付费章节', desc: '打赏最低 ¥1 即可解锁本专栏全部付费内容；作者本人免付费。' }, function () {
+          MingLiPay.showTipModal({
+            title: '解锁付费章节',
+            desc: '扫码打赏后，请输入作者私发的解锁码，即可解锁本专栏全部付费内容；作者本人免付费。',
+            unlockCode: btoa('gushi2026ch')
+          }, function () {
             wrap.classList.remove('article-lock');
             if (veil) veil.hidden = true;
           });

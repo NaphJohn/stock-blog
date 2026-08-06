@@ -106,7 +106,7 @@
 <li>Set executable buy/sell rules from valuation and your cash flow.</li>
 </ul>
 <h2 id="recap">Recap</h2>
-<p>Full text to be added. Paid sections unlock after a tip (min ¥1).</p> </article> <div class="paywall-veil" id="paywall-veil" hidden> <h3>🔒 付费章节</h3> <p>打赏最低 ¥1 即可解锁本专栏全部付费内容。</p> <button class="pbtn" id="veil-btn" type="button">打赏解锁</button> </div> </div> <section class="engage"> <div class="engage-actions"> <button id="like-btn" class="like-btn" type="button" aria-pressed="false"> <span class="like-ico">👍</span> <span class="like-label">点赞</span> <span id="like-count" class="like-count">0</span> </button> <button id="bookmark-btn" class="bookmark-btn" type="button" aria-pressed="false"> <span class="bookmark-ico">🔖</span> <span id="bookmark-label" class="bookmark-label">收藏</span> </button> </div> <p class="engage-tip">觉得有用？欢迎点赞、收藏，或请我喝杯咖啡 ☕</p> <div class="reward"> <div class="reward-col"> <div class="reward-qr"> <img src="/stock-blog/reward/alipay.png" alt="支付宝收款码" loading="lazy"> </div> <p>支付宝</p> </div> <div class="reward-col"> <div class="reward-qr"> <img src="/stock-blog/reward/wechat.png" alt="微信收款码" loading="lazy"> </div> <p>微信</p> </div> </div> </section> <section class="comments" aria-label="评论"> <h2 id="comments">💬 留言</h2> <div class="giscus-hint">
+<p>Full text to be added. Paid sections unlock after a tip (min ¥1).</p> </article> <div class="paywall-veil" id="paywall-veil" hidden> <h3>🔒 付费章节</h3> <p>扫码打赏后，输入作者私发的解锁码即可解锁本专栏全部付费内容。</p> <button class="pbtn" id="veil-btn" type="button">打赏解锁</button> </div> </div> <section class="engage"> <div class="engage-actions"> <button id="like-btn" class="like-btn" type="button" aria-pressed="false"> <span class="like-ico">👍</span> <span class="like-label">点赞</span> <span id="like-count" class="like-count">0</span> </button> <button id="bookmark-btn" class="bookmark-btn" type="button" aria-pressed="false"> <span class="bookmark-ico">🔖</span> <span id="bookmark-label" class="bookmark-label">收藏</span> </button> </div> <p class="engage-tip">觉得有用？欢迎点赞、收藏，或请我喝杯咖啡 ☕</p> <div class="reward"> <div class="reward-col"> <div class="reward-qr"> <img src="/stock-blog/reward/alipay.png" alt="支付宝收款码" loading="lazy"> </div> <p>支付宝</p> </div> <div class="reward-col"> <div class="reward-qr"> <img src="/stock-blog/reward/wechat.png" alt="微信收款码" loading="lazy"> </div> <p>微信</p> </div> </div> </section> <section class="comments" aria-label="评论"> <h2 id="comments">💬 留言</h2> <div class="giscus-hint">
 评论由 <a href="https://giscus.app" target="_blank" rel="noopener noreferrer">Giscus</a> 驱动（基于 GitHub Discussions）。
           当前仓库 <code>NaphJohn/stock-blog</code> 尚未启用 Discussions 或未安装 Giscus App：请在 GitHub 仓库 Settings → General → Features 勾选 Discussions，并到 github.com/apps/giscus 安装本仓库后刷新，评论区即自动显示。
 </div> <div class="giscus"></div> <script src="https://giscus.app/client.js" data-repo="NaphJohn/stock-blog" data-repo-id="R_PLACEHOLDER_REPO_ID" data-category="Announcements" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="en" crossorigin="anonymous" async>
@@ -327,7 +327,11 @@
         if (veil) veil.hidden = false;
         var btn = document.getElementById('veil-btn');
         if (btn) btn.addEventListener('click', function () {
-          MingLiPay.showTipModal({ title: '解锁付费章节', desc: '打赏最低 ¥1 即可解锁本专栏全部付费内容；作者本人免付费。' }, function () {
+          MingLiPay.showTipModal({
+            title: '解锁付费章节',
+            desc: '扫码打赏后，请输入作者私发的解锁码，即可解锁本专栏全部付费内容；作者本人免付费。',
+            unlockCode: btoa('gushi2026ch')
+          }, function () {
             wrap.classList.remove('article-lock');
             if (veil) veil.hidden = true;
           });

@@ -1,10 +1,13 @@
 /*
  * paywall.js — 股市笔记 付费墙（纯前端，无后端）
- * 两种解锁：
- *  1) 章节打赏通票：一次性打赏（最低 ¥1，无上限）→ 解锁全部「付费章节」文章。
- *  2) 订阅：月 $10（30 天）/ 年 $100（365 天）→ 解锁「动态选股」等订阅功能。
- * 作者本人：URL 带 ?author=1 或 localStorage ml_author==='1' 永久免付费。
- * 注意：纯前端仅做展示层门禁，真正计费需配套后端/支付回调；此处以收款码 + 本地解锁模拟。
+ * 重要说明（纯静态站点的根本限制）：
+ *   本站托管于 GitHub Pages，无后端、无支付回调，无法真正校验微信/支付宝是否付款。
+ *   因此付费墙为「软门槛」——读者扫码打赏/订阅后，须输入作者私发的「解锁码」才解锁查看。
+ *   此机制可挡住随手白嫖，但懂技术者仍可能逆向；要做到「不付绝对看不到」需后端支付回调。
+ * - 章节解锁码：调用方通过 cfg.unlockCode 传入（base64 编码，避免明文暴露）。
+ * - 订阅解锁码：调用方通过 cfg.subCode 传入（base64 编码）。
+ * - 作者本人用 ?author=1 或 localStorage ml_author=1 免付费。
+ * - 复用 public/reward/wechat.png + alipay.png 收款码。
  */
 (function () {
   'use strict';
@@ -81,9 +84,9 @@
       '.ml-tier .t{font-size:12px;color:var(--muted,#666);}' +
       '.ml-tier.sel{border-color:var(--accent,#1565c0);background:rgba(21,101,192,.08);}' +
       '.ml-amt{display:flex;align-items:center;gap:8px;margin:12px 0 4px;}' +
+      '.ml-amt label{flex:0 0 auto;font-size:14px;color:var(--fg,#1c1830);}' +
       '.ml-amt input{flex:1;padding:9px 10px;border:1px solid var(--border,#e5e7eb);border-radius:8px;' +
       'background:var(--bg,#fff);color:var(--fg,#1c1830);font-size:15px;}' +
-      '.ml-amt span{color:var(--muted,#666);font-size:14px;}' +
       '.ml-btns{display:flex;gap:10px;margin-top:14px;}' +
       '.ml-btn{flex:1;padding:11px 0;border-radius:9px;border:1px solid var(--accent,#1565c0);' +
       'background:var(--accent,#1565c0);color:#fff;font-size:15px;cursor:pointer;transition:.15s;}' +
@@ -91,7 +94,7 @@
       '.ml-btn.ghost{background:transparent;color:var(--accent,#1565c0);}' +
       '.ml-note{font-size:12px;color:var(--muted,#666);margin-top:10px;text-align:center;}' +
       '.ml-err{color:#d33;font-size:13px;min-height:16px;margin-top:6px;}' +
-      // 文章付费遮罩
+      // 文章付费遮罩（沿用 BlogPost 里的 article-lock 类）
       '.article-lock{position:relative;}' +
       '.article-lock #post-content{filter:blur(7px);max-height:340px;overflow:hidden;user-select:none;}' +
       '.article-lock .paywall-veil{position:absolute;left:0;right:0;top:0;height:100%;' +
@@ -107,15 +110,22 @@
 
   function closeMask(mask) { if (mask && mask.parentNode) mask.parentNode.removeChild(mask); }
 
+  // 校验解锁码：base64 解码后大小写不敏感比对
+  function verifyCode(input, codeB64) {
+    var expected = '';
+    try { expected = atob(codeB64 || ''); } catch (e) { expected = ''; }
+    if (!expected) return false;
+    return (input || '').trim().toLowerCase() === expected.toLowerCase();
+  }
+
   function showTipModal(cfg, onOk) {
     cfg = cfg || {};
     ensureStyle();
     var base = baseUrl();
-    var minTip = (cfg.minTip != null) ? cfg.minTip : 1;
     var qrWechat = cfg.qrWechat || (base + 'reward/wechat.png');
     var qrAlipay = cfg.qrAlipay || (base + 'reward/alipay.png');
     var title = cfg.title || '解锁付费章节';
-    var desc = cfg.desc || '打赏最低 ¥' + minTip + '（上不封顶）即可解锁全部付费章节，作者本人免付费。';
+    var desc = cfg.desc || '扫码打赏后，请输入作者私发的解锁码，即可解锁全部付费章节。作者本人免付费。';
 
     var mask = document.createElement('div');
     mask.className = 'ml-mask';
@@ -127,24 +137,29 @@
           '<div class="ml-qr"><img src="' + qrWechat + '" alt="微信收款码"/><div>微信</div></div>' +
           '<div class="ml-qr"><img src="' + qrAlipay + '" alt="支付宝收款码"/><div>支付宝</div></div>' +
         '</div>' +
-        '<div class="ml-amt"><span>金额 ¥</span><input id="ml-amt" type="number" min="' + minTip + '" step="1" value="' + minTip + '"/></div>' +
+        '<div class="ml-amt"><label>解锁码</label>' +
+          '<input id="ml-code" type="text" placeholder="请输入作者私发的解锁码" autocomplete="off"/></div>' +
         '<div class="ml-err" id="ml-err"></div>' +
         '<div class="ml-btns">' +
           '<button class="ml-btn ghost" id="ml-cancel">稍后</button>' +
-          '<button class="ml-btn" id="ml-ok">已付款，解锁</button>' +
+          '<button class="ml-btn" id="ml-ok">输入解锁码，解锁</button>' +
         '</div>' +
-        '<p class="ml-note">付款后点击「已付款，解锁」即可阅读（本页为纯前端演示，不传输任何信息）。</p>' +
+        '<p class="ml-note">扫码打赏后，凭作者私发的解锁码在此输入即可解锁全部付费章节。</p>' +
       '</div>';
     document.body.appendChild(mask);
 
     mask.addEventListener('click', function (e) { if (e.target === mask) closeMask(mask); });
     mask.querySelector('#ml-cancel').addEventListener('click', function () { closeMask(mask); });
     mask.querySelector('#ml-ok').addEventListener('click', function () {
-      var v = parseFloat(mask.querySelector('#ml-amt').value);
-      if (!(v >= minTip)) { mask.querySelector('#ml-err').textContent = '金额不能低于 ¥' + minTip; return; }
+      var input = mask.querySelector('#ml-code').value;
+      if (!input || !input.trim()) { mask.querySelector('#ml-err').textContent = '请输入解锁码'; return; }
+      if (!verifyCode(input, cfg.unlockCode)) {
+        mask.querySelector('#ml-err').textContent = '解锁码不正确，请确认已打赏并向作者索取解锁码。';
+        return;
+      }
       unlockChapters();
       closeMask(mask);
-      if (typeof onOk === 'function') onOk(v);
+      if (typeof onOk === 'function') onOk();
     });
   }
 
@@ -155,7 +170,7 @@
     var qrWechat = cfg.qrWechat || (base + 'reward/wechat.png');
     var qrAlipay = cfg.qrAlipay || (base + 'reward/alipay.png');
     var title = cfg.title || '订阅动态选股';
-    var desc = cfg.desc || '订阅后可使用「动态选股」工具：判断周期、给出仓位与定投方案。';
+    var desc = cfg.desc || '订阅后可使用「动态选股」工具：判断周期、给出仓位与定投方案。扫码付款后输入作者私发的解锁码。';
     var monthly = cfg.monthly || { price: '$10', days: 30, label: '按月 · $10 / 月' };
     var yearly = cfg.yearly || { price: '$100', days: 365, label: '按年 · $100 / 年（省 $20）' };
     var chosen = 'yearly';
@@ -174,12 +189,14 @@
           '<div class="ml-qr"><img src="' + qrWechat + '" alt="微信收款码"/><div>微信</div></div>' +
           '<div class="ml-qr"><img src="' + qrAlipay + '" alt="支付宝收款码"/><div>支付宝</div></div>' +
         '</div>' +
+        '<div class="ml-amt"><label>解锁码</label>' +
+          '<input id="ml-code" type="text" placeholder="请输入作者私发的订阅码" autocomplete="off"/></div>' +
         '<div class="ml-err" id="ml-err"></div>' +
         '<div class="ml-btns">' +
           '<button class="ml-btn ghost" id="ml-cancel">稍后</button>' +
-          '<button class="ml-btn" id="ml-ok">已付款，订阅</button>' +
+          '<button class="ml-btn" id="ml-ok">输入解锁码，订阅</button>' +
         '</div>' +
-        '<p class="ml-note">扫描对应收款码付款后点击「已付款，订阅」；订阅状态保存在本机浏览器。</p>' +
+        '<p class="ml-note">扫描对应收款码付款后，凭作者私发的解锁码在此输入即可解锁订阅。</p>' +
       '</div>';
     document.body.appendChild(mask);
 
@@ -196,6 +213,12 @@
     });
     mask.querySelector('#ml-cancel').addEventListener('click', function () { closeMask(mask); });
     mask.querySelector('#ml-ok').addEventListener('click', function () {
+      var input = mask.querySelector('#ml-code').value;
+      if (!input || !input.trim()) { mask.querySelector('#ml-err').textContent = '请输入解锁码'; return; }
+      if (!verifyCode(input, cfg.subCode)) {
+        mask.querySelector('#ml-err').textContent = '解锁码不正确，请确认已付款并向作者索取订阅码。';
+        return;
+      }
       var days = (chosen === 'monthly') ? monthly.days : yearly.days;
       var tier = (chosen === 'monthly') ? 'monthly' : 'yearly';
       unlockSub(tier, days);
