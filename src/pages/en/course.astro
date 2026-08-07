@@ -15,6 +15,10 @@ const course = {
     { slug: 'ch6-active', title: 'Active funds: manager, style, drawdown', desc: 'Spot managers who outperform long-term.', free: false },
     { slug: 'ch7-bond', title: 'Bond funds: duration & credit', desc: 'Use bonds to dampen portfolio volatility.', free: false },
     { slug: 'ch8-index', title: 'Hold index funds: valuation & DCA multiples', desc: 'Multipliers and profit-taking rules.', free: false },
+    { slug: 'ch14-bond-bull', title: 'Bond funds in a bull market', desc: 'Buy in one shot when below historical monthly average; scale out in thirds.', free: false, no: 14 },
+    { slug: 'ch15-bond-shake', title: 'Bond funds in a ranging market', desc: 'Buy on drawdowns, widen the profit tolerance, keep ≥1/2 position.', free: false, no: 15 },
+    { slug: 'ch16-cycle-why', title: 'Why Xiaobei insists on cycle timing', desc: 'Institutions earn fees; we earn upside & dividends — and A-shares range.', free: false, no: 16 },
+    { slug: 'ch17-index-fund', title: 'How to pick a quality index fund', desc: 'Two rules: listed 5+ years, repeatedly makes new highs.', free: false, no: 17 },
   ],
 };
 const freeCount = course.chapters.filter((c) => c.free).length;
@@ -30,7 +34,7 @@ const freeCount = course.chapters.filter((c) => c.free).length;
   <ol class="ch-list">
     {course.chapters.map((c, i) => (
       <li class={c.free ? 'free' : 'paid'}>
-        <span class="no">{(i + 1).toString().padStart(2, '0')}</span>
+        <span class="no">{(c.no ?? (i + 1)).toString().padStart(2, '0')}</span>
         <a href={`${base}en/blog/${c.slug}`} class="title">{c.title}</a>
         {c.free ? <span class="tag free">Free</span> : <span class="tag paid">Paid</span>}
         <p class="desc">{c.desc}</p>
