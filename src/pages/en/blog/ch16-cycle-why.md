@@ -10,8 +10,6 @@ altHref: /
 pubDate: 2026-08-07
 ---
 
-# Why Xiaobei insists on cycle timing
-
 > ⚠️ Placeholder: this section will be replaced with the translated article. Outline only.
 
 ## Key points

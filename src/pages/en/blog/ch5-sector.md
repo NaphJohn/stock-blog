@@ -10,8 +10,6 @@ altHref: /
 pubDate: 2026-08-06
 ---
 
-# Sector fund rotation: ride the up-cycle
-
 > ⚠️ Placeholder: this section will be replaced with the translated article. Outline only.
 
 ## Key points

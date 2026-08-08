@@ -10,8 +10,6 @@ altHref: /
 pubDate: 2026-08-06
 ---
 
-# Picking active funds: manager, style, drawdown
-
 > ⚠️ Placeholder: this section will be replaced with the translated article. Outline only.
 
 ## Key points

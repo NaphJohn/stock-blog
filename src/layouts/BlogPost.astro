@@ -16,6 +16,13 @@ const {
 } = frontmatter;
 const base = import.meta.env.BASE_URL;
 const giscusLang = lang === 'zh' ? 'zh-CN' : 'en';
+const _d = pubDate instanceof Date ? pubDate : (pubDate ? new Date(pubDate) : null);
+const dateLabel = _d
+  ? (lang === 'en'
+      ? _d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+      : _d.getFullYear() + '年' + (_d.getMonth() + 1) + '月' + _d.getDate() + '日')
+  : '';
+const dateIso = _d ? _d.toISOString().slice(0, 10) : '';
 ---
 
 <!doctype html>
@@ -44,14 +51,14 @@ const giscusLang = lang === 'zh' ? 'zh-CN' : 'en';
     <main>
       {series && <span class="series-tag">系列：{series}</span>}
       <h1>{title}</h1>
-      {pubDate && <time datetime={pubDate}>{pubDate}</time>}
+      {pubDate && <time datetime={dateIso}>{dateLabel}</time>}
       <div id="post-wrap" data-free={free ? '1' : '0'} style="position:relative">
         <article class="prose" id="post-content">
           <slot />
         </article>
         <div class="paywall-veil" id="paywall-veil" hidden>
-          <h3>🔒 付费章节</h3>
-          <p>扫码打赏后，输入作者私发的解锁码即可解锁本专栏全部付费内容。</p>
+          <h3>☕️ 请作者喝咖啡</h3>
+          <p>后续章节欢迎请作者喝杯咖啡（最低 ¥1），输入作者私发的解锁码即可解锁本专栏全部内容。</p>
           <button class="pbtn" id="veil-btn" type="button">打赏解锁</button>
         </div>
       </div>
@@ -329,8 +336,8 @@ const giscusLang = lang === 'zh' ? 'zh-CN' : 'en';
         var btn = document.getElementById('veil-btn');
         if (btn) btn.addEventListener('click', function () {
           MingLiPay.showTipModal({
-            title: '解锁付费章节',
-            desc: '扫码打赏后，请输入作者私发的解锁码，即可解锁本专栏全部付费内容；作者本人免付费。',
+            title: '请作者喝咖啡 ☕️',
+            desc: '请作者喝杯咖啡后（最低 ¥1），输入作者私发的解锁码，即可解锁本专栏全部内容；作者本人免付费。',
             unlockCode: btoa('gushi2026ch')
           }, function () {
             wrap.classList.remove('article-lock');

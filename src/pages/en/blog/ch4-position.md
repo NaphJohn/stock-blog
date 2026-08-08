@@ -10,8 +10,6 @@ altHref: /
 pubDate: 2026-08-06
 ---
 
-# Position sizing & timing: when and how much
-
 > ⚠️ Placeholder: this section will be replaced with the translated article. Outline only.
 
 ## Key points

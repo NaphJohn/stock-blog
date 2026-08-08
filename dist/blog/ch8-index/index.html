@@ -8,7 +8,7 @@
           document.documentElement.setAttribute('data-theme', t);
         } catch (e) {}
       })();
-    </script><title>指数基金长期持有：估值与定投倍数 · 股市笔记</title><meta name="description" content="宽基定投的加倍与止盈规则。"><link rel="stylesheet" href="/stock-blog/_astro/ch1-intro.b8wxSEGk.css"></head> <body> <header class="site-header"> <a href="/stock-blog/" class="brand">股市笔记</a> <nav> <a href="/stock-blog/">小倍基金策略</a> <span class="lang-switch"> <span class="cur">中文</span><span class="sep">/</span><a href="/stock-blog/en/">English</a> </span> <button id="bookmark-toggle" class="header-btn" type="button" aria-label="书签" title="书签">🔖</button> <button id="theme-toggle" class="theme-toggle" type="button" aria-label="切换日间/夜间模式">🌙</button> </nav> </header> <div id="bookmarks-panel" class="bookmarks-panel" hidden> <div class="bookmarks-head"> <strong>书签</strong> <button id="bookmarks-close" type="button" aria-label="关闭">×</button> </div> <ul id="bookmarks-list" class="bookmarks-list"></ul> <p id="bookmarks-empty" class="bookmarks-empty">暂无书签，在文章页点击「收藏」按钮即可添加。</p> </div> <div id="hl-toolbar" class="hl-toolbar" hidden> <button data-type="highlight" type="button" title="高亮">🖍️ 高亮</button> <button data-type="underline" type="button" title="下划线">➖ 下划线</button> <button data-type="clear" type="button" title="清除本页标记">❌ 清除</button> </div> <script>
+    </script><title>主动基金在震荡市周期的投资策略 · 股市笔记</title><meta name="description" content="震荡市买跌不买涨：年化收益未达 50% 时逢回撤一次性买入，达标后卖一半保持半仓波动。"><link rel="stylesheet" href="/stock-blog/_astro/ch1-intro.b8wxSEGk.css"></head> <body> <header class="site-header"> <a href="/stock-blog/" class="brand">股市笔记</a> <nav> <a href="/stock-blog/">小倍基金策略</a> <span class="lang-switch"> <span class="cur">中文</span><span class="sep">/</span><a href="/stock-blog/en/">English</a> </span> <button id="bookmark-toggle" class="header-btn" type="button" aria-label="书签" title="书签">🔖</button> <button id="theme-toggle" class="theme-toggle" type="button" aria-label="切换日间/夜间模式">🌙</button> </nav> </header> <div id="bookmarks-panel" class="bookmarks-panel" hidden> <div class="bookmarks-head"> <strong>书签</strong> <button id="bookmarks-close" type="button" aria-label="关闭">×</button> </div> <ul id="bookmarks-list" class="bookmarks-list"></ul> <p id="bookmarks-empty" class="bookmarks-empty">暂无书签，在文章页点击「收藏」按钮即可添加。</p> </div> <div id="hl-toolbar" class="hl-toolbar" hidden> <button data-type="highlight" type="button" title="高亮">🖍️ 高亮</button> <button data-type="underline" type="button" title="下划线">➖ 下划线</button> <button data-type="clear" type="button" title="清除本页标记">❌ 清除</button> </div> <script>
   (function () {
     var btn = document.getElementById('theme-toggle');
     if (!btn) return;
@@ -95,18 +95,47 @@
       syncGiscus(document.documentElement.getAttribute('data-theme'));
     }, 1200);
   });
-</script>  <main> <span class="series-tag">系列：小倍基金策略</span> <h1>指数基金长期持有：估值与定投倍数</h1> <time datetime="2026-08-06T00:00:00.000Z">2026-08-06T00:00:00.000Z</time> <div id="post-wrap" data-free="0" style="position:relative"> <article class="prose" id="post-content"> <h1 id="指数基金长期持有估值与定投倍数">指数基金长期持有：估值与定投倍数</h1>
-<blockquote>
-<p>⚠️ 占位内容：本节正文将替换为公众号原文（专辑 <em>小倍基金策略</em> 对应篇目）。以下为结构示意，请勿据此操作。</p>
+</script>  <main> <span class="series-tag">系列：小倍基金策略</span> <h1>主动基金在震荡市周期的投资策略</h1> <time datetime="2026-08-08">2026年8月8日</time> <div id="post-wrap" data-free="0" style="position:relative"> <article class="prose" id="post-content"> <blockquote>
+<p>🖼️ <strong>配图待补充</strong>：本节封面 / 主动基金震荡市买卖示意，待补充后替换。</p>
 </blockquote>
-<h2 id="本节要点">本节要点</h2>
-<ul>
-<li>（待填充）宽基定投的加倍与止盈规则。</li>
-<li>用策略替代预测：分批、定投、止损线。</li>
-<li>结合估值与自身现金流，制定可执行的买入/卖出规则。</li>
-</ul>
+<blockquote>
+<p>本节为《小倍基金策略》专栏第 8 节。震荡市是资金的存量博弈市场，主动基金的策略要比牛市更保守——核心一句话：<strong>买跌，不买涨</strong>。</p>
+</blockquote>
+<p>主动基金在震荡市周期如何投资呢？</p>
+<p>不同于牛市的略微激进的投资策略，震荡市是一个资金的存量博弈市场，震荡市的策略我们会相对保守一些。</p>
+<h2 id="一加仓策略买入">一、加仓策略（买入）</h2>
+<p>首先需要满足的就是<strong>本年度收益小于年化平均收益的 50%</strong>，确保后续有足够的上涨空间；</p>
+<p>然后我们会选择当月 / 当周的收益处于<strong>回撤阶段</strong>的时候介入，且这个回撤要接近历次震荡市的月度平均回撤。</p>
+<p>牛市我们可以买涨，但是震荡市和后面的熊市我们普遍情况下会选择<strong>买跌</strong>的方式，这样才能有效地扩大收益空间，来对冲盈利胜率下降的风险。</p>
+<blockquote>
+<p>🖼️ <strong>配图待补充</strong>：震荡市”买跌”示意——年化收益 50% 线下方 + 月度回撤区间标注买入点。</p>
+</blockquote>
+<p>具体的买入条件是：</p>
+<ol>
+<li>该基金今年收益 &#x3C; 平均年化收益的 50%；</li>
+<li>当前月度回撤接近历次震荡市的月度平均回撤；</li>
+<li>一次性买入。</li>
+</ol>
+<h2 id="二减仓策略卖出">二、减仓策略（卖出）</h2>
+<p>震荡市场，我们不期望它能够超过平均年化收益、接近历史最大收益。</p>
+<p>我们会在这个基金本年的收益<strong>超过它过去年化平均收益 50%<strong>的时候，并且它当月和当周的表现</strong>超过了它历史震荡市阶段的月度平均收益</strong>，卖掉 1/2，保持半仓。</p>
+<p>主要原因还是震荡市往后衔接的是牛市，且在市场观点里，震荡市的另外一个叫法叫做<strong>结构性牛市</strong>，所以我们很难确定主动型基金会不会向牛市演化。</p>
+<p>如果清仓，我们可能会用更高的成本在牛市买回来。</p>
+<p>因此我们选择了一种在数学上盈利性价比更高的方式，叫做<strong>半仓波动</strong>——摊低成本，放大利润。</p>
+<blockquote>
+<p>🖼️ <strong>配图待补充</strong>：半仓波动示意——卖出 1/2 后保留半仓，回调再买回，反复摊低成本低。</p>
+</blockquote>
+<p>具体卖出条件是：</p>
+<ol>
+<li>该基金今年收益 > 50% 年化平均收益；</li>
+<li>当前月度收益 > 历次震荡市阶段月度平均收益；</li>
+<li>卖出 1/2，保持半仓。</li>
+</ol>
 <h2 id="小结">小结</h2>
-<p>更多细节将在正文补齐。如需提前解锁后续付费章节，可在文末打赏（最低 ¥1）。</p> </article> <div class="paywall-veil" id="paywall-veil" hidden> <h3>🔒 付费章节</h3> <p>扫码打赏后，输入作者私发的解锁码即可解锁本专栏全部付费内容。</p> <button class="pbtn" id="veil-btn" type="button">打赏解锁</button> </div> </div> <section class="engage"> <div class="engage-actions"> <button id="like-btn" class="like-btn" type="button" aria-pressed="false"> <span class="like-ico">👍</span> <span class="like-label">点赞</span> <span id="like-count" class="like-count">0</span> </button> <button id="bookmark-btn" class="bookmark-btn" type="button" aria-pressed="false"> <span class="bookmark-ico">🔖</span> <span id="bookmark-label" class="bookmark-label">收藏</span> </button> </div> <p class="engage-tip">觉得有用？欢迎点赞、收藏，或请我喝杯咖啡 ☕</p> <div class="reward"> <div class="reward-col"> <div class="reward-qr"> <img src="/stock-blog/reward/alipay.png" alt="支付宝收款码" loading="lazy"> </div> <p>支付宝</p> </div> <div class="reward-col"> <div class="reward-qr"> <img src="/stock-blog/reward/wechat.png" alt="微信收款码" loading="lazy"> </div> <p>微信</p> </div> </div> </section> <section class="comments" aria-label="评论"> <h2 id="comments">💬 留言</h2> <div class="giscus-hint">
+<p>震荡市主动基金的操作精髓：<strong>跌到位就一次买，涨到位就卖一半</strong>。不贪历史最大收益，也不清仓踏空牛市——用半仓波动在震荡中摊低成本、放大利润，把”结构性牛市”的不确定性变成优势。</p>
+<blockquote>
+<p>⚠️ 本文为方法框架示意，不构成任何投资或交易建议。市场有风险，决策需谨慎。</p>
+</blockquote> </article> <div class="paywall-veil" id="paywall-veil" hidden> <h3>☕️ 请作者喝咖啡</h3> <p>后续章节欢迎请作者喝杯咖啡（最低 ¥1），输入作者私发的解锁码即可解锁本专栏全部内容。</p> <button class="pbtn" id="veil-btn" type="button">打赏解锁</button> </div> </div> <section class="engage"> <div class="engage-actions"> <button id="like-btn" class="like-btn" type="button" aria-pressed="false"> <span class="like-ico">👍</span> <span class="like-label">点赞</span> <span id="like-count" class="like-count">0</span> </button> <button id="bookmark-btn" class="bookmark-btn" type="button" aria-pressed="false"> <span class="bookmark-ico">🔖</span> <span id="bookmark-label" class="bookmark-label">收藏</span> </button> </div> <p class="engage-tip">觉得有用？欢迎点赞、收藏，或请我喝杯咖啡 ☕</p> <div class="reward"> <div class="reward-col"> <div class="reward-qr"> <img src="/stock-blog/reward/alipay.png" alt="支付宝收款码" loading="lazy"> </div> <p>支付宝</p> </div> <div class="reward-col"> <div class="reward-qr"> <img src="/stock-blog/reward/wechat.png" alt="微信收款码" loading="lazy"> </div> <p>微信</p> </div> </div> </section> <section class="comments" aria-label="评论"> <h2 id="comments">💬 留言</h2> <div class="giscus-hint">
 评论由 <a href="https://giscus.app" target="_blank" rel="noopener noreferrer">Giscus</a> 驱动（基于 GitHub Discussions）。
           当前仓库 <code>NaphJohn/stock-blog</code> 尚未启用 Discussions 或未安装 Giscus App：请在 GitHub 仓库 Settings → General → Features 勾选 Discussions，并到 github.com/apps/giscus 安装本仓库后刷新，评论区即自动显示。
 </div> <div class="giscus"></div> <script src="https://giscus.app/client.js" data-repo="NaphJohn/stock-blog" data-repo-id="R_PLACEHOLDER_REPO_ID" data-category="Announcements" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="zh-CN" crossorigin="anonymous" async>
@@ -328,8 +357,8 @@
         var btn = document.getElementById('veil-btn');
         if (btn) btn.addEventListener('click', function () {
           MingLiPay.showTipModal({
-            title: '解锁付费章节',
-            desc: '扫码打赏后，请输入作者私发的解锁码，即可解锁本专栏全部付费内容；作者本人免付费。',
+            title: '请作者喝咖啡 ☕️',
+            desc: '请作者喝杯咖啡后（最低 ¥1），输入作者私发的解锁码，即可解锁本专栏全部内容；作者本人免付费。',
             unlockCode: btoa('gushi2026ch')
           }, function () {
             wrap.classList.remove('article-lock');

@@ -10,8 +10,6 @@ altHref: /
 pubDate: 2026-08-07
 ---
 
-# Bond funds in a ranging market
-
 > ⚠️ Placeholder: this section will be replaced with the translated article. Outline only.
 
 ## Key points

@@ -14,7 +14,8 @@ const course = {
     { slug: 'ch5-sector', title: '行业基金在熊市阶段的投资策略', desc: '熊市分批定投，在估值足够低时买入。', free: false },
     { slug: 'ch6-active', title: '小倍判断优质基金的标准是什么', desc: '唯一标准：每个牛熊周期都创新高且有超额收益。', free: false },
     { slug: 'ch7-bond', title: '如何选择优质的主动基金', desc: '核心标准 + 辅助条件，优中选优的主动基金筛选法。', free: false },
-    { slug: 'ch8-index', title: '指数基金长期持有：估值与定投倍数', desc: '宽基定投的加倍与止盈规则。', free: false },
+    { slug: 'ch8-index', title: '主动基金在震荡市周期的投资策略', desc: '震荡市买跌不买涨：年化未达 50% 逢回撤一次买，达标卖一半保持半仓波动。', free: false },
+    { slug: 'ch9-active-bear', title: '主动基金在熊市周期的投资策略', desc: '时间+空间双到位后分批定投，月度反弹超均值减半仓波段操作。', free: false },
     { slug: 'ch14-bond-bull', title: '债券基金在牛市周期的投资策略', desc: '牛市一次性买入，以历史月均收益为买点、年化达标分三批卖出。', free: false, no: 14 },
     { slug: 'ch15-bond-shake', title: '债券基金在震荡市周期的投资策略', desc: '震荡市回撤买入为主，放宽收益容忍、至少保留 1/2 仓位。', free: false, no: 15 },
     { slug: 'ch16-cycle-why', title: '小倍为什么会强调周期择时', desc: '机构靠管理费、我们靠上涨与分红，A 股多为震荡市，故必须择时。', free: false, no: 16 },
@@ -31,14 +32,14 @@ const freeCount = course.chapters.filter((c) => c.free).length;
   <p class="kicker">✦ 专栏 · 共 {course.chapters.length} 节</p>
   <h1>{course.name}</h1>
   <p class="sub">{course.desc}</p>
-  <p class="rule">前 <b>{freeCount}</b> 节免费阅读；第 {freeCount + 1} 节起需<b>打赏</b>（最低 ¥1，上不封顶）一次性解锁全部付费内容。作者本人免付费。</p>
+  <p class="rule">前 <b>{freeCount}</b> 节免费阅读；后续章节欢迎<b>请作者喝杯咖啡 ☕️</b>（最低 ¥1，上不封顶）解锁全部内容。作者本人免付费。</p>
 
   <ol class="ch-list">
     {course.chapters.map((c, i) => (
       <li class={c.free ? 'free' : 'paid'}>
         <span class="no">{(c.no ?? (i + 1)).toString().padStart(2, '0')}</span>
         <a href={`${base}blog/${c.slug}`} class="title">{c.title}</a>
-        {c.free ? <span class="tag free">免费</span> : <span class="tag paid">付费</span>}
+        {c.free ? <span class="tag free">免费</span> : <span class="tag paid">☕️ 请作者喝咖啡</span>}
         <p class="desc">{c.desc}</p>
       </li>
     ))}

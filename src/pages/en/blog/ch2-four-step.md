@@ -10,8 +10,6 @@ altHref: /
 pubDate: 2026-08-06
 ---
 
-# How to pick a quality sector index fund?
-
 > This is Lesson 2 (free) of the *Xiaobei Fund Strategy* series. Picking a sector fund has two stages: **pick the sector first, then the fund**.
 
 Most losses come not from a bad fund but from a wrong sector chosen up front. So order matters: judge whether the sector is worth owning, then pick a good fund within it.
