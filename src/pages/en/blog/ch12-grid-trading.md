@@ -55,4 +55,22 @@ Same ETF — DCA owns "long-term", grid owns "volatility". No conflict.
 
 **Strong trends break it**: a relentless rally sells out early; a relentless fall keeps buying into a heavy position. So cap each grid at **~6% of total** — a satellite sleeve, not the core.
 
+## 7. Grid on ETFs you already hold
+
+No need to open new positions — reuse ETFs already in your account:
+
+- **Already held**: sector ETFs like Korea-China Semiconductor ETF (513310) or Sci-Tech Chip ETF (588200) swing hard, giving more "sell-high, buy-low" chances;
+- **Planning to buy**: a dividend anchor like Bank ETF (560670) can also spare one grid sleeve for extra yield after you build the position.
+
+Same discipline: ±10% band, 8 rungs, fixed amount per grid, stop below, clear above. The email's "🔲 ETF Grid Trading" section lists both **satellite sleeves** and **your held ETFs**, with each one's grid lines and next trigger price.
+
+## 8. Tomorrow's order template (practical)
+
+After each close, place a **limit buy** at the "next buy price" and let it fill on a dip — no need to watch the screen:
+
+> 📌 Limit buy 700 shares CSI 300 ETF (510300) @ 4.64 (triggers down 2.5%)
+> 📌 Limit buy 400 shares Korea-China Semiconductor ETF (513310) @ X.XX (triggers down X%)
+
+Buy on trigger, sell on the rung above. Spend 2 minutes daily checking if the "next rung" needs shifting. The email's "📅 Tomorrow's grid order list" already ranks ETFs by **easiest-to-trigger** and flags the **top priority** to place tonight.
+
 > ⚠️ This article is a framework illustration and not investment or trading advice. Markets are risky; decide with care.
