@@ -1,0 +1,466 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light dark"><script src="/stock-blog/paywall.js"></script><script>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          if (t !== 'light' && t !== 'dark') {
+            t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script><title>Long vs Short Basics: how retail opens an account, buys stocks, and bets on a fall · Market Notes</title><meta name="description" content="What long (buy low, sell high) and short (sell high, buy back low) really mean; a step-by-step on opening a brokerage account, funding it and placing an order; plus the real short-selling tools available in A-shares and their barriers."><link rel="stylesheet" href="/stock-blog/_astro/ch1-intro.b8wxSEGk.css"></head> <body> <header class="site-header"> <a href="/stock-blog/en/" class="brand">Market Notes</a> <nav> <a href="/stock-blog/en/">Xiaobei Fund Strategy</a> <span class="lang-switch"> <a href="/stock-blog/">中文</a><span class="sep">/</span><span class="cur">English</span> </span> <button id="bookmark-toggle" class="header-btn" type="button" aria-label="书签" title="书签">🔖</button> <button id="theme-toggle" class="theme-toggle" type="button" aria-label="切换日间/夜间模式">🌙</button> </nav> </header> <div id="bookmarks-panel" class="bookmarks-panel" hidden> <div class="bookmarks-head"> <strong>书签</strong> <button id="bookmarks-close" type="button" aria-label="关闭">×</button> </div> <ul id="bookmarks-list" class="bookmarks-list"></ul> <p id="bookmarks-empty" class="bookmarks-empty">暂无书签，在文章页点击「收藏」按钮即可添加。</p> </div> <div id="hl-toolbar" class="hl-toolbar" hidden> <button data-type="highlight" type="button" title="高亮">🖍️ 高亮</button> <button data-type="underline" type="button" title="下划线">➖ 下划线</button> <button data-type="clear" type="button" title="清除本页标记">❌ 清除</button> </div> <script>
+  (function () {
+    var btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    function sync() {
+      var t = document.documentElement.getAttribute('data-theme');
+      btn.textContent = t === 'dark' ? '☀️' : '🌙';
+      syncGiscus(t);
+    }
+    btn.addEventListener('click', function () {
+      var cur = document.documentElement.getAttribute('data-theme');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      sync();
+    });
+    sync();
+  })();
+
+  // 书签面板
+  (function () {
+    var toggle = document.getElementById('bookmark-toggle');
+    var panel = document.getElementById('bookmarks-panel');
+    var close = document.getElementById('bookmarks-close');
+    var list = document.getElementById('bookmarks-list');
+    var empty = document.getElementById('bookmarks-empty');
+    if (!toggle || !panel) return;
+
+    function getBookmarks() {
+      try { return JSON.parse(localStorage.getItem('blog-bookmarks') || '[]'); }
+      catch (e) { return []; }
+    }
+    function saveBookmarks(arr) {
+      try { localStorage.setItem('blog-bookmarks', JSON.stringify(arr)); } catch (e) {}
+    }
+    function render() {
+      var bm = getBookmarks();
+      list.innerHTML = '';
+      if (!bm.length) {
+        empty.style.display = 'block';
+        list.style.display = 'none';
+        return;
+      }
+      empty.style.display = 'none';
+      list.style.display = 'block';
+      bm.forEach(function (b) {
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = b.url;
+        a.textContent = b.title || b.url;
+        a.title = b.title || b.url;
+        var del = document.createElement('button');
+        del.type = 'button';
+        del.textContent = '删除';
+        del.title = '删除书签';
+        del.addEventListener('click', function () {
+          saveBookmarks(getBookmarks().filter(function (x) { return x.url !== b.url; }));
+          render();
+        });
+        li.appendChild(a);
+        li.appendChild(del);
+        list.appendChild(li);
+      });
+    }
+    function open() { panel.hidden = false; render(); }
+    function closeFn() { panel.hidden = true; }
+    toggle.addEventListener('click', function () { panel.hidden ? open() : closeFn(); });
+    close && close.addEventListener('click', closeFn);
+    document.addEventListener('click', function (e) {
+      if (!panel.hidden && !panel.contains(e.target) && e.target !== toggle) closeFn();
+    });
+    window.__renderBookmarks = render;
+  })();
+
+  function syncGiscus(theme) {
+    var iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+    try {
+      iframe.contentWindow.postMessage({ giscus: { setConfig: { theme: theme === 'dark' ? 'dark' : 'light' } } }, 'https://giscus.app');
+    } catch (e) {}
+  }
+
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      syncGiscus(document.documentElement.getAttribute('data-theme'));
+    }, 1200);
+  });
+</script>  <main> <span class="series-tag">系列：Xiaobei Fund Strategy</span> <h1>Long vs Short Basics: how retail opens an account, buys stocks, and bets on a fall</h1> <time datetime="2026-08-11">August 11, 2026</time> <div id="post-wrap" data-free="0" style="position:relative"> <article class="prose" id="post-content"> <blockquote>
+<p>This is supplement #6 of the <em>Xiaobei Fund Strategy</em> basics. It answers the questions every beginner asks: where do I actually buy a stock? Why do people say “short”? And can an ordinary person short at all?</p>
+</blockquote>
+<h2 id="1-long-buy-first-sell-later-profit-from-a-rise">1. Long: buy first, sell later, profit from a rise</h2>
+<p><strong>Long = buy low, sell high; the gap is your profit.</strong> This is the most familiar play, and the vast majority of A-share retail investors only go long.</p>
+<p>One-liner: <strong>bullish → buy, then sell higher.</strong></p>
+<p>Say you think a stock at ¥10 is undervalued, so you buy; when it rises to ¥13 you sell and pocket ¥3 per share. Your <strong>maximum loss is capped</strong> — in the worst case the company delists and you lose at most your principal.</p>
+<blockquote>
+<p>💡 Long is fully compatible with the DCA, grid and high-dividend ideas from earlier chapters: DCA is “mechanical long”, grid is “long plus swing on top of the core position”.</p>
+</blockquote>
+<h2 id="2-short-sell-first-buy-back-later-profit-from-a-fall">2. Short: sell first, buy back later, profit from a fall</h2>
+<p><strong>Short = borrow shares, sell them high, then buy them back low to return, keeping the difference.</strong></p>
+<p>The flow:</p>
+<ol>
+<li>You judge a stock at ¥13 is “too expensive, it will fall”;</li>
+<li>You <strong>borrow</strong> shares from your broker and sell them at ¥13, holding the cash;</li>
+<li>The price really drops to ¥10, so you spend ¥10 to buy them back and return the loan;</li>
+<li>You earn ¥3 per share (ignoring borrow interest and fees).</li>
+</ol>
+<p><strong>The biggest risk of shorting: the loss is theoretically “unlimited”.</strong> A stock price has no ceiling — if you sold borrowed shares at ¥13 and it runs to ¥30 or ¥50, you must buy back at the higher price, and the hole can be bottomless. Shorting is a pro game; retail investors should be very careful.</p>
+<h2 id="3-how-does-an-ordinary-person-buy-long-stocks-four-steps">3. How does an ordinary person “buy long stocks”? Four steps</h2>
+<p>Most people get stuck at step one: where do you actually buy stocks? The answer is a <strong>brokerage account</strong> (a broker app) — not a bank, and not Alipay’s fund store (that sells funds, not individual stocks).</p>
+<p><strong>Step 1: Open an account</strong></p>
+<ul>
+<li>Download a broker app (e.g. East Money, Huatai, CITIC, Guotai Junan);</li>
+<li>Prepare: your ID card + a bank savings card;</li>
+<li>Flow: register → upload ID → video verification (prove it’s you) → set a trading password → wait for approval (same day or next day).</li>
+</ul>
+<p><strong>Step 2: Bank-to-broker transfer</strong></p>
+<ul>
+<li>Move money from your bank card into the securities cash account (called <strong>bank-securities transfer</strong>, instant);</li>
+<li>Only cash in that account can be used to buy stocks.</li>
+</ul>
+<p><strong>Step 3: Pick a stock + place an order</strong></p>
+<ul>
+<li>Search the code or name (e.g. <code>600519</code> Kweichow Moutai, <code>510300</code> CSI 300 ETF);</li>
+<li>Two order types:
+<ul>
+<li><strong>Limit order</strong>: you name a price; it fills only at that price (good when you’re not in a hurry and want it cheaper);</li>
+<li><strong>Market order</strong>: fills at the best current price immediately (good when urgent, but price may slip).</li>
+</ul>
+</li>
+</ul>
+<p><strong>Step 4: Sell (T+1)</strong></p>
+<ul>
+<li>A-share rule: <strong>stocks bought today can only be sold the next trading day</strong> (T+1);</li>
+<li>After selling, funds return to the cash account; transfer them back to your bank card (sale-day funds are “available but not withdrawable” until next day).</li>
+</ul>
+<blockquote>
+<p>💡 Beginner tip: instead of individual stocks, start with <strong>broad-based ETFs</strong> (e.g. CSI 300 ETF <code>510300</code>, CSI A500 ETF <code>563360</code>). One lot (100 shares) is only a few hundred yuan — diversified, no single-stock landmine.</p>
+</blockquote>
+<h2 id="4-what-real-short-selling-tools-exist-in-a-shares">4. What real short-selling tools exist in A-shares?</h2>
+<p>Retail access to shorting is scarce, and <strong>every route has a high bar</strong>:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Tool</th><th>How it profits from a fall</th><th>Account barrier</th><th>Who it’s for</th></tr></thead><tbody><tr><td><strong>Securities lending</strong></td><td>Borrow shares from broker, sell, buy back lower</td><td>Margin account: ¥500k assets + 2 yrs experience</td><td>Larger advanced players</td></tr><tr><td><strong>Index futures</strong> (IF / IH / IC)</td><td>Short index contracts on CFFEX; profit if index falls</td><td>¥500k + knowledge test</td><td>Institutions / pros</td></tr><tr><td><strong>ETF / index options</strong></td><td>Buy <strong>put options</strong> (bearish); profit if underlying falls</td><td>¥500k + simulated-trading record</td><td>Option-savvy players</td></tr><tr><td>Inverse / leveraged products</td><td>Some markets have inverse ETFs; very few in A-shares</td><td>Same as normal account</td><td>Only overseas / HK-Connect retail</td></tr></tbody></table>
+<blockquote>
+<p>⚠️ Note: A-shares have <strong>no real “inverse ETF”</strong> for frictionless shorting; a normal account (no margin) can only go long. To short you must open a <strong>margin account</strong>, with a ¥500k barrier.</p>
+</blockquote>
+<h2 id="5-long-vs-short-at-a-glance">5. Long vs short at a glance</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Dimension</th><th>Long</th><th>Short</th></tr></thead><tbody><tr><td>Order</td><td>buy then sell</td><td>sell then buy</td></tr><tr><td>Profits when</td><td>price rises</td><td>price falls</td></tr><tr><td>Max loss</td><td>principal (capped)</td><td>theoretically unlimited</td></tr><tr><td>Account barrier</td><td>normal account</td><td>margin / futures / options (¥500k)</td></tr><tr><td>Retail usage</td><td>99% use it</td><td>tiny minority of pros</td></tr></tbody></table>
+<h2 id="6-practical-advice-for-retail-investors">6. Practical advice for retail investors</h2>
+<ol>
+<li><strong>Nail “long + DCA” first</strong>: weekly broad-based ETF DCA, add on undervaluation, trim on overvaluation — the most retail-friendly system;</li>
+<li><strong>Skip shorting</strong>: unlimited loss plus borrow interest — beginners lose nine of ten times;</li>
+<li><strong>Discipline unchanged</strong>: revisit earlier chapters — buy at 52-week high × 0.85, sell at × 0.97, never chase green candles.</li>
+</ol>
+<blockquote>
+<p>⚠️ This article is a framework illustration, not any investment or trading advice. Markets carry risk; account opening and trading decisions need caution.</p>
+</blockquote> </article> <div class="paywall-veil" id="paywall-veil" hidden> <h3>☕️ 请作者喝咖啡</h3> <p>后续章节欢迎请作者喝杯咖啡（最低 ¥1），输入作者私发的解锁码即可解锁本专栏全部内容。</p> <button class="pbtn" id="veil-btn" type="button">打赏解锁</button> </div> </div> <section class="engage"> <div class="engage-actions"> <button id="like-btn" class="like-btn" type="button" aria-pressed="false"> <span class="like-ico">👍</span> <span class="like-label">点赞</span> <span id="like-count" class="like-count">0</span> </button> <button id="bookmark-btn" class="bookmark-btn" type="button" aria-pressed="false"> <span class="bookmark-ico">🔖</span> <span id="bookmark-label" class="bookmark-label">收藏</span> </button> </div> <p class="engage-tip">觉得有用？欢迎点赞、收藏，或请我喝杯咖啡 ☕</p> <div class="reward"> <div class="reward-col"> <div class="reward-qr"> <img src="/stock-blog/reward/alipay.png" alt="支付宝收款码" loading="lazy"> </div> <p>支付宝</p> </div> <div class="reward-col"> <div class="reward-qr"> <img src="/stock-blog/reward/wechat.png" alt="微信收款码" loading="lazy"> </div> <p>微信</p> </div> </div> </section> <section class="comments" aria-label="评论"> <h2 id="comments">💬 留言</h2> <div class="giscus-hint">
+评论由 <a href="https://giscus.app" target="_blank" rel="noopener noreferrer">Giscus</a> 驱动（基于 GitHub Discussions）。
+          当前仓库 <code>NaphJohn/stock-blog</code> 尚未启用 Discussions 或未安装 Giscus App：请在 GitHub 仓库 Settings → General → Features 勾选 Discussions，并到 github.com/apps/giscus 安装本仓库后刷新，评论区即自动显示。
+</div> <div class="giscus"></div> <script src="https://giscus.app/client.js" data-repo="NaphJohn/stock-blog" data-repo-id="R_PLACEHOLDER_REPO_ID" data-category="Announcements" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="en" crossorigin="anonymous" async>
+        </script> <script>
+          // Giscus 成功加载后，自动隐藏配置提示框
+          (function () {
+            var hint = document.querySelector('.giscus-hint');
+            if (!hint) return;
+            var tries = 0;
+            var iv = setInterval(function () {
+              tries++;
+              if (document.querySelector('iframe.giscus-frame')) {
+                hint.style.display = 'none';
+                clearInterval(iv);
+              } else if (tries > 40) {
+                clearInterval(iv); // 约 20s 仍未加载，说明配置缺失，保留提示
+              }
+            }, 500);
+          })();
+        </script> </section> </main> <script>
+      // 点赞
+      (function () {
+        var btn = document.getElementById('like-btn');
+        if (!btn) return;
+        var cnt = document.getElementById('like-count');
+        var key = 'like:' + location.pathname;
+        function read() { try { return localStorage.getItem(key) === '1'; } catch (e) { return false; } }
+        function render() {
+          var liked = read();
+          btn.classList.toggle('liked', liked);
+          btn.setAttribute('aria-pressed', liked ? 'true' : 'false');
+          cnt.textContent = liked ? '1' : '0';
+        }
+        render();
+        btn.addEventListener('click', function () {
+          var liked = !read();
+          try { localStorage.setItem(key, liked ? '1' : '0'); } catch (e) {}
+          render();
+          if (liked) { btn.classList.remove('pop'); void btn.offsetWidth; btn.classList.add('pop'); }
+        });
+      })();
+
+      // 收藏 / 书签
+      (function () {
+        var btn = document.getElementById('bookmark-btn');
+        if (!btn) return;
+        var label = document.getElementById('bookmark-label');
+        var key = 'blog-bookmarks';
+        var url = location.pathname;
+        function get() {
+          try { return JSON.parse(localStorage.getItem(key) || '[]'); }
+          catch (e) { return []; }
+        }
+        function isSaved() { return get().some(function (b) { return b.url === url; }); }
+        function render() {
+          var saved = isSaved();
+          btn.classList.toggle('saved', saved);
+          btn.setAttribute('aria-pressed', saved ? 'true' : 'false');
+          if (label) label.textContent = saved ? '已收藏' : '收藏';
+          if (window.__renderBookmarks) window.__renderBookmarks();
+        }
+        btn.addEventListener('click', function () {
+          var list = get();
+          if (isSaved()) {
+            list = list.filter(function (b) { return b.url !== url; });
+          } else {
+            var h1 = document.querySelector('h1');
+            var title = h1 ? h1.textContent.trim() : document.title;
+            list.unshift({ url: url, title: title, lang: document.documentElement.lang || 'zh', added: Date.now() });
+          }
+          try { localStorage.setItem(key, JSON.stringify(list)); } catch (e) {}
+          render();
+        });
+        render();
+      })();
+
+      // 划线 / 下划线 / 清除高亮
+      (function () {
+        var article = document.getElementById('post-content');
+        if (!article) return;
+        var toolbar = document.getElementById('hl-toolbar');
+        var storageKey = 'blog-highlights:' + location.pathname;
+        var pendingRange = null;
+
+        function getSaved() {
+          try { return JSON.parse(localStorage.getItem(storageKey) || '[]'); }
+          catch (e) { return []; }
+        }
+        function save(list) {
+          try { localStorage.setItem(storageKey, JSON.stringify(list)); } catch (e) {}
+        }
+
+        function showToolbar(x, y) {
+          toolbar.hidden = false;
+          toolbar.style.left = x + 'px';
+          toolbar.style.top = Math.max(8, y - 8) + 'px';
+        }
+        function hideToolbar() {
+          toolbar.hidden = true;
+          pendingRange = null;
+        }
+
+        function getTextNodes(root) {
+          var nodes = [];
+          var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+          var n;
+          while ((n = walker.nextNode())) {
+            if (n.textContent.trim()) nodes.push(n);
+          }
+          return nodes;
+        }
+
+        function wrapNode(node, start, end, type) {
+          var text = node.textContent;
+          var before = text.slice(0, start);
+          var target = text.slice(start, end);
+          var after = text.slice(end);
+          var el = document.createElement(type === 'highlight' ? 'mark' : 'span');
+          el.className = type === 'highlight' ? 'user-hl' : 'user-ul';
+          el.textContent = target;
+          var frag = document.createDocumentFragment();
+          if (before) frag.appendChild(document.createTextNode(before));
+          frag.appendChild(el);
+          if (after) frag.appendChild(document.createTextNode(after));
+          node.parentNode.replaceChild(frag, node);
+          return el;
+        }
+
+        function applyHighlight(range, type) {
+          var text = range.toString().trim();
+          if (!text) return;
+          var sc = range.startContainer, so = range.startOffset;
+          var ec = range.endContainer, eo = range.endOffset;
+          if (sc === ec && sc.nodeType === 3) {
+            wrapNode(sc, so, eo, type);
+          } else {
+            var wrapper = document.createElement(type === 'highlight' ? 'mark' : 'span');
+            wrapper.className = type === 'highlight' ? 'user-hl' : 'user-ul';
+            try { wrapper.appendChild(range.extractContents()); }
+            catch (e) { return; }
+            range.insertNode(wrapper);
+          }
+          save(getSaved().concat({ text: text, type: type, created: Date.now() }));
+        }
+
+        function clearAll() {
+          article.querySelectorAll('.user-hl, .user-ul').forEach(function (el) {
+            var parent = el.parentNode;
+            while (el.firstChild) parent.insertBefore(el.firstChild, el);
+            parent.removeChild(el);
+            parent.normalize();
+          });
+          save([]);
+        }
+
+        function restore() {
+          var saved = getSaved();
+          if (!saved.length) return;
+          saved.forEach(function (item) {
+            var text = item.text;
+            var type = item.type;
+            var nodes = getTextNodes(article);
+            for (var i = 0; i < nodes.length; i++) {
+              var node = nodes[i];
+              var idx = node.textContent.indexOf(text);
+              if (idx >= 0) {
+                wrapNode(node, idx, idx + text.length, type);
+                break;
+              }
+            }
+          });
+        }
+
+        document.addEventListener('mouseup', function (e) {
+          // 忽略在工具栏上的点击
+          if (toolbar.contains(e.target)) return;
+          setTimeout(function () {
+            var sel = window.getSelection();
+            if (!sel.rangeCount || sel.isCollapsed) { hideToolbar(); return; }
+            var range = sel.getRangeAt(0);
+            var container = range.commonAncestorContainer;
+            if (container.nodeType === 3) container = container.parentElement;
+            if (!container.closest('article.prose')) { hideToolbar(); return; }
+            pendingRange = range.cloneRange();
+            var rect = range.getBoundingClientRect();
+            showToolbar(rect.left + rect.width / 2 + window.scrollX, rect.top + window.scrollY);
+          }, 10);
+        });
+
+        toolbar.addEventListener('click', function (e) {
+          var btn = e.target.closest('button');
+          if (!btn) return;
+          var type = btn.getAttribute('data-type');
+          if (type === 'clear') {
+            clearAll();
+            hideToolbar();
+            window.getSelection().removeAllRanges();
+            return;
+          }
+          if (!pendingRange) return;
+          applyHighlight(pendingRange, type);
+          hideToolbar();
+          window.getSelection().removeAllRanges();
+        });
+
+        restore();
+      })();
+    </script> <script>
+      // 付费章节遮罩：未解锁则模糊正文 + 显示打赏解锁层
+      (function () {
+        var wrap = document.getElementById('post-wrap');
+        if (!wrap) return;
+        if (wrap.getAttribute('data-free') === '1') return;
+        if (!window.MingLiPay) return;
+        if (MingLiPay.isChapterUnlocked()) return;
+        var veil = document.getElementById('paywall-veil');
+        wrap.classList.add('article-lock');
+        if (veil) veil.hidden = false;
+        var btn = document.getElementById('veil-btn');
+        if (btn) btn.addEventListener('click', function () {
+          MingLiPay.showTipModal({
+            title: '请作者喝咖啡 ☕️',
+            desc: '请作者喝杯咖啡后（最低 ¥1），输入作者私发的解锁码，即可解锁本专栏全部内容；作者本人免付费。',
+            unlockCode: btoa('gushi2026ch')
+          }, function () {
+            wrap.classList.remove('article-lock');
+            if (veil) veil.hidden = true;
+          });
+        });
+      })();
+    </script> <footer>© 2026 Market Notes · Hosted on GitHub Pages</footer> </body></html>
