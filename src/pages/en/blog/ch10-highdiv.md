@@ -2,7 +2,7 @@
 title: "High-Dividend Basics: SOEs, Banks, Utilities — Earn from Payouts"
 description: "Understand the high-dividend (dividend-yield) strategy: what yield is, why SOEs / banks / utilities, buy when yield is higher, sell when it compresses, and how it pairs with DCA and grid."
 layout: ../../../layouts/BlogPost.astro
-series: Xiaobei Fund Strategy
+series: Fund Strategy
 free: true
 lang: en
 altLang: 中文
@@ -10,7 +10,7 @@ altHref: /
 pubDate: 2026-08-10
 ---
 
-> Lesson 1 of the *Xiaobei Fund Strategy* knowledge supplement (free). Maps to the email's "💰 High-Dividend Income" section — explaining the SOE / bank / utility list from first principles.
+> Lesson 1 of the *Fund Strategy* knowledge supplement (free). Maps to the email's "💰 High-Dividend Income" section — explaining the SOE / bank / utility list from first principles.
 
 The high-dividend (a.k.a. "dividend yield") strategy is not about betting on price gains — it's about **earning two streams: payouts + low volatility**. It's the perfect "ballast" for a portfolio.
 

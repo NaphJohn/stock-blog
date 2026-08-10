@@ -2,7 +2,7 @@
 title: "Long vs Short Basics: how retail opens an account, buys stocks, and bets on a fall"
 description: "What long (buy low, sell high) and short (sell high, buy back low) really mean; a step-by-step on opening a brokerage account, funding it and placing an order; plus the real short-selling tools available in A-shares and their barriers."
 layout: ../../../layouts/BlogPost.astro
-series: Xiaobei Fund Strategy
+series: Fund Strategy
 free: false
 lang: en
 altLang: 中文
@@ -10,7 +10,7 @@ altHref: /
 pubDate: 2026-08-11
 ---
 
-> This is supplement #6 of the *Xiaobei Fund Strategy* basics. It answers the questions every beginner asks: where do I actually buy a stock? Why do people say "short"? And can an ordinary person short at all?
+> This is supplement #6 of the *Fund Strategy* basics. It answers the questions every beginner asks: where do I actually buy a stock? Why do people say "short"? And can an ordinary person short at all?
 
 ## 1. Long: buy first, sell later, profit from a rise
 

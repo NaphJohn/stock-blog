@@ -2,7 +2,7 @@
 title: "Picking active funds: manager, style, drawdown"
 description: "如何识别长期能打的主动基金。"
 layout: ../../../layouts/BlogPost.astro
-series: Xiaobei Fund Strategy
+series: Fund Strategy
 free: false
 lang: en
 altLang: 中文

@@ -2,7 +2,7 @@
 title: "Sector fund rotation: ride the up-cycle"
 description: "行业 ETF 的买点、卖点与止盈。"
 layout: ../../../layouts/BlogPost.astro
-series: Xiaobei Fund Strategy
+series: Fund Strategy
 free: false
 lang: en
 altLang: 中文

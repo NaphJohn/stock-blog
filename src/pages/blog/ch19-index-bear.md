@@ -2,7 +2,7 @@
 title: "指数基金在熊市周期的投资策略"
 description: "指数基金熊市回归估值策略：PE<30% 建仓分批加仓，PE 分级减仓至清仓。"
 layout: ../../layouts/BlogPost.astro
-series: 小倍基金策略
+series: 基金策略
 free: false
 lang: zh
 altLang: English

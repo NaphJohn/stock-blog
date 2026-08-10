@@ -2,7 +2,7 @@
 title: "Undervalued Stock Screening Basics: Cheap ≠ Going Up, but Margin Starts Here"
 description: "What 'undervalued' means, common metrics (PE/PB percentile, 52-week range, yield, PEG), quantitative screening logic, value traps, and turning 'cheap' into an executable buy."
 layout: ../../../layouts/BlogPost.astro
-series: Xiaobei Fund Strategy
+series: Fund Strategy
 free: false
 lang: en
 altLang: 中文
@@ -10,7 +10,7 @@ altHref: /
 pubDate: 2026-08-10
 ---
 
-> Lesson 5 of the *Xiaobei Fund Strategy* knowledge supplement. Maps to the email's "🔍 Undervalued Quality Scan (A-share + HK)" section.
+> Lesson 5 of the *Fund Strategy* knowledge supplement. Maps to the email's "🔍 Undervalued Quality Scan (A-share + HK)" section.
 
 "Is this stock cheap, can I buy it?" — first learn what "cheap" means professionally.
 

@@ -2,7 +2,7 @@
 title: "债券基金在震荡市周期的投资策略"
 description: "债券基金在震荡市回撤买入为主，放宽收益容忍、至少保留 1/2 仓位。"
 layout: ../../layouts/BlogPost.astro
-series: 小倍基金策略
+series: 基金策略
 free: false
 lang: zh
 altLang: English

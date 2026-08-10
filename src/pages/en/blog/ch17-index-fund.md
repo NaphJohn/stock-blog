@@ -2,7 +2,7 @@
 title: "How to pick a quality index fund"
 description: "优选宽基指数两条标准（英文翻译待补充）。"
 layout: ../../../layouts/BlogPost.astro
-series: Xiaobei Fund Strategy
+series: Fund Strategy
 free: false
 lang: en
 altLang: 中文

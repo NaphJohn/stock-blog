@@ -1,8 +1,8 @@
 ---
-title: "Xiaobei DCA Strategy: the four-step method"
+title: "DCA Strategy: the four-step method"
 description: "A four-step DCA framework an ordinary investor can actually follow."
 layout: ../../../layouts/BlogPost.astro
-series: Xiaobei Fund Strategy
+series: Fund Strategy
 free: true
 lang: en
 altLang: 中文
@@ -10,7 +10,7 @@ altHref: /
 pubDate: 2026-08-06
 ---
 
-> This is Lesson 1 (free) of the *Xiaobei Fund Strategy* series. Below is a four-step DCA framework anyone can follow.
+> This is Lesson 1 (free) of the *Fund Strategy* series. Below is a four-step DCA framework anyone can follow.
 
 The biggest enemy of dollar-cost averaging is not market volatility — it is "trading by feel". The core of the four-step method is to write down the rules for *when to buy, how much, and when to sell* in advance, so discipline replaces emotion.
 

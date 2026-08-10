@@ -2,7 +2,7 @@
 title: "How to judge a sector's prosperity cycle?"
 description: "Use a set of observable indicators to place the sector's stage."
 layout: ../../../layouts/BlogPost.astro
-series: Xiaobei Fund Strategy
+series: Fund Strategy
 free: true
 lang: en
 altLang: 中文
@@ -10,7 +10,7 @@ altHref: /
 pubDate: 2026-08-06
 ---
 
-> This is Lesson 3 (free) of the *Xiaobei Fund Strategy* series. Prosperity is not a "feeling" — it is a set of indicators you can watch continuously.
+> This is Lesson 3 (free) of the *Fund Strategy* series. Prosperity is not a "feeling" — it is a set of indicators you can watch continuously.
 
 Judging a sector's prosperity answers two questions: **is it rising or falling now, and roughly where is the turning point?** Here is an operational indicator framework.
 

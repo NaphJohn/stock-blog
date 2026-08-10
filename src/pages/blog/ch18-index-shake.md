@@ -2,7 +2,7 @@
 title: "指数基金在震荡市周期的投资策略"
 description: "指数基金震荡市买回调赚波动收益：均线多头收敛前提下的分级倍投与乖离度卖出。"
 layout: ../../layouts/BlogPost.astro
-series: 小倍基金策略
+series: 基金策略
 free: false
 lang: zh
 altLang: English

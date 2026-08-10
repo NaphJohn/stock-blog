@@ -2,7 +2,7 @@
 title: "How to pick a quality sector index fund?"
 description: "A two-stage filter: pick the sector first, then the fund."
 layout: ../../../layouts/BlogPost.astro
-series: Xiaobei Fund Strategy
+series: Fund Strategy
 free: true
 lang: en
 altLang: 中文
@@ -10,7 +10,7 @@ altHref: /
 pubDate: 2026-08-06
 ---
 
-> This is Lesson 2 (free) of the *Xiaobei Fund Strategy* series. Picking a sector fund has two stages: **pick the sector first, then the fund**.
+> This is Lesson 2 (free) of the *Fund Strategy* series. Picking a sector fund has two stages: **pick the sector first, then the fund**.
 
 Most losses come not from a bad fund but from a wrong sector chosen up front. So order matters: judge whether the sector is worth owning, then pick a good fund within it.
 

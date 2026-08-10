@@ -2,7 +2,7 @@
 title: "Gold & Fed Macro Basics: How Rates Move Your Holdings"
 description: "Gold's pricing logic (real rates / dollar / central-bank buying), how the Fed FOMC and dot plot move gold and equities, and how an ordinary investor tracks macro."
 layout: ../../../layouts/BlogPost.astro
-series: Xiaobei Fund Strategy
+series: Fund Strategy
 free: false
 lang: en
 altLang: 中文
@@ -10,7 +10,7 @@ altHref: /
 pubDate: 2026-08-10
 ---
 
-> Lesson 4 of the *Xiaobei Fund Strategy* knowledge supplement. Maps to the email's "🪙 Gold" and "🏛️ Macro Calendar · FOMC" sections.
+> Lesson 4 of the *Fund Strategy* knowledge supplement. Maps to the email's "🪙 Gold" and "🏛️ Macro Calendar · FOMC" sections.
 
 Macro feels distant, but it sets the "water temperature" of your portfolio. Two things to know: **why gold moves**, and **how the Fed stirs everything**.
 

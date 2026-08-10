@@ -2,7 +2,7 @@
 title: "Active funds in a ranging market"
 description: "震荡市买跌不买涨：年化收益未达 50% 时逢回撤一次性买入，达标后卖一半保持半仓波动。"
 layout: ../../../layouts/BlogPost.astro
-series: Xiaobei Fund Strategy
+series: Fund Strategy
 free: false
 lang: en
 altLang: 中文

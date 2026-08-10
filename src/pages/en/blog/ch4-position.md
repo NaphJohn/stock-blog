@@ -2,7 +2,7 @@
 title: "Position sizing & timing: when and how much"
 description: "用估值与分批摊薄替代一把梭。"
 layout: ../../../layouts/BlogPost.astro
-series: Xiaobei Fund Strategy
+series: Fund Strategy
 free: true
 lang: en
 altLang: 中文

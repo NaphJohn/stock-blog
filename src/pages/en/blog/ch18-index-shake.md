@@ -2,7 +2,7 @@
 title: "Index funds in a ranging market"
 description: "指数基金震荡市的买点与卖出纪律（英文翻译待补充）。"
 layout: ../../../layouts/BlogPost.astro
-series: Xiaobei Fund Strategy
+series: Fund Strategy
 free: false
 lang: en
 altLang: 中文

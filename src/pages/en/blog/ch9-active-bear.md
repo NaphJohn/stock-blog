@@ -2,7 +2,7 @@
 title: "Active funds in a bear market"
 description: "熊市时间+空间双到位后分批定投，月度反弹超均值时减半仓波段操作，降低成本。"
 layout: ../../../layouts/BlogPost.astro
-series: Xiaobei Fund Strategy
+series: Fund Strategy
 free: false
 lang: en
 altLang: 中文

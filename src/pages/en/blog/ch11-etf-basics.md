@@ -2,7 +2,7 @@
 title: "ETF & Index Fund Basics: The Best Tool for Ordinary Investors"
 description: "What index funds and ETFs are, how they differ, the broad/sector/commodity/cross-border map, how to pick (fees/tracking error/scale/liquidity), and why they suit everyone."
 layout: ../../../layouts/BlogPost.astro
-series: Xiaobei Fund Strategy
+series: Fund Strategy
 free: false
 lang: en
 altLang: 中文
@@ -10,7 +10,7 @@ altHref: /
 pubDate: 2026-08-10
 ---
 
-> Lesson 2 of the *Xiaobei Fund Strategy* knowledge supplement. Maps to the email's "🔲 ETF Grid" and "ETF DCA Matrix" sections — first understand the ETF itself.
+> Lesson 2 of the *Fund Strategy* knowledge supplement. Maps to the email's "🔲 ETF Grid" and "ETF DCA Matrix" sections — first understand the ETF itself.
 
 If you learn only one instrument, learn the **ETF (exchange-traded fund)**.
 

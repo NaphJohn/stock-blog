@@ -2,7 +2,7 @@
 title: "Bond funds for steady return: duration & credit"
 description: "用债基给组合压住波动。"
 layout: ../../../layouts/BlogPost.astro
-series: Xiaobei Fund Strategy
+series: Fund Strategy
 free: false
 lang: en
 altLang: 中文

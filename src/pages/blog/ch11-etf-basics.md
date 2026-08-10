@@ -2,7 +2,7 @@
 title: "ETF 与指数基金基础：普通人最好的投资工具"
 description: "什么是指数基金和 ETF、两者的区别、宽基/行业/商品/跨境怎么分、怎么选（费率/跟踪误差/规模/流动性），以及为什么它最适合普通人。"
 layout: ../../layouts/BlogPost.astro
-series: 小倍基金策略
+series: 基金策略
 free: false
 lang: zh
 altLang: English
@@ -10,7 +10,7 @@ altHref: /en/
 pubDate: 2026-08-10
 ---
 
-> 本节为《小倍基金策略》基础知识补充第 2 篇。对应邮件里的「ETF 网格交易」「ETF 周定投矩阵」板块——先把 ETF 本身讲明白。
+> 本节为《基金策略》基础知识补充第 2 篇。对应邮件里的「ETF 网格交易」「ETF 周定投矩阵」板块——先把 ETF 本身讲明白。
 
 如果你只想学一个投资工具，那就学 **ETF（交易所交易基金）**。
 

@@ -1,8 +1,8 @@
 ---
-title: "Why Xiaobei insists on cycle timing"
+title: "Why we insist on cycle timing"
 description: "为什么普通投资者必须周期择时（英文翻译待补充）。"
 layout: ../../../layouts/BlogPost.astro
-series: Xiaobei Fund Strategy
+series: Fund Strategy
 free: false
 lang: en
 altLang: 中文

@@ -2,7 +2,7 @@
 title: "Bond funds in a bull market: invest in one shot"
 description: "债券基金牛市的买点与卖出纪律（英文翻译待补充）。"
 layout: ../../../layouts/BlogPost.astro
-series: Xiaobei Fund Strategy
+series: Fund Strategy
 free: false
 lang: en
 altLang: 中文

@@ -2,7 +2,7 @@
 title: "ETF Grid Trading Basics: Compound the Small in Choppy Markets"
 description: "What grid trading is, why it suits broad/commodity ETFs, how to set the band and rungs, the below-band and above-band rules, and how it complements DCA."
 layout: ../../../layouts/BlogPost.astro
-series: Xiaobei Fund Strategy
+series: Fund Strategy
 free: false
 lang: en
 altLang: 中文
@@ -10,7 +10,7 @@ altHref: /
 pubDate: 2026-08-10
 ---
 
-> Lesson 3 of the *Xiaobei Fund Strategy* knowledge supplement. Maps to the email's "🔲 ETF Grid Trading (satellite)" section.
+> Lesson 3 of the *Fund Strategy* knowledge supplement. Maps to the email's "🔲 ETF Grid Trading (satellite)" section.
 
 Grid trading is a **direction-agnostic, volatility-harvesting** strategy — ideal for range-bound ETFs.
 
