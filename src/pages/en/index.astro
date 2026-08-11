@@ -14,7 +14,21 @@ const course = {
     { slug: 'ch5-sector', title: 'Sector rotation: ride the up-cycle', desc: 'Entry, exit and taking profit on sector ETFs.', free: false },
     { slug: 'ch6-active', title: 'Active funds: manager, style, drawdown', desc: 'Spot managers who outperform long-term.', free: false },
     { slug: 'ch7-bond', title: 'Bond funds: duration & credit', desc: 'Use bonds to dampen portfolio volatility.', free: false },
-    { slug: 'ch8-index', title: 'Hold index funds: valuation & DCA multiples', desc: 'Multipliers and profit-taking rules.', free: false },
+    { slug: 'ch8-index', title: 'Active funds in a ranging market', desc: 'Buy drawdowns, not rallies; sell half at the 50% annualised line and swing a half position.', free: false },
+    { slug: 'ch9-active-bear', title: 'Active funds in a bear market', desc: 'Staggered DCA only when time and space align; swing a half position to lower cost.', free: false },
+    { slug: 'ch10-highdiv', title: 'High-Dividend Basics: SOEs / Banks / Utilities', desc: 'What yield is, why these three, buy when richer, sell when compressed, pair with DCA & grid.', free: true },
+    { slug: 'ch11-etf-basics', title: 'ETF & Index Fund Basics', desc: 'Index fund vs ETF, four families, how to pick (fees / error / scale / liquidity).', free: false },
+    { slug: 'ch12-grid-trading', title: 'ETF Grid Trading Basics', desc: 'Compound the small in choppy markets: band & rungs, stop below, clear above, complement DCA.', free: false },
+    { slug: 'ch13-gold-macro', title: 'Gold & Fed Macro Basics', desc: 'Real rates price gold; how FOMC & dot plot move gold & equities; how to track macro.', free: false },
+    { slug: 'ch14-bond-bull', title: 'Bond funds in a bull market', desc: 'Buy in one shot when below historical monthly average; scale out in thirds.', free: false },
+    { slug: 'ch15-bond-shake', title: 'Bond funds in a ranging market', desc: 'Buy on drawdowns, widen the profit tolerance, keep ≥1/2 position.', free: false },
+    { slug: 'ch16-cycle-why', title: 'Why we insist on cycle timing', desc: 'Institutions earn fees; we earn upside & dividends — and A-shares range.', free: false },
+    { slug: 'ch17-index-fund', title: 'How to pick a quality index fund', desc: 'Two rules: listed 5+ years, repeatedly makes new highs.', free: false },
+    { slug: 'ch18-index-shake', title: 'Index funds in a ranging market', desc: 'Buy pullbacks for swing gains; tiered entries by MA, exits by deviation.', free: false },
+    { slug: 'ch19-index-bear', title: 'Index funds in a bear market', desc: 'Back to valuation: build below PE 30%, scale out as PE climbs.', free: false },
+    { slug: 'ch20-undervalued', title: 'Undervalued Stock Screening Basics', desc: 'What "undervalued" means, PE/PB percentile & PEG, three screening conditions, value traps.', free: false },
+    { slug: 'ch21-long-short', title: 'Long vs Short Basics', desc: 'Long buys then sells for a rise; short sells then buys for a fall; a 4-step account opening guide; A-share short tools and the ¥500k barrier.', free: false },
+    { slug: 'ch22-leading-stocks', title: 'Leading-Stock Basics', desc: 'Why leaders are steadier, three metrics to spot a real one, two traps, valuation over chasing, pair with DCA & grid.', free: false },
   ],
 };
 ---
@@ -66,7 +80,7 @@ const course = {
                 {c.title}
                 {c.free
                   ? <span class="badge free">Free</span>
-                  : <span class="badge paid">Paid</span>}
+                  : <span class="badge paid">☕️ Buy me a coffee</span>}
               </a>
               <div class="date">{c.desc}</div>
             </li>
