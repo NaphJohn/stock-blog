@@ -34,6 +34,45 @@ const course = {
     { slug: 'ch24-fund-types', title: '四类基金的买卖策略对照：行业 / 主动 / 债券 / 指数', desc: '讲清四类的区别，并各给一套带具体数字的买 / 卖纪律。', free: true },
   ],
 };
+
+const kb = {
+  name: '股票知识小课堂',
+  en: 'Stock Knowledge 101',
+  desc: '31 天滚动小课：K线、趋势、量价、均线、指标、财报、估值、分红、仓位、风控——每天一个可复用的知识点。',
+  chapters: [
+    { slug: 'kb01', title: 'K线图长什么样：阳线、阴线、实体、影线', desc: 'K线基础 · 一根K线 = 一个时间单位（日/周/分钟）的「开、高、低、收」四价。', free: true },
+    { slug: 'kb02', title: '单根K线的市场心理', desc: 'K线基础 · 光头光脚大阳线：一路买盘、多头控盘，常见于启动或主升。', free: true },
+    { slug: 'kb03', title: '看涨/看跌吞没 与 十字星', desc: 'K线组合 · 看涨吞没：下跌末端大阳线实体完全包住前一根阴线 → 空转多信号。', free: true },
+    { slug: 'kb04', title: '锤子线、上吊线、早晨/黄昏之星', desc: 'K线组合 · 锤子线：低位长下影小实体 → 探底回升，偏多。', free: true },
+    { slug: 'kb05', title: '趋势线怎么画、通道怎么用', desc: '趋势 · 上升趋势线：连接依次抬高的低点，落在线上获支撑即为有效。', free: true },
+    { slug: 'kb06', title: '支撑位与压力位怎么找', desc: '趋势 · 前高/前低：历史成交密集区天然形成支撑(下)与压力(上)。', free: true },
+    { slug: 'kb07', title: '成交量与量价关系基础', desc: '量价 · 成交量 = 单位时间成交的股数，反映资金参与度。', free: true },
+    { slug: 'kb08', title: '量价背离：危险的提前量', desc: '量价 · 顶背离：价格创新高，但成交量/动能指标却没跟上 → 上涨动能枯竭。', free: true },
+    { slug: 'kb09', title: '均线系统 MA：多头/空头排列', desc: '均线 · MA(N) = 近N日收盘价平均，平滑噪音；常用 MA5/MA20/MA60/M', free: true },
+    { slug: 'kb10', title: '金叉/死叉与均线实战', desc: '均线 · 金叉：短期均线上穿长期（如 MA5 上穿 MA20）→ 偏多；死叉反之。', free: true },
+    { slug: 'kb11', title: 'MACD 指标：DIF、DEA、红绿柱', desc: '指标 · MACD = 快慢均线的差值，衡量动能强弱与方向。', free: true },
+    { slug: 'kb12', title: 'MACD 金叉死叉与背离', desc: '指标 · 金叉（DIF上穿DEA，尤其零轴上方）= 偏多；死叉反之。', free: true },
+    { slug: 'kb13', title: 'DMI 趋向指标：ADX 看强度、+DI/−DI 看方向', desc: '指标 · DMI 由 +DI(上升动能)、−DI(下降动能)、ADX(趋势强度) 三根线组', free: true },
+    { slug: 'kb14', title: 'MACD 图怎么看：DIF/DEA/红绿柱三件套', desc: '指标 · DIF(快线)=EMA12−EMA26 最灵敏；DEA(慢线)=DIF的9日平滑', free: true },
+    { slug: 'kb15', title: '成交量图怎么看：价是结果、量是证据', desc: '量价 · 成交量=单位时间成交股数，反映资金参与度；价格是结果、量是证据，无量上涨多为假突', free: true },
+    { slug: 'kb16', title: 'RSI 相对强弱指标', desc: '指标 · RSI = 一段时间内平均涨幅/(平均涨幅+平均跌幅)，区间0~100，常用14', free: true },
+    { slug: 'kb17', title: 'KDJ 随机指标', desc: '指标 · KDJ 由 K、D、J 三条线组成，对短线转折比 MACD 更灵敏。', free: true },
+    { slug: 'kb18', title: 'BOLL 布林带', desc: '指标 · BOLL = 中轨(20日均线) ± 2倍标准差，形成上轨/中轨/下轨通道。', free: true },
+    { slug: 'kb19', title: '指标组合实战：MACD+量能+均线', desc: '指标 · 单指标易骗线，组合使用胜率更高：趋势看均线、动能看MACD、参与度看量。', free: true },
+    { slug: 'kb20', title: '财报三大报表概览', desc: '财报 · 利润表：一段时间内赚了多少（营收−成本−费用=利润），看盈利能力。', free: true },
+    { slug: 'kb21', title: '利润表怎么看', desc: '财报 · 核心链条：营业收入→营业成本→毛利率→三费(销售/管理/研发)→营业利润→净利润', free: true },
+    { slug: 'kb22', title: '资产负债表怎么看', desc: '财报 · 左边资产（钱去哪了）：货币资金、应收、存货、固定资产、商誉等。', free: true },
+    { slug: 'kb23', title: '现金流量表怎么看', desc: '财报 · 经营活动现金流：主业造血能力，持续为正才健康；为负要警惕。', free: true },
+    { slug: 'kb24', title: '核心盈利指标：ROE 与杜邦分析', desc: '财报 · ROE（净资产收益率）=净利润/净资产，衡量股东每投1元赚多少，巴菲特最看重。', free: true },
+    { slug: 'kb25', title: '成长性与质量指标', desc: '财报 · 营收增速/净利润增速：看公司是否在变大变强，留意基数效应导致的虚高。', free: true },
+    { slug: 'kb26', title: 'PE 市盈率：最常用也最易被误用', desc: '估值 · PE=股价/每股收益，代表按当前盈利多少年回本，越低越便宜（理论上）。', free: true },
+    { slug: 'kb27', title: 'PB、PS 与估值横向对比', desc: '估值 · PB=股价/每股净资产，适合银行/地产等重资产行业（看清算价值）。', free: true },
+    { slug: 'kb28', title: 'PEG 与 DCF 简易理解', desc: '估值 · PEG=PE/盈利增速(%)，PEG<1常被视作估值匹配成长（如PE30、增速4', free: true },
+    { slug: 'kb29', title: '分红、股息率与回购', desc: '分红 · 股息率=每股分红/股价，衡量现金回报，高股息股(银行/能源)常是压舱石。', free: true },
+    { slug: 'kb30', title: '仓位管理与分笔建仓', desc: '仓位 · 分笔建仓：看好的标的不要一把梭，分3~5笔在不同价位/时间买入，摊低成本、留余地', free: true },
+    { slug: 'kb31', title: '止损止盈与常见投资误区', desc: '风控 · 止损：买入前定好跌到哪认错，机械执行，避免亏损扩大（如-8%~-10%硬止损）。', free: true }
+  ],
+};
 ---
 
 <!doctype html>
@@ -91,7 +130,24 @@ const course = {
         </ul>
       </section>
 
-      <p class="foot-note">⚠️ 本站所有内容仅供学习与娱乐，不构成任何投资、理财或交易建议。市场有风险，决策需谨慎。</p>
+      <section class="series-block">
+  <h2>{kb.name} <span class="en">{kb.en}</span></h2>
+  <p class="series-desc">{kb.desc}</p>
+  <ul class="post-list">
+    {kb.chapters.map((c, i) => (
+      <li>
+        <a href={`${base}blog/${c.slug}`}>
+          <span class="ch-no">{(i + 1).toString().padStart(2, '0')}</span>
+          {c.title}
+          <span class="badge free">免费</span>
+        </a>
+        <div class="date">{c.desc}</div>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<p class="foot-note">⚠️ 本站所有内容仅供学习与娱乐，不构成任何投资、理财或交易建议。市场有风险，决策需谨慎。</p>
     </main>
     <footer>© 2026 股市笔记 · 托管于 GitHub Pages</footer>
 
