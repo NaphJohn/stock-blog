@@ -8,7 +8,7 @@
           document.documentElement.setAttribute('data-theme', t);
         } catch (e) {}
       })();
-    </script><title>Sector-fund strategy for a choppy market · Market Notes</title><meta name="description" content="In a sideways market, 'follow the trend, fade the wobble': pick strong sectors with 3 rules, scale in over 3 tranches, and trim by deviation from the 20-day line."><link rel="stylesheet" href="/stock-blog/_astro/ch1-intro.b8wxSEGk.css"></head> <body> <header class="site-header"> <a href="/stock-blog/en/" class="brand">Market Notes</a> <nav> <a href="/stock-blog/en/">Fund Strategy</a> <span class="lang-switch"> <a href="/stock-blog/blog/ch4-position">中文</a><span class="sep">/</span><span class="cur">English</span> </span> <button id="bookmark-toggle" class="header-btn" type="button" aria-label="书签" title="书签">🔖</button> <button id="theme-toggle" class="theme-toggle" type="button" aria-label="切换日间/夜间模式">🌙</button> </nav> </header> <div id="bookmarks-panel" class="bookmarks-panel" hidden> <div class="bookmarks-head"> <strong>书签</strong> <button id="bookmarks-close" type="button" aria-label="关闭">×</button> </div> <ul id="bookmarks-list" class="bookmarks-list"></ul> <p id="bookmarks-empty" class="bookmarks-empty">暂无书签，在文章页点击「收藏」按钮即可添加。</p> </div> <div id="hl-toolbar" class="hl-toolbar" hidden> <button data-type="highlight" type="button" title="高亮">🖍️ 高亮</button> <button data-type="underline" type="button" title="下划线">➖ 下划线</button> <button data-type="clear" type="button" title="清除本页标记">❌ 清除</button> </div> <script>
+    </script><title>Buy/sell playbook for 4 fund types: sector / active / bond / index · Market Notes</title><meta name="description" content="The four core fund types for DCA and allocation — sector, active, bond, index — differ in what they track and how they move. This piece explains the differences and gives each a buy/sell discipline with concrete numbers."><link rel="stylesheet" href="/stock-blog/_astro/ch1-intro.b8wxSEGk.css"></head> <body> <header class="site-header"> <a href="/stock-blog/en/" class="brand">Market Notes</a> <nav> <a href="/stock-blog/en/">Fund Strategy</a> <span class="lang-switch"> <a href="/stock-blog/blog/ch24-fund-types">中文</a><span class="sep">/</span><span class="cur">English</span> </span> <button id="bookmark-toggle" class="header-btn" type="button" aria-label="书签" title="书签">🔖</button> <button id="theme-toggle" class="theme-toggle" type="button" aria-label="切换日间/夜间模式">🌙</button> </nav> </header> <div id="bookmarks-panel" class="bookmarks-panel" hidden> <div class="bookmarks-head"> <strong>书签</strong> <button id="bookmarks-close" type="button" aria-label="关闭">×</button> </div> <ul id="bookmarks-list" class="bookmarks-list"></ul> <p id="bookmarks-empty" class="bookmarks-empty">暂无书签，在文章页点击「收藏」按钮即可添加。</p> </div> <div id="hl-toolbar" class="hl-toolbar" hidden> <button data-type="highlight" type="button" title="高亮">🖍️ 高亮</button> <button data-type="underline" type="button" title="下划线">➖ 下划线</button> <button data-type="clear" type="button" title="清除本页标记">❌ 清除</button> </div> <script>
   (function () {
     var btn = document.getElementById('theme-toggle');
     if (!btn) return;
@@ -95,90 +95,127 @@
       syncGiscus(document.documentElement.getAttribute('data-theme'));
     }, 1200);
   });
-</script>  <main> <span class="series-tag">系列：Fund Strategy</span> <h1>Sector-fund strategy for a choppy market</h1> <time datetime="2026-08-11">August 11, 2026</time> <div id="post-wrap" data-free="1" style="position:relative"> <article class="prose" id="post-content"> <p>In a <strong>choppy (sideways) market</strong> — one that whips back and forth with no clean trend — sector funds (semiconductor, new-energy, healthcare thematic ETFs) punish “buy-high-sell-low” behavior most of all. The whole discipline boils down to eight words: <strong>follow the trend, fade the wobble</strong>. When the bigger trend is up, you only buy on a small pullback; once it has run, you trim by the rules and turn “sell-high, buy-low” into an executable system.</p>
+</script>  <main> <span class="series-tag">系列：Fund Strategy</span> <h1>Buy/sell playbook for 4 fund types: sector / active / bond / index</h1> <time datetime="2026-08-11">August 11, 2026</time> <div id="post-wrap" data-free="1" style="position:relative"> <article class="prose" id="post-content"> <p>Doing DCA or building an allocation means dealing with four fund types: <strong>sector funds, active funds, bond funds, index funds</strong>. They all look like “funds”, but what they track, how much they swing, and where the returns come from are completely different — so the buy/sell methods must differ too. This article clarifies the differences, then gives each a buy/sell discipline with <strong>concrete numbers</strong>.</p>
 <blockquote>
-<p>This is Section 4 (free) of the <em>Fund Strategy</em> series — focused on the <strong>buy and sell discipline inside a choppy market</strong>.</p>
+<p>This is Section 24 (free) of the <em>Fund Strategy</em> series — an expansion and summary of Section 4 (“sector-fund strategy in a choppy market”).</p>
 </blockquote>
-<h2 id="1-follow-the-trend-use-moving-averages-to-spot-a-strong-sector">1. Follow the trend: use moving averages to spot a strong sector</h2>
-<p>The simplest way to tell whether a sector is in a strong phase is the moving averages:</p>
+<h2 id="1-how-the-four-fund-types-differ">1. How the four fund types differ</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Tracks / earns</th><th>Volatility</th><th>Best for</th><th>Example</th></tr></thead><tbody><tr><td><strong>Sector fund</strong> (thematic ETF)</td><td>A single industry/theme index (semis, new-energy, healthcare); earns <strong>industry cycle + valuation</strong></td><td>High (most exciting)</td><td>“Follow the trend, fade the wobble” on strong sectors</td><td>Semiconductor ETF, Robotics ETF, Biotech ETF</td></tr><tr><td><strong>Index fund</strong> (broad ETF)</td><td>A broad index (CSI 300, STAR 50, Nasdaq 100); earns <strong>market β + valuation</strong></td><td>Medium</td><td>Long-term DCA, valuation grid</td><td>CSI 300 ETF, STAR 50 ETF, S&#x26;P 500 ETF</td></tr><tr><td><strong>Active fund</strong> (active equity)</td><td>Manager’s stock-picking; earns <strong>excess return α</strong></td><td>Medium–High (manager-dependent)</td><td>Trust the manager; DCA + add on drawdown</td><td>Active equity fund</td></tr><tr><td><strong>Bond fund</strong> (pure-bond / treasury ETF)</td><td>Bonds; earns <strong>coupon + rate-driven gains</strong></td><td>Low (the anchor)</td><td>Portfolio defense; negatively correlated with equities</td><td>Pure-bond fund, Treasury ETF</td></tr></tbody></table>
+<p>One-line memory: <strong>sector = cycle, index = valuation, active = manager, bond = rates</strong>.</p>
+<h2 id="2-buysell-discipline-per-type-with-numbers">2. Buy/sell discipline per type (with numbers)</h2>
+<h3 id="1-sector-fund--three-ma-tranches-in-three-deviation-tranches-out-see-section-4">1. Sector fund — three MA tranches in, three deviation tranches out (see Section 4)</h3>
 <ul>
-<li>Price <strong>above the 120-day line</strong>: the sector hasn’t made a new low in 120 sessions — strong on a half-year view;</li>
-<li>The <strong>20 / 30 / 60-day lines are in bullish alignment</strong> (shorter above longer, all rising): recent 1-month, 1.5-month and 3-month trends are up;</li>
-<li>Confirm with <strong>main-force inflows</strong>. When all three agree, the sector is in a strong phase.</li>
-</ul>
-<h2 id="2-fade-the-wobble-once-the-trend-is-set-buy-the-dip">2. Fade the wobble: once the trend is set, buy the dip</h2>
-<p>After strength is confirmed, the best entry is <em>not</em> a chase — it’s a <strong>small counter-trend pullback</strong>, which improves your reward-to-risk. Below are the quantifiable buy/sell rules.</p>
-<h2 id="3-buy-rules-3-conditions--3-tranches">3. Buy rules (3 conditions + 3 tranches)</h2>
-<p><strong>First clear three hard conditions before entering the buy zone:</strong></p>
-<ol>
-<li>NAV has <strong>not made a new low for 3 straight months</strong>, and the last 3-month volume > <strong>115%</strong> of the prior 3-month volume (volume leads price — money is coming in);</li>
-<li>The <strong>20 / 30 / 60-day lines were in bullish alignment</strong>, with the 60-day line flattening and turning up;</li>
-<li>In the 2 months <strong>before</strong> the pullback, the gain was <strong>no more than 20%</strong> and the MAs were converging (avoid buying a bubble top).</li>
-</ol>
-<p><strong>Once met, scale in by pullback depth (buy more as it falls, lowering cost and lifting reward-to-risk):</strong></p>
+<li><strong>Buy (3 conditions + 3 tranches)</strong>: NAV no new low for 3 months, and last-3-month volume > <strong>115%</strong> of prior 3 months; 20/30/60-day lines bullish, 60-day flattening up; gain in prior 2 months &#x3C; <strong>20%</strong>.
 <ul>
-<li>NAV pulls back <strong>below the 20-day line but above the 60-day line</strong> → add <strong>1×</strong>;</li>
-<li>NAV pulls back <strong>below the 30-day line but above the 60-day line</strong> → add <strong>1.5×</strong>;</li>
-<li>NAV pulls back <strong>below the 60-day line but above the 120-day line</strong> → add <strong>2×</strong>.</li>
+<li>Pulls back <strong>below 20-day, above 60-day</strong> → add <strong>1×</strong>;</li>
+<li><strong>below 30-day</strong> → add <strong>1.5×</strong>;</li>
+<li><strong>below 60-day, above 120-day</strong> → add <strong>2×</strong>.</li>
 </ul>
-<div class="fig">
-<svg viewBox="0 0 680 300" role="img" aria-label="Three-tranche buy on moving averages in a choppy market">
-  <defs>
-    <linearGradient id="zone_en" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#6ee7b7" stop-opacity="0.25"></stop>
-      <stop offset="100%" stop-color="#6ee7b7" stop-opacity="0.05"></stop>
-    </linearGradient>
-  </defs>
-  <rect x="40" y="205" width="600" height="48" fill="url(#zone_en)"></rect>
-  <line x1="40" y1="252" x2="640" y2="248" stroke="#9ca3af" stroke-width="2"></line>
-  <line x1="40" y1="205" x2="640" y2="202" stroke="#9ca3af" stroke-width="2"></line>
-  <line x1="40" y1="160" x2="640" y2="158" stroke="#9ca3af" stroke-width="2"></line>
-  <line x1="40" y1="118" x2="640" y2="116" stroke="#9ca3af" stroke-width="2"></line>
-  <text x="648" y="252" font-size="11" fill="#6b7280">120d</text>
-  <text x="648" y="205" font-size="11" fill="#6b7280">60d</text>
-  <text x="648" y="160" font-size="11" fill="#6b7280">30d</text>
-  <text x="648" y="118" font-size="11" fill="#6b7280">20d</text>
-  <path d="M40,92 C140,60 200,58 260,70 C330,84 350,150 380,150 C430,150 450,182 480,182 C530,182 545,228 575,225 C610,222 630,170 650,150" fill="none" stroke="#5b3df2" stroke-width="2.5"></path>
-  <circle cx="380" cy="150" r="6" fill="#059669"></circle>
-  <text x="380" y="138" font-size="12" fill="#059669" text-anchor="middle">+1x</text>
-  <circle cx="480" cy="182" r="6" fill="#059669"></circle>
-  <text x="480" y="200" font-size="12" fill="#059669" text-anchor="middle">+1.5x</text>
-  <circle cx="575" cy="225" r="6" fill="#059669"></circle>
-  <text x="575" y="244" font-size="12" fill="#059669" text-anchor="middle">+2x</text>
-  <text x="80" y="108" font-size="11" fill="#5b3df2">Strong zone (price > 20d)</text>
-  <text x="90" y="240" font-size="11" fill="#047857">Add zone (between 60d &#x26; 120d — deeper = bigger)</text>
-</svg>
-<div class="cap">Price above the 120-day line = strong zone. As it falls through the 20 / 30 / 60-day lines, scale in over 3 tranches — the deeper the pullback, the larger the add.</div>
-</div>
-<p>Why three tranches? In a choppy market you <strong>can’t easily raise the win rate</strong>, so you raise reward-to-risk instead — via staggered buys and “buy-more-on-the-way-down” that average your cost lower.</p>
-<h2 id="4-sell-rules-trim-by-deviation">4. Sell rules (trim by deviation)</h2>
-<p>During an uptrend, use the <strong>deviation of NAV from the 20-day line</strong> as the trim rule:</p>
+</li>
+<li><strong>Sell (deviation rule)</strong>: deviation from 20-day line <strong>>5%</strong> trim <strong>1/3</strong>; <strong>>8%</strong> trim another <strong>1/3</strong>; <strong>>10%</strong> close.</li>
+</ul>
+<h3 id="2-index-fund--valuation-percentile--grid--dca">2. Index fund — valuation percentile + grid + DCA</h3>
 <ul>
-<li>Deviation <strong>over 5%</strong> → trim <strong>1/3</strong>;</li>
-<li>Deviation <strong>over 8%</strong> → trim another <strong>1/3</strong>;</li>
-<li>Deviation <strong>over 10%</strong> → <strong>close</strong> the position.</li>
+<li><strong>Buy</strong>: when PE/PB historical percentile <strong>&#x3C;30%</strong>, <strong>double the DCA</strong>; every <strong>5%</strong> drop adds <strong>1 unit</strong> (grid); pullback to the <strong>250-day line</strong> adds 1×.</li>
+<li><strong>Sell</strong>: valuation percentile <strong>>70%</strong> trim <strong>1/3</strong>; holding annualized return reaches <strong>+15%</strong> take profit <strong>1/3</strong>; break below the year-line with deteriorating fundamentals → close.</li>
+<li><strong>Cadence</strong>: DCA base <strong>1 unit/week</strong>; grid step <strong>5%</strong>.</li>
 </ul>
-<div class="fig">
-<svg viewBox="0 0 680 300" role="img" aria-label="Trim by deviation from the 20-day line in a choppy market">
-  <line x1="40" y1="220" x2="640" y2="150" stroke="#9ca3af" stroke-width="2.5"></line>
-  <text x="48" y="240" font-size="11" fill="#6b7280">20-day line (base)</text>
-  <line x1="40" y1="172" x2="640" y2="102" stroke="#dc2626" stroke-width="1.2" stroke-dasharray="6 5" opacity="0.7"></line>
-  <line x1="40" y1="150" x2="640" y2="80" stroke="#dc2626" stroke-width="1.2" stroke-dasharray="6 5" opacity="0.7"></line>
-  <line x1="40" y1="128" x2="640" y2="58" stroke="#dc2626" stroke-width="1.2" stroke-dasharray="6 5" opacity="0.7"></line>
-  <text x="540" y="98" font-size="11" fill="#dc2626">+5% trim 1/3</text>
-  <text x="540" y="76" font-size="11" fill="#dc2626">+8% trim 1/3</text>
-  <text x="540" y="54" font-size="11" fill="#dc2626">+10% close</text>
-  <path d="M40,220 C160,210 220,150 300,128 C360,112 400,98 440,90 C500,80 540,110 600,150 C630,168 640,180 650,182" fill="none" stroke="#5b3df2" stroke-width="2.5"></path>
-  <circle cx="300" cy="128" r="6" fill="#dc2626"></circle>
-  <circle cx="440" cy="90" r="6" fill="#dc2626"></circle>
-  <circle cx="520" cy="78" r="6" fill="#dc2626"></circle>
-  <text x="300" y="148" font-size="11" fill="#dc2626" text-anchor="middle">trim 1/3</text>
-  <text x="445" y="82" font-size="11" fill="#dc2626" text-anchor="middle">trim 1/3</text>
-  <text x="525" y="68" font-size="11" fill="#dc2626" text-anchor="middle">close</text>
-</svg>
-<div class="cap">The further price strays above the 20-day line, the larger the deviation. At 5% / 8% / 10% trim 1/3, 1/3, then close — bank the profit.</div>
-</div>
-<p>Why trim this way? A choppy market <strong>grinds back and forth for a long time</strong> (especially non-lead sectors); if you don’t take profit at the top you get whipped around. “Sell-high” banks the gain, then “buy-low” on the pullback lifts your hit rate. This is the opposite of “just hold forever” — our goal is to <strong>make money off the fund’s moves</strong>, not to white-knuckle through volatility on faith.</p>
+<h3 id="3-bond-fund--rate-cycle--drawdown-adds">3. Bond fund — rate cycle + drawdown adds</h3>
+<ul>
+<li><strong>Buy</strong>: 10Y treasury yield <strong>>2.6%</strong> (rates high) add; NAV drawdown <strong>>1.5%</strong> add <strong>1 unit</strong>; widen credit spreads → allocate.</li>
+<li><strong>Sell</strong>: 10Y yield <strong>&#x3C;2.0%</strong> (rates bottom) trim; pure-bond annualized <strong>>4.5%</strong> take profit; new NAV high trim <strong>1/3</strong>.</li>
+<li><strong>Discipline</strong>: pure-bond annualized target <strong>3%–4%</strong>; only add after drawdown <strong>>2%</strong> (avoid catching credit risk falling knives).</li>
+</ul>
+<h3 id="4-active-fund--manager--drawdown--dca">4. Active fund — manager + drawdown + DCA</h3>
+<ul>
+<li><strong>Buy</strong>: manager α stable (information ratio <strong>>0.5</strong>), max drawdown below peers, weekly DCA; NAV drawdown <strong>>15%</strong> add <strong>1 unit</strong>.</li>
+<li><strong>Sell</strong>: new NAV high trim <strong>10%</strong>; manager change / style drift trim <strong>1/3</strong>; Sharpe <strong>&#x3C;0.5</strong> move to watch.</li>
+<li><strong>Cadence</strong>: DCA <strong>1 unit/week</strong>; drawdown-add threshold <strong>15%</strong>.</li>
+</ul>
+<h2 id="3-one-table-cheat-sheet">3. One-table cheat sheet</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Buy / add</th><th>Sell / trim</th><th>Key numbers</th></tr></thead><tbody><tr><td>Sector</td><td>Strong sector, wait for dip: below 20d → +1×; below 30d → +1.5×; below 60d → +2×</td><td>Deviation from 20d: 5%/8%/10% → trim 1/3 / 1/3 / close</td><td>3mo no new low + vol >115% + prior-2mo gain &#x3C;20%</td></tr><tr><td>Index</td><td>Valuation &#x3C;30% double DCA; every −5% add 1 unit; year-line add 1×</td><td>Valuation >70% trim 1/3; +15% annualized take 1/3; break year-line close</td><td>DCA 1 unit/week; grid step 5%</td></tr><tr><td>Bond</td><td>10Y >2.6% add; drawdown >1.5% add 1 unit</td><td>10Y &#x3C;2.0% trim; annualized >4.5% take profit; new high trim 1/3</td><td>Pure-bond 3%–4%/yr; add only after >2% drawdown</td></tr><tr><td>Active</td><td>Stable α + DCA; drawdown >15% add 1 unit</td><td>New high trim 10%; manager change trim 1/3; Sharpe &#x3C;0.5 watch</td><td>DCA 1 unit/week; drawdown threshold 15%</td></tr></tbody></table>
+<h2 id="4-how-to-combine-them">4. How to combine them</h2>
+<ul>
+<li><strong>Anchor</strong>: bond funds (low vol, negatively correlated with stocks) form the base so the portfolio never panics.</li>
+<li><strong>Core β</strong>: index funds for long-term DCA — capture the market’s long-term rise.</li>
+<li><strong>Satellite α</strong>: sector + active funds for punch, using the discipline above to sell-high/buy-low. Never go all-in.</li>
+<li>Sizing reference: the <strong>5-3-2</strong> rule from <em>How to Invest ¥100k</em> (50% defense / 30% arbitrage / 20% DCA) — turn “dare to sell when up, dare to buy when down” into a routine.</li>
+</ul>
 <blockquote>
 <p>⚠️ This article is a framework illustration only and is not investment or trading advice. Markets are risky; decide with care.</p>
 </blockquote> </article> <div class="paywall-veil" id="paywall-veil" hidden> <h3>☕️ 请作者喝咖啡</h3> <p>后续章节欢迎请作者喝杯咖啡（最低 ¥1），输入作者私发的解锁码即可解锁本专栏全部内容。</p> <button class="pbtn" id="veil-btn" type="button">打赏解锁</button> </div> </div> <section class="engage"> <div class="engage-actions"> <button id="like-btn" class="like-btn" type="button" aria-pressed="false"> <span class="like-ico">👍</span> <span class="like-label">点赞</span> <span id="like-count" class="like-count">0</span> </button> <button id="bookmark-btn" class="bookmark-btn" type="button" aria-pressed="false"> <span class="bookmark-ico">🔖</span> <span id="bookmark-label" class="bookmark-label">收藏</span> </button> </div> <p class="engage-tip">觉得有用？欢迎点赞、收藏，或请我喝杯咖啡 ☕</p> <div class="reward"> <div class="reward-col"> <div class="reward-qr"> <img src="/stock-blog/reward/alipay.png" alt="支付宝收款码" loading="lazy"> </div> <p>支付宝</p> </div> <div class="reward-col"> <div class="reward-qr"> <img src="/stock-blog/reward/wechat.png" alt="微信收款码" loading="lazy"> </div> <p>微信</p> </div> </div> </section> <section class="comments" aria-label="评论"> <h2 id="comments">💬 留言</h2> <div class="giscus-hint">
