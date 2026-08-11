@@ -10,7 +10,27 @@ altHref: /en/
 pubDate: 2026-08-07
 ---
 
-> 🖼️ **配图待补充**：本节封面，待补充后替换。
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="为什么必须择时：A股多震荡需低买高卖，美股长牛可买入持有；机构收管理费我们靠涨跌">
+  <text x="40" y="26" font-size="14" fill="#111827" font-weight="bold">为什么必须择时：屁股决定脑袋</text>
+  <rect x="40" y="55" width="290" height="150" fill="#5b3df2" opacity="0.05"/>
+  <text x="56" y="78" font-size="12" fill="#4c1d95" font-weight="bold">A 股：多为震荡市</text>
+  <path d="M60,170 C110,120 150,185 200,140 C250,100 290,180 320,150"
+        fill="none" stroke="#5b3df2" stroke-width="2.5"/>
+  <circle cx="150" cy="185" r="5" fill="#059669"/>
+  <text x="150" y="200" font-size="10.5" fill="#047857" text-anchor="middle">熊市买</text>
+  <circle cx="290" cy="180" r="5" fill="#dc2626"/>
+  <text x="290" y="198" font-size="10.5" fill="#b91c1c" text-anchor="middle">牛市卖</text>
+  <rect x="350" y="55" width="290" height="150" fill="#059669" opacity="0.05"/>
+  <text x="366" y="78" font-size="12" fill="#047857" font-weight="bold">美股：长期震荡上扬</text>
+  <path d="M370,180 C450,150 520,120 600,80 C630,66 650,60 666,56"
+        fill="none" stroke="#059669" stroke-width="2.5"/>
+  <text x="520" y="100" font-size="10.5" fill="#047857">买入持有即可</text>
+  <text x="40" y="240" font-size="11.5" fill="#111827">机构靠<tspan fill="#b91c1c" font-weight="bold">管理费</tspan>（不择时也赚）；我们靠<tspan fill="#047857" font-weight="bold">上涨+分红</tspan>——所以必须择时。</text>
+  <text x="40" y="266" font-size="11.5" fill="#6b7280">A 股多震荡，熊市买、牛市卖是赚超额收益的前提；优质标的也终归随周期波动。</text>
+</svg>
+<div class="cap">图：机构赚管理费、与个人赚涨跌的目标错位——叠加 A 股多为震荡市，普通投资者必须周期择时；而美股长牛可买入持有。</div>
+</div>
 
 为什么要强调周期择时？
 

@@ -10,7 +10,19 @@ altHref: /en/
 pubDate: 2026-08-07
 ---
 
-> 🖼️ **配图待补充**：本节封面，待补充后替换。
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="优选宽基指数封面：成立超5年长期创新高，对比热门新指数上市冲高回落">
+  <text x="40" y="26" font-size="14" fill="#111827" font-weight="bold">优选宽基指数：成立 &gt; 5 年、长期创新高</text>
+  <path d="M40,210 C140,185 230,150 330,135 C430,120 530,95 660,70"
+        fill="none" stroke="#5b3df2" stroke-width="2.5"/>
+  <text x="500" y="88" font-size="11" fill="#4c1d95">宽基（沪深300等）· 成立&gt;5年</text>
+  <path d="M40,150 C120,140 180,135 240,130 C300,125 330,80 360,60 C400,95 460,180 540,205 C600,222 640,230 668,234"
+        fill="none" stroke="#9ca3af" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="330" y="52" font-size="11" fill="#6b7280">热门新指数：上市冲高后回落</text>
+  <text x="44" y="262" font-size="11.5" fill="#6b7280">指数基金≠无风险：宽基经长期验证、持续创新高；追热门新指数易"上市即高点"。</text>
+</svg>
+<div class="cap">图：宽基指数（紫，成立超 5 年、长期创新高）与热门新指数（灰虚线，上市冲高后回落）的对比——优选前者，远离后者。</div>
+</div>
 
 我们这里所讲的指数基金指的宽基，比如：沪深 300、创业板。
 
@@ -24,7 +36,24 @@ pubDate: 2026-08-07
 
 为了尽量降低风险，尊重历史规律，给出了**两个优选指数的标准**：
 
-> 🖼️ **配图待补充**：优选指数两条标准示意，待补充后替换。
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="优选指数两条标准：成立超5年受时间验证，长期持续创新高次数多">
+  <text x="40" y="26" font-size="14" fill="#111827" font-weight="bold">优选指数两条标准</text>
+  <rect x="40" y="60" width="290" height="120" rx="8" fill="#5b3df2" opacity="0.10"/>
+  <text x="60" y="92" font-size="13" fill="#4c1d95" font-weight="bold">① 成立周期 &gt; 5 年</text>
+  <text x="60" y="116" font-size="11.5" fill="#374151">经得起长周期时间验证，</text>
+  <text x="60" y="134" font-size="11.5" fill="#374151">规避"上市即高点"的新指数。</text>
+  <text x="60" y="162" font-size="11" fill="#6b7280">✓ 不追短期热门</text>
+  <rect x="350" y="60" width="290" height="120" rx="8" fill="#059669" opacity="0.10"/>
+  <text x="370" y="92" font-size="13" fill="#047857" font-weight="bold">② 持续创新高次数多</text>
+  <text x="370" y="116" font-size="11.5" fill="#374151">长周期看是上涨的，</text>
+  <text x="370" y="134" font-size="11.5" fill="#374151">才具备长期投资价值。</text>
+  <text x="370" y="162" font-size="11" fill="#6b7280">✓ 长期上涨性</text>
+  <text x="40" y="220" font-size="11.5" fill="#6b7280">两条标准共同指向"尊重历史规律、降低风险"——指数基金也有风险，必须优中选优。</text>
+  <text x="40" y="252" font-size="11.5" fill="#6b7280">注：A 股不同指数差异巨大，不能套用美股"低风险、不操心"的叙事。</text>
+</svg>
+<div class="cap">图：优选宽基指数的两条硬标准——成立超 5 年（时间验证）+ 长期持续创新高次数多（长期上涨性）。</div>
+</div>
 
 ## 第一，成立周期要超过 5 年
 

@@ -10,7 +10,17 @@ altHref: /en/
 pubDate: 2026-08-07
 ---
 
-> 🖼️ **配图待补充**：本节封面，待补充后替换。
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="债券基金震荡市封面：净值小幅上下波动，回撤时买入为主">
+  <text x="40" y="26" font-size="14" fill="#111827" font-weight="bold">债券基金震荡市：回撤买入为主</text>
+  <path d="M40,150 C100,120 140,170 200,150 C260,130 300,175 360,150 C420,128 460,172 520,150 C580,132 620,168 660,150"
+        fill="none" stroke="#5b3df2" stroke-width="2.5"/>
+  <text x="44" y="250" font-size="11.5" fill="#6b7280">债券震荡市幅度小、风险可控；出现回撤时反而是买点，而非恐慌点。</text>
+  <circle cx="300" cy="175" r="5" fill="#059669"/>
+  <text x="300" y="192" font-size="11" fill="#047857" text-anchor="middle">回撤买点</text>
+</svg>
+<div class="cap">图：债券基金在震荡市呈小幅上下波动，回撤（下探）时以买入为主，长期看回撤小、风险可控。</div>
+</div>
 
 今天我们继续讲解债券基金在震荡市如何投资？
 
@@ -18,7 +28,22 @@ pubDate: 2026-08-07
 
 震荡市的时候，不同于牛市，回调很容易出现，所以我们要做的事情就是：**在回撤的时候买入为主**。
 
-> 🖼️ **配图待补充**：债券基金震荡市回撤买入示意，待补充后替换。
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="债券基金震荡市回撤买入：本月回撤-1.2%低于历史月均-0.5%时一次买">
+  <text x="40" y="26" font-size="14" fill="#111827" font-weight="bold">回撤买入：本月回撤比历史均值更差时一次买</text>
+  <line x1="40" y1="150" x2="660" y2="150" stroke="#9ca3af" stroke-width="1.6" stroke-dasharray="6 4"/>
+  <text x="470" y="144" font-size="11" fill="#6b7280">历史月度回撤均值 ≈ -0.5%</text>
+  <path d="M40,150 C120,148 180,146 240,150 C300,154 340,200 380,205 C430,210 480,150 560,150 C620,150 650,150 668,150"
+        fill="none" stroke="#5b3df2" stroke-width="2.5"/>
+  <text x="360" y="225" font-size="11" fill="#b91c1c">本月回撤 -1.2%（低于均值）</text>
+  <circle cx="380" cy="205" r="6" fill="#059669"/>
+  <text x="380" y="185" font-size="11" fill="#047857" text-anchor="middle">买</text>
+  <line x1="380" y1="211" x2="380" y2="225" stroke="#059669" stroke-width="2"/>
+  <text x="44" y="262" font-size="11.5" fill="#047857">✓ 当前月度表现比回撤均值还差 → 一次性买入</text>
+  <text x="44" y="286" font-size="11.5" fill="#6b7280">例：历史月均回撤 -0.5%，本月 -1.2% 已更差 → 出手。</text>
+</svg>
+<div class="cap">图：以历史震荡市月度回撤均值为基准（-0.5%），当本月实际回撤更深（-1.2%）即低于均值时，一次性买入。</div>
+</div>
 
 ① 先统计历史震荡月度回撤幅度，计算出震荡市历史月度回撤均值；
 
