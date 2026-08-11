@@ -1,6 +1,6 @@
 ---
 title: "Leading-Stock Basics: follow the industry leader, but don't chase"
-description: "Why leaders are steadier, three hard metrics to spot a real leader, the two traps, how to use valuation instead of momentum for entry, and how it pairs with DCA and grid trading."
+description: "Based on 'High-Win-Rate Leading-Stock Capture', covering why leaders compound, the three leader types, the emotion/chips/narrative triad, the dragon-finding rules and entry tactics, and how it pairs with DCA and grid."
 layout: ../../../layouts/BlogPost.astro
 series: Fund Strategy
 free: false
@@ -10,63 +10,57 @@ altHref: /
 pubDate: 2026-08-11
 ---
 
-> This is Bonus Part 4 of *Fund Strategy*. It pairs with the "🏆 Leading-Stock Tracker" section in the email.
+> This is Bonus Part 4 of *Fund Strategy*, referencing Zhao Baohai's *High-Win-Rate Leading-Stock Capture*. It pairs with the "🏆 Leading-Stock Tracker" section in the email.
 
-A leading stock — the **leader** — is the #1 player in its industry that capital trusts most. It may not rally hardest, but it usually falls least and gets bought back first. For someone who wants single stocks without stepping on landmines, it's the most natural starting point.
+A leading stock is the #1 player in its industry that capital trusts most. As Zhao puts it: "trade the leader to capture excess returns." But leader tactics test discipline hardest — here is the book's framework, distilled for ordinary investors.
 
-## 1. What is a leading stock?
+## 1. Why leaders "stay strong"
 
-It's not a name that contains "leader", and not whatever someone calls a leader. A real leader usually has all three:
+- **Capital siphon**: smart money always flows to the strongest name — leaders rise first and fall least;
+- **Emotion reinforces itself**: profit effect → more believers → consensus, a positive feedback loop;
+- **Technicals + fundamentals resonate**: when earnings, logic and chart agree, conviction is highest.
 
-- **#1 industry position**: top market share, revenue scale, or technology moat;
-- **High capital conviction**: institutions overweight it, it trades actively, and it's easy to enter or exit;
-- **Cycle survival**: across the last bull/bear, it made new highs earlier and broke book value less.
+## 2. Three kinds of leaders
 
-In short: the leader is the one least likely to die and most likely to be rescued.
+- **Value leader**: scarcity + earnings crush. E.g. Moutai — an unreplicable moat and consistent financial proof make the "king's gene";
+- **Sector leader**: sets the industry's compass, moving first when the sector stirs (e.g. Naura for semiconductor equipment);
+- **Cycle leader**: by market phase — index-resonance (the starting gun at a turning point), theme-driven (captain of the main line), or cycle-crossing (the loner that goes against the tide).
 
-## 2. Why ordinary investors should look at leaders
+## 3. Three underlying factors (skip it if you don't get them)
 
-- **Transparency**: more research, detailed filings — warning signs show up earlier;
-- **Liquidity**: unlike tiny caps, you can actually get out in a hurry;
-- **Institutional floor**: mutual funds and insurers favor them, so dips get more support.
+A leader isn't guessed — it's the overlap of three:
 
-For anyone without time to watch screens, leaders cut selection risk down a notch first — **avoid disaster, then seek gain**.
+1. **Market emotion (sentiment cycle)**: is the theme starting, fermenting, climaxing or fading? The tail of the climax is the most dangerous;
+2. **Capital logic (chip博弈/chip game)**: who is buying, how tight are the chips, is there a relay of buyers;
+3. **Theme imagination (story core)**: is the theme big enough to sustain a narrative.
 
-## 3. Three steps to spot a real leader (don't be fooled by the label)
+## 4. Dragon-finding rules — four rulers
 
-Some names are just "theme leaders" that wash out with the tide. Filter with three hard metrics:
+The book calls it "finding the dragon". Ordinary investors need four:
 
-1. **Market share / rank**: is it #1 in its niche, and is its share growing or shrinking?
-2. **Earnings quality**: steady ROE (e.g. ≥15%) over years, positive operating cash flow, controlled leverage;
-3. **Drawdown proof**: in the last two big pullbacks, did it fall less and recover faster? That's the hardest evidence.
+- **Capital resonance**: from the first-limit-up anomaly to sector climax — only names that build a sector ladder are real leaders;
+- **Hotspot chase**: watch rankings and sector gain boards; a healthy broad market is fertile ground;
+- **Policy tailwind**: policy is the strongest catalyst — build a framework in three steps (direction, strength, beneficiaries);
+- **Technical "four swords"**: ① bottom breakout + volume anomaly ② moving-average bull alignment ③ strong intraday tape ④ common resonance combos.
 
-If any one fails persistently, it's a *fake* leader.
+## 5. Dragon-capture — where to buy
 
-## 4. Leaders can still hurt you: two traps
+- **Auction capture**: read the opening call auction (volume, price, match) in the first 5 minutes to lock the day's strength;
+- **Breakout**: enter on a volume breakout of a pressure line, or above a box top;
+- **Dragon pullback**: the dip inside the main uptrend — the best risk/reward "on-ramp".
 
-Leader ≠ buy with eyes closed. The two common traps:
+## 6. Holding and selling: selling is harder than buying
 
-- **Valuation bubble**: leaders carry a premium, but too much is risk. Chasing when PE sits above the 80% historical percentile means paying top dollar for a famous name;
-- **Cycle top / disruption**: no leader survives an industry downturn or a tech shift (old route replaced). Buying at the peak of the cycle, even a leader can bag you for years.
+- **Holding**: ride the trend, exit only on a structural break;
+- **Decisive exit**: when a top signal appears, don't look back;
+- **Extreme sessions**: on a down-limit open, "cut to save yourself" first; know how to escape an up-to-down limit; in crashes, find the "crossing" leader; and above all, know that **standing aside is the highest art**.
 
-> Remember: **"leader status" is an industry fact, not a "buy now" signal.** A name that's still the leader yet can still trap your capital for a long time is exactly this case.
+## 7. How it pairs with your DCA and grid
 
-## 5. How to buy: valuation instead of chasing
+The book's leader tactics are short-term and volatile. For ordinary investors I suggest:
 
-The right move isn't rushing in at new highs — it's **waiting for a reasonable valuation, then scaling in**:
+- **Don't make leader tactics the core**: use them as a "understood, watchable" tilt, single name under ~6% of the book;
+- **Valuation over chasing**: when PE/PB is rich (top ~80% percentile), watch only; scale in only when it pulls back to fair value;
+- **Pair with DCA / grid**: accumulate the leader as a core via DCA; run a small grid on volatile sector leaders (stop buying below the band, clear above it).
 
-- **Don't chase**: when PE/PB is rich (top ~80% percentile), watch only, don't open;
-- **Use the cycle**: in ranging or bear markets, scale in when valuation returns to fair or cheap, in step with your DCA rhythm;
-- **Pair with grid**: for volatile sector leaders (semis, robotics chain), run a small grid on the base position — buy dips, sell rips — with the same discipline as ETF grids (stop buying below the band, clear above it).
-
-## 6. How it pairs with DCA and grid
-
-- **DCA**: treat the leader as a "core" you accumulate slowly for long-term compounding;
-- **Grid**: swing on the leader's base for volatility, but keep any single grid budget under ~6% of the book;
-- **Funds as core, stocks as tilt**: use sector/broad ETFs as the body, leaders as a "understood" tilt — never let one stock decide the account's fate.
-
-## 7. Tracking it in the email
-
-No need to read filings daily. The email "🏆 Leading-Stock Tracker" ranks the **top net-inflow leaders** in sectors you follow by strength, and tags the current cycle position with a reference entry zone. You just apply the "valuation percentile" discipline from this chapter to decide whether and how much to buy.
-
-> ⚠️ This is a method framework for illustration only — not investment or trading advice. Markets are risky; decide with care.
+> ⚠️ This is a method framework for illustration only — not investment or trading advice. Leader tactics are high-risk; decide with care.
