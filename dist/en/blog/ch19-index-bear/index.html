@@ -8,7 +8,7 @@
           document.documentElement.setAttribute('data-theme', t);
         } catch (e) {}
       })();
-    </script><title>Index funds in a bear market · Market Notes</title><meta name="description" content="指数基金熊市的买点与卖出纪律（英文翻译待补充）。"><link rel="stylesheet" href="/stock-blog/_astro/ch1-intro.b8wxSEGk.css"></head> <body> <header class="site-header"> <a href="/stock-blog/en/" class="brand">Market Notes</a> <nav> <a href="/stock-blog/en/">Fund Strategy</a> <span class="lang-switch"> <a href="/stock-blog/">中文</a><span class="sep">/</span><span class="cur">English</span> </span> <button id="bookmark-toggle" class="header-btn" type="button" aria-label="书签" title="书签">🔖</button> <button id="theme-toggle" class="theme-toggle" type="button" aria-label="切换日间/夜间模式">🌙</button> </nav> </header> <div id="bookmarks-panel" class="bookmarks-panel" hidden> <div class="bookmarks-head"> <strong>书签</strong> <button id="bookmarks-close" type="button" aria-label="关闭">×</button> </div> <ul id="bookmarks-list" class="bookmarks-list"></ul> <p id="bookmarks-empty" class="bookmarks-empty">暂无书签，在文章页点击「收藏」按钮即可添加。</p> </div> <div id="hl-toolbar" class="hl-toolbar" hidden> <button data-type="highlight" type="button" title="高亮">🖍️ 高亮</button> <button data-type="underline" type="button" title="下划线">➖ 下划线</button> <button data-type="clear" type="button" title="清除本页标记">❌ 清除</button> </div> <script>
+    </script><title>Index funds in a bear market · Market Notes</title><meta name="description" content="Index funds in a bear market: back to the valuation strategy — build below PE 30%, add per 2% drop, trim in PE stages to clear."><link rel="stylesheet" href="/stock-blog/_astro/ch1-intro.b8wxSEGk.css"></head> <body> <header class="site-header"> <a href="/stock-blog/en/" class="brand">Market Notes</a> <nav> <a href="/stock-blog/en/">Fund Strategy</a> <span class="lang-switch"> <a href="/stock-blog/">中文</a><span class="sep">/</span><span class="cur">English</span> </span> <button id="bookmark-toggle" class="header-btn" type="button" aria-label="书签" title="书签">🔖</button> <button id="theme-toggle" class="theme-toggle" type="button" aria-label="切换日间/夜间模式">🌙</button> </nav> </header> <div id="bookmarks-panel" class="bookmarks-panel" hidden> <div class="bookmarks-head"> <strong>书签</strong> <button id="bookmarks-close" type="button" aria-label="关闭">×</button> </div> <ul id="bookmarks-list" class="bookmarks-list"></ul> <p id="bookmarks-empty" class="bookmarks-empty">暂无书签，在文章页点击「收藏」按钮即可添加。</p> </div> <div id="hl-toolbar" class="hl-toolbar" hidden> <button data-type="highlight" type="button" title="高亮">🖍️ 高亮</button> <button data-type="underline" type="button" title="下划线">➖ 下划线</button> <button data-type="clear" type="button" title="清除本页标记">❌ 清除</button> </div> <script>
   (function () {
     var btn = document.getElementById('theme-toggle');
     if (!btn) return;
@@ -95,16 +95,68 @@
       syncGiscus(document.documentElement.getAttribute('data-theme'));
     }, 1200);
   });
-</script>  <main> <span class="series-tag">系列：Fund Strategy</span> <h1>Index funds in a bear market</h1> <time datetime="2026-08-07">August 7, 2026</time> <div id="post-wrap" data-free="0" style="position:relative"> <article class="prose" id="post-content"> <blockquote>
-<p>⚠️ Placeholder: this section will be replaced with the translated article. Outline only.</p>
-</blockquote>
-<h2 id="key-points">Key points</h2>
+</script>  <main> <span class="series-tag">系列：Fund Strategy</span> <h1>Index funds in a bear market</h1> <time datetime="2026-08-07">August 7, 2026</time> <div id="post-wrap" data-free="0" style="position:relative"> <article class="prose" id="post-content"> <div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="Index funds in a bear: PE percentile scale, build in low zone, staged trim in high zone">
+  <text x="40" y="26" font-size="14" fill="#111827" font-weight="bold">Index funds in a bear: back to valuation, build at low PE%</text>
+  <rect x="40" y="90" width="130" height="90" fill="#059669" opacity="0.20"></rect>
+  <rect x="170" y="90" width="290" height="90" fill="#9ca3af" opacity="0.18"></rect>
+  <rect x="460" y="90" width="180" height="90" fill="#dc2626" opacity="0.16"></rect>
+  <text x="56" y="140" font-size="12" fill="#047857" font-weight="bold">Build zone</text>
+  <text x="56" y="160" font-size="11" fill="#374151">PE percentile &#x3C; 30%</text>
+  <text x="300" y="140" font-size="12" fill="#6b7280" font-weight="bold">Hold zone</text>
+  <text x="300" y="160" font-size="11" fill="#374151">30% ~ 60%</text>
+  <text x="540" y="140" font-size="12" fill="#b91c1c" font-weight="bold">Trim zone</text>
+  <text x="540" y="160" font-size="11" fill="#374151">PE% > 60% staged trim</text>
+  <line x1="170" y1="90" x2="170" y2="180" stroke="#374151" stroke-width="1.2" stroke-dasharray="5 4"></line>
+  <line x1="460" y1="90" x2="460" y2="180" stroke="#374151" stroke-width="1.2" stroke-dasharray="5 4"></line>
+  <circle cx="95" cy="135" r="6" fill="#059669"></circle>
+  <text x="105" y="139" font-size="11" fill="#047857">Current (bear low)</text>
+  <text x="40" y="220" font-size="11.5" fill="#6b7280">Bear markets are pessimistic with few participants; build with the valuation strategy for peace of mind — high certainty, at the cost of a long cycle.</text>
+</svg>
+<div class="cap">Figure: Index funds in a bear still use the valuation strategy — use PE percentile as the ruler: below 30% enters the build zone, above 60% starts staged trimming.</div>
+</div>
+<p>How to invest in index funds during a bear market?</p>
+<p>The most suitable strategy for index funds is <strong>still the valuation strategy</strong>.</p>
+<p>Because in a bear market the market is extremely pessimistic and few investors participate, the valuation strategy lets us build positions with peace of mind.</p>
+<p>Although the valuation strategy has a long investment cycle, its <strong>certainty is very high</strong>!</p>
+<div class="fig">
+<svg viewBox="0 0 680 320" role="img" aria-label="Index bear valuation build: start below PE 30%, add every 2% NAV drop with +0.1 size">
+  <text x="40" y="26" font-size="14" fill="#111827" font-weight="bold">Valuation build: start below PE 30%, add every 2% drop, +0.1 size</text>
+  <path d="M40,70 C140,72 200,80 270,120 C340,162 400,200 470,214 C540,226 600,230 640,232" fill="none" stroke="#5b3df2" stroke-width="2.5"></path>
+  <text x="44" y="62" font-size="11" fill="#374151">PE percentile (falls through the bear)</text>
+  <line x1="40" y1="160" x2="640" y2="160" stroke="#dc2626" stroke-width="1.6" stroke-dasharray="6 4"></line>
+  <text x="470" y="154" font-size="11" fill="#b91c1c">PE percentile = 30% (build line)</text>
+  <rect x="40" y="160" width="250" height="70" fill="#059669" opacity="0.10"></rect>
+  <text x="56" y="200" font-size="11.5" fill="#047857" font-weight="bold">Build zone (PE &#x3C; 30%)</text>
+  <path d="M40,290 C140,288 200,286 270,278 C340,268 400,254 470,250 C540,246 600,246 640,246" fill="none" stroke="#9ca3af" stroke-width="1.6" stroke-dasharray="4 3"></path>
+  <text x="44" y="282" font-size="11" fill="#6b7280">NAV (add every 2% drop, +0.1 size) →</text>
+  <circle cx="270" cy="278" r="5" fill="#059669"></circle>
+  <circle cx="370" cy="270" r="5" fill="#059669"></circle>
+  <circle cx="470" cy="250" r="5" fill="#059669"></circle>
+  <line x1="270" y1="283" x2="270" y2="296" stroke="#059669" stroke-width="2"></line>
+  <line x1="370" y1="275" x2="370" y2="296" stroke="#059669" stroke-width="2"></line>
+  <line x1="470" y1="255" x2="470" y2="296" stroke="#059669" stroke-width="2"></line>
+  <text x="44" y="312" font-size="11.5" fill="#047857">✓ Build below PE&#x3C;30%　✓ add every 2% drop　✓ +0.1 size per 2% drop (buy more as it falls)</text>
+</svg>
+<div class="cap">Figure: Once PE percentile breaks below 30% you enter the build zone; after that, add once every 2% NAV drop, and each add is 0.1 larger — buy more as it falls.</div>
+</div>
+<h2 id="buy-strategy">Buy strategy</h2>
 <ul>
-<li>(TBD) 指数基金熊市回归估值策略：PE&#x3C;30% 建仓分批加仓，PE 分级减仓至清仓。</li>
-<li>In a bear market, valuation still rules: build below PE 30%, scale out as PE climbs to 100%.</li>
+<li>When <strong>PE &#x3C; 30%</strong>, prepare to start building;</li>
+<li>Add in tranches every time NAV falls another <strong>2%</strong>;</li>
+<li>Each 2% drop adds <strong>0.1</strong> to the position size.</li>
 </ul>
-<h2 id="recap">Recap</h2>
-<p>Full text to be added. Paid sections unlock after a tip (min ¥1).</p> </article> <div class="paywall-veil" id="paywall-veil" hidden> <h3>☕️ 请作者喝咖啡</h3> <p>后续章节欢迎请作者喝杯咖啡（最低 ¥1），输入作者私发的解锁码即可解锁本专栏全部内容。</p> <button class="pbtn" id="veil-btn" type="button">打赏解锁</button> </div> </div> <section class="engage"> <div class="engage-actions"> <button id="like-btn" class="like-btn" type="button" aria-pressed="false"> <span class="like-ico">👍</span> <span class="like-label">点赞</span> <span id="like-count" class="like-count">0</span> </button> <button id="bookmark-btn" class="bookmark-btn" type="button" aria-pressed="false"> <span class="bookmark-ico">🔖</span> <span id="bookmark-label" class="bookmark-label">收藏</span> </button> </div> <p class="engage-tip">觉得有用？欢迎点赞、收藏，或请我喝杯咖啡 ☕</p> <div class="reward"> <div class="reward-col"> <div class="reward-qr"> <img src="/stock-blog/reward/alipay.png" alt="支付宝收款码" loading="lazy"> </div> <p>支付宝</p> </div> <div class="reward-col"> <div class="reward-qr"> <img src="/stock-blog/reward/wechat.png" alt="微信收款码" loading="lazy"> </div> <p>微信</p> </div> </div> </section> <section class="comments" aria-label="评论"> <h2 id="comments">💬 留言</h2> <div class="giscus-hint">
+<h2 id="sell-strategy">Sell strategy</h2>
+<ul>
+<li>PE > <strong>60%</strong>, trim 20%;</li>
+<li>PE > <strong>70%</strong>, trim 20%;</li>
+<li>PE > <strong>80%</strong>, trim 20%; if NAV drops more than <strong>8%</strong> from its recent high in the short term, clear;</li>
+<li>PE > <strong>90%</strong>, trim 20%; if NAV drops more than <strong>10%</strong> from its recent high in the short term, clear;</li>
+<li>PE > <strong>100%</strong>, clear directly.</li>
+</ul>
+<blockquote>
+<p>⚠️ This article is a methodological framework for illustration only and does not constitute any investment or trading advice. Markets carry risk; decisions require caution.</p>
+</blockquote> </article> <div class="paywall-veil" id="paywall-veil" hidden> <h3>☕️ 请作者喝咖啡</h3> <p>后续章节欢迎请作者喝杯咖啡（最低 ¥1），输入作者私发的解锁码即可解锁本专栏全部内容。</p> <button class="pbtn" id="veil-btn" type="button">打赏解锁</button> </div> </div> <section class="engage"> <div class="engage-actions"> <button id="like-btn" class="like-btn" type="button" aria-pressed="false"> <span class="like-ico">👍</span> <span class="like-label">点赞</span> <span id="like-count" class="like-count">0</span> </button> <button id="bookmark-btn" class="bookmark-btn" type="button" aria-pressed="false"> <span class="bookmark-ico">🔖</span> <span id="bookmark-label" class="bookmark-label">收藏</span> </button> </div> <p class="engage-tip">觉得有用？欢迎点赞、收藏，或请我喝杯咖啡 ☕</p> <div class="reward"> <div class="reward-col"> <div class="reward-qr"> <img src="/stock-blog/reward/alipay.png" alt="支付宝收款码" loading="lazy"> </div> <p>支付宝</p> </div> <div class="reward-col"> <div class="reward-qr"> <img src="/stock-blog/reward/wechat.png" alt="微信收款码" loading="lazy"> </div> <p>微信</p> </div> </div> </section> <section class="comments" aria-label="评论"> <h2 id="comments">💬 留言</h2> <div class="giscus-hint">
 评论由 <a href="https://giscus.app" target="_blank" rel="noopener noreferrer">Giscus</a> 驱动（基于 GitHub Discussions）。
           当前仓库 <code>NaphJohn/stock-blog</code> 尚未启用 Discussions 或未安装 Giscus App：请在 GitHub 仓库 Settings → General → Features 勾选 Discussions，并到 github.com/apps/giscus 安装本仓库后刷新，评论区即自动显示。
 </div> <div class="giscus"></div> <script src="https://giscus.app/client.js" data-repo="NaphJohn/stock-blog" data-repo-id="R_PLACEHOLDER_REPO_ID" data-category="Announcements" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="en" crossorigin="anonymous" async>
