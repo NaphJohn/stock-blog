@@ -1,6 +1,6 @@
 ---
 title: "Index funds in a bull market"
-description: "Ride the trend and trail a stop: build on the 20-day breakout, add on pullbacks that hold, scale out by drawdown from the peak."
+description: "In a bull market, just keep investing: buy consistently and hold long-term, add on pullbacks that hold, use one loose drawdown line as protection."
 layout: ../../../layouts/BlogPost.astro
 series: Fund Strategy
 free: false
@@ -10,16 +10,16 @@ altHref: /blog/ch20-index-bull
 pubDate: 2026-08-12
 ---
 
-> ⚠️ **Draft · pending your confirmation**: You asked to update the "bull and bear" strategies, but pasted the "ranging + bear" texts (now ch18 / ch19). This chapter is a **bull-market draft** built on the same "bull → ranging → bear" framework, to be replaced once you provide the exact bull-market buy/sell rules.
+> ⚠️ **Draft · pending your confirmation**: Built on the "bull → ranging → bear" framework. Your core rule for a bull market is **"in a bull, just keep investing"** — keep buying and hold long-term, don't fiddle with every wiggle. Rewritten below accordingly; please confirm the buy/sell numbers.
 
 How should we invest in index funds during a bull market?
 
 The logic of a bull market differs from both bear and ranging markets — a bear earns valuation mean-reversion, a ranging market earns swings, while a **bull earns the positive feedback of trend and sentiment**. Two mistakes to avoid: getting off too early and losing the position, or, caught up in the rally, going all-in with no discipline.
 
-So the core of a bull-market strategy is just eight words: **ride the trend, trail the stop**.
+So the core of a bull-market strategy is just six words: **in a bull, keep investing**.
 
 <div class="fig">
-<svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bull market build and add-up示意">
+<svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bull market keep investing and add-up">
   <style>
     .ax{stroke:#bbb;stroke-width:1}
     .ma120{stroke:#9aa0a6;stroke-width:2;fill:none}
@@ -36,7 +36,7 @@ So the core of a bull-market strategy is just eight words: **ride the trend, tra
   <polyline class="ma20"  points="40,198 150,180 280,150 410,112 540,80  650,52"/>
   <polyline class="price" points="40,196 150,168 280,128 410,80 540,44 650,28"/>
   <circle cx="150" cy="180" r="5" fill="#1a8a3a"/>
-  <text class="mk" x="158" y="178" fill="#1a8a3a">① break 20d · first entry</text>
+  <text class="mk" x="158" y="178" fill="#1a8a3a">① trend confirmed · start</text>
   <circle cx="280" cy="150" r="5" fill="#1565c0"/>
   <text class="mk" x="288" y="148" fill="#1565c0">② pullback holds · add</text>
   <text class="lbl" x="410" y="100">③ 60d hold · add more</text>
@@ -44,29 +44,27 @@ So the core of a bull-market strategy is just eight words: **ride the trend, tra
 </svg>
 </div>
 
-## 1. Buying strategy
+## 1. Buying strategy: keep investing, stay invested
 
-In a bull market we do not "catch the bottom" — we **get on after the trend is confirmed, and add on pullbacks**.
+In a bull market we do not "catch the bottom" — we **keep investing once the trend is confirmed, and add on pullbacks**. The core action is "buy", not "wait".
 
-**Preconditions**: the index stands above the 20-day line, with 20 / 60 / 120-day MAs in a bullish stack (shorter above longer), volume gently expanding, and pullbacks not breaking prior lows.
+- (0) **Base position**: build it as soon as the trend confirms; don't wait for "cheaper" — in a bull, waiting for a pullback often means buying higher.
+- (1) **Steady cadence**: keep buying via DCA/batches; don't stop out of fear just because it's up.
+- (2) **Pullback to the 20-day line holds, volume dries up** → add (one extra tranche).
+- (3) **Pullback to the 60-day line holds, still in the up-channel** → add more (a bit more aggressive in a bull, but never beyond the planned cap).
 
-- (1) **Above the 20-day line, trend confirmed** → open the first position (1× base);
-- (2) **Pullback to the 20-day line holds, volume dries up** → add (another 1×);
-- (3) **Pullback to the 60-day line holds, still in the up-channel** → add more (a bit more aggressive in a bull, but never beyond the planned cap for that index).
+> In one line: **a bull has no top call, but also no chasing the spike**. Replace "call the top and go empty" with "keep investing + add on pullbacks" — capture the main upswing without going all-in at the peak.
 
-> In a bull, "a pullback is a chance to get on" — but only while it holds the key均线. Once it breaks the 120-day line, the trend may be weakening: stop adding and switch to the profit-taking rules.
+## 2. Selling strategy: don't get off easily, just one protection line
 
-## 2. Selling strategy (trailing stop)
+The worst of a bull is "sell a bit, run, then chase higher". So the rule: **hold still most of the time, with one loose drawdown line** that triggers a trim.
 
-Without taking profits in a bull, gains easily round-trip. We use **"drawdown from the peak"** as a trailing stop, not a fixed target price:
-
-- Drawdown from peak **≤ 8%** → hold, do nothing;
-- Drawdown **8% ~ 15%** → trim **1/3**;
-- Drawdown **15% ~ 25%** → trim another **1/2** (cumulatively ~2/3 off, keep 1/3 to watch);
-- Drawdown **> 25%** or **break of the 120-day line** → exit fully, move to watch mode for the next cycle.
+- Drawdown from peak **≤ 20%** → **do nothing, keep holding** (let profits run with the trend);
+- Drawdown **20% ~ 25%** → trim **1/3** (trend may be weakening, take some off the table);
+- Drawdown **> 25%** or **break of the 120-day line (year line)** → cut to half or exit, move to watch mode for the next cycle.
 
 <div class="fig">
-<svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Trailing stop by drawdown">
+<svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bull market loose drawdown protection">
   <style>
     .ax{stroke:#bbb;stroke-width:1}
     .curve{stroke:#d63031;stroke-width:2.5;fill:none}
@@ -78,20 +76,20 @@ Without taking profits in a bull, gains easily round-trip. We use **"drawdown fr
   <polyline class="curve" points="40,170 150,120 280,60 410,48 470,70 540,110 620,160"/>
   <circle cx="410" cy="48" r="4" fill="#d63031"/>
   <text class="mk" x="416" y="42" fill="#d63031">peak</text>
-  <line x1="40" y1="64"  x2="650" y2="64"  stroke="#1a8a3a" stroke-dasharray="5 4"/>
-  <text class="band" x="500" y="60" fill="#1a8a3a">-8% · hold</text>
-  <line x1="40" y1="92"  x2="650" y2="92"  stroke="#b8860b" stroke-dasharray="5 4"/>
-  <text class="band" x="500" y="88" fill="#b8860b">-15% · trim 1/3</text>
-  <line x1="40" y1="128" x2="650" y2="128" stroke="#c0392b" stroke-dasharray="5 4"/>
-  <text class="band" x="500" y="124" fill="#c0392b">-25% · exit</text>
+  <line x1="40" y1="108" x2="650" y2="108" stroke="#1a8a3a" stroke-dasharray="5 4"/>
+  <text class="band" x="470" y="104" fill="#1a8a3a">≤20% · hold still</text>
+  <line x1="40" y1="128" x2="650" y2="128" stroke="#b8860b" stroke-dasharray="5 4"/>
+  <text class="band" x="470" y="124" fill="#b8860b">20~25% · trim 1/3</text>
+  <line x1="40" y1="160" x2="650" y2="160" stroke="#c0392b" stroke-dasharray="5 4"/>
+  <text class="band" x="470" y="156" fill="#c0392b">>25%/break year-line · exit</text>
   <circle cx="470" cy="70" r="4" fill="#b8860b"/>
-  <text class="mk" x="300" y="150" fill="#444">wider drawdown → scale out, keep the profit</text>
+  <text class="mk" x="300" y="150" fill="#444">in a bull, hold most of the time — guard just one line</text>
 </svg>
 </div>
 
 ## Summary
 
-The essence of index funds in a bull market: **get on after the trend confirms, add on pullbacks that hold; trail a stop by drawdown from the peak — trim from -8%, exit at -25%**. In a bull we do not call the top, but we must set a drawdown line — so we can ride the main upswing without giving all the profit back.
+The essence of index funds in a bull market: **in a bull, keep investing — buy consistently and hold long-term, add on pullbacks that hold; use one loose "20% drawdown from peak" line as protection, no frequent trading, no early exit**. Do "DCA + hold" all the way through, and let the trend make the money for you.
 
 > 📚 Same series: ranging market → [ch18 Index funds in a ranging market](/en/blog/ch18-index-shake) ｜ bear market → [ch19 Index funds in a bear market](/en/blog/ch19-index-bear).
 
