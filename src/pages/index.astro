@@ -28,6 +28,7 @@ const course = {
     { slug: 'ch17-index-fund', title: '如何选择优质的指数基金', desc: '优选宽基两条标准：成立超 5 年、长期持续创新高。', free: false },
     { slug: 'ch18-index-shake', title: '指数基金在震荡市周期的投资策略', desc: '震荡市买回调赚波动：均线多头收敛前提下的分级倍投与乖离度卖出。', free: false },
     { slug: 'ch19-index-bear', title: '指数基金在熊市周期的投资策略', desc: '熊市回归估值策略：PE<30% 建仓分批加仓，PE 分级减仓至清仓。', free: false },
+    { slug: 'ch20-index-bull', title: '指数基金在牛市周期的投资策略', desc: '牛市顺势持有+移动止盈：站上均线建仓、回踩不破加仓，按最高点回撤分级止盈。', free: false },
     { slug: 'ch20-undervalued', title: '低估优质股扫描基础', desc: '什么是低估、PE/PB 分位与 PEG、量化初筛三条件、价值陷阱与用法。', free: false },
     { slug: 'ch21-long-short', title: '做多与做空基础：怎么开户买股票、怎么押下跌', desc: '做多先买后卖赚上涨、做空先卖后买赚下跌；手把手开户买股四步；A 股做空工具与 50 万门槛。', free: false },
     { slug: 'ch22-leading-stocks', title: '龙头股投资基础：跟着行业老大，但别追高', desc: '龙头为什么更稳、三类龙头、情绪/筹码/题材三要素、寻龙诀与擒龙术、与定投网格配合。', free: false },
@@ -71,9 +72,28 @@ const kb = {
     { slug: 'kb28', title: 'PEG 与 DCF 简易理解', desc: '估值 · PEG=PE/盈利增速(%)，PEG<1常被视作估值匹配成长（如PE30、增速4', free: true },
     { slug: 'kb29', title: '分红、股息率与回购', desc: '分红 · 股息率=每股分红/股价，衡量现金回报，高股息股(银行/能源)常是压舱石。', free: true },
     { slug: 'kb30', title: '仓位管理与分笔建仓', desc: '仓位 · 分笔建仓：看好的标的不要一把梭，分3~5笔在不同价位/时间买入，摊低成本、留余地', free: true },
-    { slug: 'kb31', title: '止损止盈与常见投资误区', desc: '风控 · 止损：买入前定好跌到哪认错，机械执行，避免亏损扩大（如-8%~-10%硬止损）。', free: true }
+    { slug: 'kb31', title: '止损止盈与常见投资误区', desc: '风控 · 止损：买入前定好跌到哪认错，机械执行，避免亏损扩大（如-8%~-10%硬止损）。', free: true },
   ],
 };
+
+// —— 循序渐进分组：知识小课堂按主题拆 4 块 ——
+const kbMap = Object.fromEntries(kb.chapters.map((c) => [c.slug, c]));
+const kbGroups = [
+  { title: '① 技术面入门：K线 · 趋势 · 量价', en: 'Chart · Trend · Volume', items: ['kb01','kb02','kb03','kb04','kb05','kb06','kb07','kb08'] },
+  { title: '② 技术面指标：均线 · 动能 · 组合', en: 'Indicators', items: ['kb09','kb10','kb11','kb12','kb13','kb14','kb15','kb16','kb17','kb18','kb19'] },
+  { title: '③ 基本面：读懂三张报表', en: 'Financial Statements', items: ['kb20','kb21','kb22','kb23','kb24','kb25'] },
+  { title: '④ 估值 · 分红 · 仓位 · 风控', en: 'Valuation · Risk', items: ['kb26','kb27','kb28','kb29','kb30','kb31'] },
+];
+
+// —— 循序渐进分组：基金定投专栏按模块拆 5 块 ——
+const courseMap = Object.fromEntries(course.chapters.map((c) => [c.slug, c]));
+const courseGroups = [
+  { title: 'A · 入门与方法论', en: 'Mindset & Method', desc: '先建立「应对不预测」的定投框架，理解 A 股为什么必须择时。', items: ['ch1-intro','ch2-four-step','ch3-pick-fund','ch16-cycle-why'] },
+  { title: 'B · 四类基金 · 各周期买卖策略', en: '4 Fund Types × Market Cycle', desc: '行业 / 主动 / 债券 / 指数四类，分别给牛 · 震荡 · 熊市的买点与卖点纪律。', items: ['ch4-position','ch5-sector','ch6-active','ch7-bond','ch8-index','ch9-active-bear','ch10-active-bull','ch11-etf-basics','ch17-index-fund','ch18-index-shake','ch19-index-bear','ch20-index-bull','ch14-bond-bull','ch15-bond-shake'] },
+  { title: 'C · 特色品种与工具', en: 'Specialties & Tools', desc: '高股息、ETF 网格、黄金与宏观，给工具箱再加几件。', items: ['ch10-highdiv','ch12-grid-trading','ch13-gold-macro'] },
+  { title: 'D · 选股实战', en: 'Stock Picking', desc: '从低估扫描、开户做空，到龙头股，走向个股层面。', items: ['ch20-undervalued','ch21-long-short','ch22-leading-stocks'] },
+  { title: 'E · 综合配置', en: 'Portfolio', desc: '把前面所有方法拼成一份可执行的个人配置方案。', items: ['ch23-10w-finance','ch24-fund-types'] },
+];
 ---
 
 <!doctype html>
@@ -108,47 +128,75 @@ const kb = {
       </section>
 
       <section class="banner">
-        <span>专栏《{course.name}》共 {course.chapters.length} 节：</span>
+        <span>专栏《{course.name}》共 {course.chapters.length} 节、</span>
+        <span>《{kb.name}》共 {kb.chapters.length} 节：</span>
         <a href={`${base}course`}>前 4 节免费</a> · <a href={`${base}course`}>后 {course.chapters.length - 4} 节打赏解锁</a> · <a href={`${base}selector`}>动态选股（订阅）</a>
+      </section>
+
+      <section class="path">
+        <h2>🧭 建议学习顺序</h2>
+        <ol class="path-steps">
+          <li><b>打地基</b>：先通读「股票知识小课堂」①→②→③→④，建立看盘与读财报的基本语汇。</li>
+          <li><b>建体系</b>：进入「基金定投实战」模块 A→B→C，掌握四步定投与四类基金的周期策略。</li>
+          <li><b>做个股</b>：模块 D 选股实战 + 模块 E 综合配置，把方法拼成自己的方案。</li>
+          <li><b>用工具</b>：配合「动态选股」自动判断周期与仓位（订阅制）。</li>
+        </ol>
+      </section>
+
+      <section class="series-block">
+        <h2>{kb.name} <span class="en">{kb.en}</span></h2>
+        <p class="series-desc">{kb.desc}</p>
+        {kbGroups.map((g) => (
+          <div class="module">
+            <h3 class="module-h">{g.title} <span class="en">{g.en}</span></h3>
+            <ul class="post-list">
+              {g.items.map((slug) => {
+                const c = kbMap[slug];
+                return (
+                  <li>
+                    <a href={`${base}blog/${c.slug}`}>
+                      <span class="ch-no">{slug.slice(2)}</span>
+                      {c.title}
+                      <span class="badge free">免费</span>
+                    </a>
+                    <div class="date">{c.desc}</div>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))}
       </section>
 
       <section class="series-block">
         <h2>{course.name} <span class="en">{course.en}</span></h2>
         <p class="series-desc">{course.desc}</p>
-        <ul class="post-list">
-          {course.chapters.map((c, i) => (
-            <li>
-              <a href={`${base}blog/${c.slug}`}>
-                <span class="ch-no">{(i + 1).toString().padStart(2, '0')}</span>
-                {c.title}
-                {c.free
-                  ? <span class="badge free">免费</span>
-                  : <span class="badge paid">☕️ 请作者喝咖啡</span>}
-              </a>
-              <div class="date">{c.desc}</div>
-            </li>
-          ))}
-        </ul>
+        {courseGroups.map((g) => (
+          <div class="module">
+            <h3 class="module-h">{g.title}</h3>
+            {g.desc && <p class="module-desc">{g.desc}</p>}
+            <ul class="post-list">
+              {g.items.map((slug, i) => {
+                const c = courseMap[slug];
+                return (
+                  <li>
+                    <a href={`${base}blog/${c.slug}`}>
+                      <span class="ch-no">{(i + 1).toString().padStart(2, '0')}</span>
+                      {c.title}
+                      {c.free
+                        ? <span class="badge free">免费</span>
+                        : <span class="badge paid">☕️ 请作者喝咖啡</span>}
+                    </a>
+                    <div class="date">{c.desc}</div>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))}
       </section>
 
-      <section class="series-block">
-  <h2>{kb.name} <span class="en">{kb.en}</span></h2>
-  <p class="series-desc">{kb.desc}</p>
-  <ul class="post-list">
-    {kb.chapters.map((c, i) => (
-      <li>
-        <a href={`${base}blog/${c.slug}`}>
-          <span class="ch-no">{(i + 1).toString().padStart(2, '0')}</span>
-          {c.title}
-          <span class="badge free">免费</span>
-        </a>
-        <div class="date">{c.desc}</div>
-      </li>
-    ))}
-  </ul>
-</section>
-
-<p class="foot-note">⚠️ 本站所有内容仅供学习与娱乐，不构成任何投资、理财或交易建议。市场有风险，决策需谨慎。</p>
+      <p class="foot-note">⚠️ 本站所有内容仅供学习与娱乐，不构成任何投资、理财或交易建议。市场有风险，决策需谨慎。</p>
     </main>
     <footer>© 2026 股市笔记 · 托管于 GitHub Pages</footer>
 
@@ -162,15 +210,23 @@ const kb = {
       .hero-cta:hover { transform: translateY(-2px); opacity: .92; }
       .banner { text-align: center; color: var(--muted); font-size: 14px; margin: 12px 0 8px; }
       .banner a { color: var(--accent); text-decoration: none; }
+      .path { margin-top: 28px; background: var(--code-bg); border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; }
+      .path h2 { font-size: 20px; margin: 0 0 10px; }
+      .path-steps { margin: 0; padding-left: 20px; color: var(--fg); font-size: 14.5px; line-height: 1.95; }
+      .path-steps b { color: var(--accent); }
       .series-block { margin-top: 30px; }
-      .series-block h2 { font-size: 22px; border-left: 4px solid var(--accent); padding-left: 10px; }
-      .series-block h2 .en { font-size: 14px; color: var(--muted); font-weight: 400; margin-left: 6px; }
+      .series-block > h2 { font-size: 22px; border-left: 4px solid var(--accent); padding-left: 10px; }
+      .series-block > h2 .en { font-size: 14px; color: var(--muted); font-weight: 400; margin-left: 6px; }
       .series-desc { color: var(--muted); font-size: 14px; margin: 6px 0 14px; }
+      .module { margin-top: 18px; }
+      .module-h { font-size: 18px; border-left: 3px solid var(--accent); padding-left: 9px; margin: 4px 0 2px; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+      .module-h .en { font-size: 12.5px; color: var(--muted); font-weight: 400; }
+      .module-desc { color: var(--muted); font-size: 13.5px; margin: 4px 0 10px; }
       .post-list { list-style: none; padding: 0; }
-      .post-list li { padding: 14px 16px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px; transition: border-color .15s; }
+      .post-list li { padding: 12px 16px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 9px; transition: border-color .15s; }
       .post-list li:hover { border-color: var(--accent); }
-      .post-list a { font-weight: 600; color: var(--fg); text-decoration: none; font-size: 17px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-      .post-list .ch-no { color: var(--accent); font-weight: 800; font-size: 14px; }
+      .post-list a { font-weight: 600; color: var(--fg); text-decoration: none; font-size: 16.5px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+      .post-list .ch-no { color: var(--accent); font-weight: 800; font-size: 13px; }
       .post-list .date { color: var(--muted); font-size: 13px; margin-top: 4px; }
       .badge { display: inline-block; padding: 1px 9px; border-radius: 999px; font-size: 12px; font-weight: 600; }
       .badge.free { background: rgba(21,101,192,0.10); color: var(--accent); }

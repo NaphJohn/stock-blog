@@ -27,6 +27,7 @@ const course = {
     { slug: 'ch17-index-fund', title: 'How to pick a quality index fund', desc: 'Two rules: listed 5+ years, repeatedly makes new highs.', free: false },
     { slug: 'ch18-index-shake', title: 'Index funds in a ranging market', desc: 'Buy pullbacks for swing gains; tiered entries by MA, exits by deviation.', free: false },
     { slug: 'ch19-index-bear', title: 'Index funds in a bear market', desc: 'Back to valuation: build below PE 30%, scale out as PE climbs.', free: false },
+    { slug: 'ch20-index-bull', title: 'Index funds in a bull market', desc: 'Hold with the trend + trailing stop: build above MA, add on pullbacks that hold, scale out by drawdown from the high.', free: false },
     { slug: 'ch20-undervalued', title: 'Undervalued Stock Screening Basics', desc: 'What "undervalued" means, PE/PB percentile & PEG, three screening conditions, value traps.', free: false },
     { slug: 'ch21-long-short', title: 'Long vs Short Basics', desc: 'Long buys then sells for a rise; short sells then buys for a fall; a 4-step account opening guide; A-share short tools and the ¥500k barrier.', free: false },
     { slug: 'ch22-leading-stocks', title: 'Leading-Stock Basics', desc: 'Why leaders are steadier, three leader types, emotion/chips/narrative triad, dragon-finding rules, pair with DCA & grid.', free: false },
@@ -70,9 +71,26 @@ const kb = {
     { slug: 'kb28', title: 'PEG and DCF, simply', desc: 'Valuation · PEG = PE / earnings growth (%), PEG<1 of', free: true },
     { slug: 'kb29', title: 'Dividends, yield & buybacks', desc: 'Dividends · Dividend yield = dividend per share / pr', free: true },
     { slug: 'kb30', title: 'Position sizing & staggered buying', desc: "Position · Staggered buying: don't go all-in; split", free: true },
-    { slug: 'kb31', title: 'Stop-loss, take-profit & common pitfalls', desc: 'Risk · Stop loss: set in advance where you admi', free: true }
+    { slug: 'kb31', title: 'Stop-loss, take-profit & common pitfalls', desc: 'Risk · Stop loss: set in advance where you admi', free: true },
   ],
 };
+
+const kbMap = Object.fromEntries(kb.chapters.map((c) => [c.slug, c]));
+const kbGroups = [
+  { title: '① Technical basics: Chart · Trend · Volume', en: '技术面入门', items: ['kb01','kb02','kb03','kb04','kb05','kb06','kb07','kb08'] },
+  { title: '② Indicators: MAs · Momentum · Combos', en: '技术面指标', items: ['kb09','kb10','kb11','kb12','kb13','kb14','kb15','kb16','kb17','kb18','kb19'] },
+  { title: '③ Fundamentals: reading the statements', en: '基本面', items: ['kb20','kb21','kb22','kb23','kb24','kb25'] },
+  { title: '④ Valuation · Dividends · Position · Risk', en: '估值·风控', items: ['kb26','kb27','kb28','kb29','kb30','kb31'] },
+];
+
+const courseMap = Object.fromEntries(course.chapters.map((c) => [c.slug, c]));
+const courseGroups = [
+  { title: 'A · Mindset & Method', en: '入门与方法论', desc: 'Build a "respond, do not predict" DCA framework and understand why A-shares demand cycle timing.', items: ['ch1-intro','ch2-four-step','ch3-pick-fund','ch16-cycle-why'] },
+  { title: 'B · 4 Fund Types × Market Cycle', en: '四类基金·各周期', desc: 'Sector / active / bond / index — each with buy & sell discipline for bull · ranging · bear markets.', items: ['ch4-position','ch5-sector','ch6-active','ch7-bond','ch8-index','ch9-active-bear','ch10-active-bull','ch11-etf-basics','ch17-index-fund','ch18-index-shake','ch19-index-bear','ch20-index-bull','ch14-bond-bull','ch15-bond-shake'] },
+  { title: 'C · Specialties & Tools', en: '特色品种与工具', desc: 'High-dividend, ETF grid, gold & macro — extra tools for the kit.', items: ['ch10-highdiv','ch12-grid-trading','ch13-gold-macro'] },
+  { title: 'D · Stock Picking', en: '选股实战', desc: 'From undervalued screening and shorting to leading stocks.', items: ['ch20-undervalued','ch21-long-short','ch22-leading-stocks'] },
+  { title: 'E · Portfolio', en: '综合配置', desc: 'Assemble everything into one executable personal plan.', items: ['ch23-10w-finance','ch24-fund-types'] },
+];
 ---
 
 <!doctype html>
@@ -92,84 +110,120 @@ const kb = {
         } catch (e) {}
       })();
     </script>
-    <title>Market Notes · Fund DCA · Stock Picker</title>
-    <meta name="description" content="Market Notes: a fund-DCA course plus a dynamic stock picker that reads the cycle and suggests sizing & DCA." />
+    <title>Market Notes · Fund DCA · Dynamic Stock Picker</title>
+    <meta name="description" content="Market Notes: a fund-DCA column + a dynamic stock picker that judges the cycle and suggests position & DCA." />
   </head>
   <body>
     <SiteHeader lang="en" altLang="中文" altHref="/" />
     <main>
       <section class="hero">
-        <p class="kicker">✦ Fund DCA · Stock Picker · Cycle Reading</p>
+        <p class="kicker">✦ Fund DCA · Dynamic Picker · Cycle Timing</p>
         <h1>Market Notes</h1>
-        <p class="hero-sub">Turning a messy market into steps you can actually follow.<br />For learning and entertainment — not investment advice.</p>
-        <a class="hero-cta" href={`${base}en/course`}>📚 The Course</a>
-        <a class="hero-cta alt" href={`${base}en/selector`}>📈 Stock Picker</a>
+        <p class="hero-sub">Turning a complex market into DCA and stock-picking steps you can actually follow.<br />For learning and fun — not investment advice.</p>
+        <a class="hero-cta" href={`${base}course`}>📚 The Column</a>
+        <a class="hero-cta alt" href={`${base}selector`}>📈 Dynamic Picker</a>
       </section>
 
       <section class="banner">
-        <span>Course "{course.name}": {course.chapters.length} chapters — </span>
-        <a href={`${base}en/course`}>first 4 free</a> · <a href={`${base}en/course`}>rest behind a tip</a> · <a href={`${base}en/selector`}>Stock Picker (subscription)</a>
+        <span>The column has {course.chapters.length} chapters, the</span>
+        <span>Knowledge 101 has {kb.chapters.length} lessons:</span>
+        <a href={`${base}course`}>first 4 free</a> · <a href={`${base}course`}>rest by tip ☕️</a> · <a href={`${base}selector`}>Dynamic Picker (sub)</a>
+      </section>
+
+      <section class="path">
+        <h2>🧭 Suggested learning order</h2>
+        <ol class="path-steps">
+          <li><b>Foundation</b>: read "Stock Knowledge 101" ①→②→③→④ to build basic chart & statement vocabulary.</li>
+          <li><b>System</b>: enter "Fund Strategy" modules A→B→C for the four-step DCA and per-cycle playbooks.</li>
+          <li><b>Stocks</b>: module D stock picking + module E portfolio — turn the method into your own plan.</li>
+          <li><b>Tool</b>: pair with the "Dynamic Picker" to auto-judge cycle & position (subscription).</li>
+        </ol>
+      </section>
+
+      <section class="series-block">
+        <h2>{kb.name} <span class="en">{kb.en}</span></h2>
+        <p class="series-desc">{kb.desc}</p>
+        {kbGroups.map((g) => (
+          <div class="module">
+            <h3 class="module-h">{g.title} <span class="en">{g.en}</span></h3>
+            <ul class="post-list">
+              {g.items.map((slug) => {
+                const c = kbMap[slug];
+                return (
+                  <li>
+                    <a href={`${base}blog/${c.slug}`}>
+                      <span class="ch-no">{slug.slice(2)}</span>
+                      {c.title}
+                      <span class="badge free">free</span>
+                    </a>
+                    <div class="date">{c.desc}</div>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))}
       </section>
 
       <section class="series-block">
         <h2>{course.name} <span class="en">{course.en}</span></h2>
         <p class="series-desc">{course.desc}</p>
-        <ul class="post-list">
-          {course.chapters.map((c, i) => (
-            <li>
-              <a href={`${base}en/blog/${c.slug}`}>
-                <span class="ch-no">{(i + 1).toString().padStart(2, '0')}</span>
-                {c.title}
-                {c.free
-                  ? <span class="badge free">Free</span>
-                  : <span class="badge paid">☕️ Buy me a coffee</span>}
-              </a>
-              <div class="date">{c.desc}</div>
-            </li>
-          ))}
-        </ul>
+        {courseGroups.map((g) => (
+          <div class="module">
+            <h3 class="module-h">{g.title}</h3>
+            {g.desc && <p class="module-desc">{g.desc}</p>}
+            <ul class="post-list">
+              {g.items.map((slug, i) => {
+                const c = courseMap[slug];
+                return (
+                  <li>
+                    <a href={`${base}blog/${c.slug}`}>
+                      <span class="ch-no">{(i + 1).toString().padStart(2, '0')}</span>
+                      {c.title}
+                      {c.free
+                        ? <span class="badge free">free</span>
+                        : <span class="badge paid">☕️ tip</span>}
+                    </a>
+                    <div class="date">{c.desc}</div>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))}
       </section>
 
-      <section class="series-block">
-  <h2>{kb.name} <span class="en">{kb.en}</span></h2>
-  <p class="series-desc">{kb.desc}</p>
-  <ul class="post-list">
-    {kb.chapters.map((c, i) => (
-      <li>
-        <a href={`${base}en/blog/${c.slug}`}>
-          <span class="ch-no">{(i + 1).toString().padStart(2, '0')}</span>
-          {c.title}
-          <span class="badge free">Free</span>
-        </a>
-        <div class="date">{c.desc}</div>
-      </li>
-    ))}
-  </ul>
-</section>
-
-<p class="foot-note">⚠️ Everything here is for learning and entertainment only — not investment, financial or trading advice.</p>
+      <p class="foot-note">⚠️ Everything here is for learning and fun only — not investment, financial or trading advice. Markets are risky; decide carefully.</p>
     </main>
     <footer>© 2026 Market Notes · Hosted on GitHub Pages</footer>
 
     <style is:global>
       .hero { text-align: center; padding: 56px 16px 28px; }
       .kicker { color: var(--accent); letter-spacing: 2px; font-size: 13px; margin: 0 0 8px; }
-      .hero h1 { font-size: 44px; margin: 0 0 12px; letter-spacing: 2px; }
+      .hero h1 { font-size: 44px; margin: 0 0 12px; letter-spacing: 4px; }
       .hero-sub { color: var(--muted); font-size: 16px; line-height: 1.9; margin: 0 auto 22px; max-width: 560px; }
       .hero-cta { display: inline-block; padding: 12px 28px; border-radius: 999px; background: var(--accent); color: #fff; text-decoration: none; font-size: 16px; transition: transform .15s, opacity .15s; margin: 0 6px; }
       .hero-cta.alt { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
       .hero-cta:hover { transform: translateY(-2px); opacity: .92; }
       .banner { text-align: center; color: var(--muted); font-size: 14px; margin: 12px 0 8px; }
       .banner a { color: var(--accent); text-decoration: none; }
+      .path { margin-top: 28px; background: var(--code-bg); border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; }
+      .path h2 { font-size: 20px; margin: 0 0 10px; }
+      .path-steps { margin: 0; padding-left: 20px; color: var(--fg); font-size: 14.5px; line-height: 1.95; }
+      .path-steps b { color: var(--accent); }
       .series-block { margin-top: 30px; }
-      .series-block h2 { font-size: 22px; border-left: 4px solid var(--accent); padding-left: 10px; }
-      .series-block h2 .en { font-size: 14px; color: var(--muted); font-weight: 400; margin-left: 6px; }
+      .series-block > h2 { font-size: 22px; border-left: 4px solid var(--accent); padding-left: 10px; }
+      .series-block > h2 .en { font-size: 14px; color: var(--muted); font-weight: 400; margin-left: 6px; }
       .series-desc { color: var(--muted); font-size: 14px; margin: 6px 0 14px; }
+      .module { margin-top: 18px; }
+      .module-h { font-size: 18px; border-left: 3px solid var(--accent); padding-left: 9px; margin: 4px 0 2px; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+      .module-h .en { font-size: 12.5px; color: var(--muted); font-weight: 400; }
+      .module-desc { color: var(--muted); font-size: 13.5px; margin: 4px 0 10px; }
       .post-list { list-style: none; padding: 0; }
-      .post-list li { padding: 14px 16px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px; transition: border-color .15s; }
+      .post-list li { padding: 12px 16px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 9px; transition: border-color .15s; }
       .post-list li:hover { border-color: var(--accent); }
-      .post-list a { font-weight: 600; color: var(--fg); text-decoration: none; font-size: 17px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-      .post-list .ch-no { color: var(--accent); font-weight: 800; font-size: 14px; }
+      .post-list a { font-weight: 600; color: var(--fg); text-decoration: none; font-size: 16.5px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+      .post-list .ch-no { color: var(--accent); font-weight: 800; font-size: 13px; }
       .post-list .date { color: var(--muted); font-size: 13px; margin-top: 4px; }
       .badge { display: inline-block; padding: 1px 9px; border-radius: 999px; font-size: 12px; font-weight: 600; }
       .badge.free { background: rgba(21,101,192,0.10); color: var(--accent); }
