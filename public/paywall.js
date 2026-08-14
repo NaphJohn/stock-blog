@@ -102,7 +102,11 @@
       'background:linear-gradient(180deg,rgba(255,255,255,0) 0%,var(--bg,#fff) 62%);text-align:center;padding:20px;}' +
       '.article-lock .paywall-veil .pbtn{padding:10px 22px;border-radius:999px;background:var(--accent,#1565c0);' +
       'color:#fff;border:none;font-size:15px;cursor:pointer;}' +
-      '.article-lock .paywall-veil .pbtn:hover{opacity:.92;}';
+      '.article-lock .paywall-veil .pbtn:hover{opacity:.92;}' +
+      // —— 联系字段（订阅时可选填）——
+      '.ml-contact{display:flex;align-items:center;gap:8px;margin:8px 0 2px;}' +
+      '.ml-contact label{flex:0 0 auto;font-size:13px;color:var(--muted);}' +
+      '.ml-contact input{flex:1;padding:8px 10px;border:1px solid var(--border,#e5e7eb);border-radius:8px;background:var(--bg,#fff);color:var(--fg,#1c1830);font-size:13px;}';
     var st = document.createElement('style');
     st.textContent = css;
     document.head.appendChild(st);
@@ -116,6 +120,26 @@
     try { expected = atob(codeB64 || ''); } catch (e) { expected = ''; }
     if (!expected) return false;
     return (input || '').trim().toLowerCase() === expected.toLowerCase();
+  }
+
+  // 订阅码 → 档位（有效期）匹配。
+  // cfg.subCodes 支持两种写法：
+  //   数组 of string（base64）：任一匹配即通过，档位回退为 'yearly'；
+  //   数组 of { code: base64, tier: 'yearly'|'monthly' }：匹配到哪条就用那条 tier。
+  // 这样「付多少钱、给什么码、有效期多久」一一对应；轮换时把旧码移出数组即对新人失效，
+  // 已付费老用户的记录存在 localStorage 时间戳里（sl_sub_v1.until），与此处无关、不受影响。
+  // 返回匹配的 tier 字符串；无匹配返回 null。
+  function matchSubCode(input, codes) {
+    if (codes == null) return null;
+    if (!Array.isArray(codes)) codes = [codes]; // 兼容旧的单一码
+    for (var i = 0; i < codes.length; i++) {
+      var entry = codes[i];
+      var b64, tier;
+      if (typeof entry === 'string') { b64 = entry; tier = 'yearly'; }
+      else { b64 = entry.code; tier = entry.tier || 'yearly'; }
+      if (verifyCode(input, b64)) return tier;
+    }
+    return null;
   }
 
   function showTipModal(cfg, onOk) {
@@ -174,6 +198,8 @@
     var monthly = cfg.monthly || { price: '$10', days: 30, label: '按月 · $10 / 月' };
     var yearly = cfg.yearly || { price: '$100', days: 365, label: '按年 · $100 / 年（省 $20）' };
     var chosen = 'yearly';
+    var showContact = !!cfg.contact;
+    var contactPlaceholder = cfg.contactPlaceholder || '微信 ID / 邮箱（付款后便于发码）';
 
     var mask = document.createElement('div');
     mask.className = 'ml-mask';
@@ -189,6 +215,10 @@
           '<div class="ml-qr"><img src="' + qrWechat + '" alt="微信收款码"/><div>微信</div></div>' +
           '<div class="ml-qr"><img src="' + qrAlipay + '" alt="支付宝收款码"/><div>支付宝</div></div>' +
         '</div>' +
+        (showContact
+          ? '<div class="ml-contact"><label>联系方式</label>' +
+            '<input id="ml-contact" type="text" placeholder="' + contactPlaceholder + '" autocomplete="off"/></div>'
+          : '') +
         '<div class="ml-amt"><label>解锁码</label>' +
           '<input id="ml-code" type="text" placeholder="请输入作者私发的订阅码" autocomplete="off"/></div>' +
         '<div class="ml-err" id="ml-err"></div>' +
@@ -196,7 +226,7 @@
           '<button class="ml-btn ghost" id="ml-cancel">稍后</button>' +
           '<button class="ml-btn" id="ml-ok">输入解锁码，订阅</button>' +
         '</div>' +
-        '<p class="ml-note">扫描对应收款码付款后，凭作者私发的解锁码在此输入即可解锁订阅。</p>' +
+        '<p class="ml-note">订阅时长由你输入的解锁码决定：年付码有效期 1 年，月付码有效期 1 个月。扫码付款后，凭作者私发的解锁码在此输入即可解锁订阅。</p>' +
       '</div>';
     document.body.appendChild(mask);
 
@@ -215,14 +245,36 @@
     mask.querySelector('#ml-ok').addEventListener('click', function () {
       var input = mask.querySelector('#ml-code').value;
       if (!input || !input.trim()) { mask.querySelector('#ml-err').textContent = '请输入解锁码'; return; }
-      if (!verifyCode(input, cfg.subCode)) {
+      var matchedTier = matchSubCode(input, cfg.subCodes || cfg.subCode);
+      if (!matchedTier) {
         mask.querySelector('#ml-err').textContent = '解锁码不正确，请确认已付款并向作者索取订阅码。';
         return;
       }
-      var days = (chosen === 'monthly') ? monthly.days : yearly.days;
-      var tier = (chosen === 'monthly') ? 'monthly' : 'yearly';
+      // 联系方式：若有填则复制到剪贴板 + 本地存档（无后端：读者需主动粘贴给作者）
+      var contactEl = mask.querySelector('#ml-contact');
+      var contact = contactEl ? (contactEl.value || '').trim() : '';
+      if (contact) {
+        try {
+          ls('sl_sub_contact_v1', JSON.stringify({ contact: contact, tier: matchedTier, at: Date.now() }));
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(contact).catch(function () {});
+          }
+        } catch (e) {}
+      }
+      var days = (matchedTier === 'monthly') ? monthly.days : yearly.days;
+      var tier = matchedTier;
       unlockSub(tier, days);
+      var st = subState();
+      var expStr = (st && st.until) ? new Date(st.until).toISOString().slice(0, 10) : '';
+      var durTxt = (days >= 365) ? '1 年' : (days + ' 天');
       closeMask(mask);
+      var msg = '订阅成功！有效期 ' + durTxt + (expStr ? '（至 ' + expStr + '）' : '') + '。';
+      if (contact) {
+        msg += '联系方式已复制到剪贴板，请打开微信/邮箱粘贴给作者（hangkai）以完成发码。';
+      } else {
+        msg += '请凭作者私发的解锁码在此输入。';
+      }
+      try { alert(msg); } catch (e) {}
       if (typeof onOk === 'function') onOk(tier);
     });
   }

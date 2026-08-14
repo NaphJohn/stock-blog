@@ -30,7 +30,7 @@ const base = import.meta.env.BASE_URL;
 
     <div class="paywall-veil" id="sel-veil" hidden>
       <h3>🔒 订阅后可用</h3>
-      <p>动态选股为订阅功能：月 $10 / 年 $100（省 $20）。</p>
+      <p>动态选股为订阅功能：订阅时长由解锁码决定（年付码 1 年 / 月付码 1 个月）；月 $10 / 年 $100（省 $20）。</p>
       <button class="pbtn" id="sub-btn" type="button">订阅解锁</button>
     </div>
   </div>
@@ -45,6 +45,15 @@ const base = import.meta.env.BASE_URL;
     var veil = document.getElementById('sel-veil');
     var runBtn = document.getElementById('run');
 
+    // 订阅码 → 档位（有效期）映射：付多少、给什么码、有效期多久一一对应。
+    // 轮换时新增一行新码；确认新码已发放后，删除旧码行即让旧码对新人失效。
+    // 已付费老用户的记录在 localStorage 时间戳里（sl_sub_v1.until），不受此处改动影响。
+    // 命名约定：gushi<标识>sub。
+    var SUB_CODES = [
+      { code: btoa('gushi2026sub'), tier: 'yearly' },   // 年付 $100 → 有效期 1 年
+      { code: btoa('gushi2027sub'), tier: 'monthly' }   // 月付 $10 → 有效期 1 个月
+    ];
+
     // 订阅门禁
     function gateCheck() {
       if (!window.MingLiPay) return;
@@ -57,8 +66,10 @@ const base = import.meta.env.BASE_URL;
     if (subBtn) subBtn.addEventListener('click', function () {
       MingLiPay.showSubModal({
         title: '订阅动态选股',
-        desc: '月 $10 / 年 $100（省 $20）。订阅后可使用周期判断、仓位与定投方案。扫码付款后输入作者私发的解锁码。',
-        subCode: btoa('gushi2026sub')
+        desc: '订阅时长由解锁码决定（年付码 1 年 / 月付码 1 个月）。月 $10 / 年 $100（省 $20）。订阅后可使用周期判断、仓位与定投方案。扫码付款后输入作者私发的解锁码；并请留下您的联系方式，便于作者主动发码。',
+        subCodes: SUB_CODES,
+        contact: true,
+        contactPlaceholder: '微信 ID 或邮箱（点击订阅后会自动复制到剪贴板）'
       }, function () { gateCheck(); });
     });
 
@@ -67,8 +78,10 @@ const base = import.meta.env.BASE_URL;
       if (window.MingLiPay && !MingLiPay.isSubActive()) {
         MingLiPay.showSubModal({
           title: '订阅动态选股',
-          desc: '月 $10 / 年 $100。订阅后解锁分析。扫码付款后输入作者私发的解锁码。',
-          subCode: btoa('gushi2026sub')
+          desc: '订阅时长由解锁码决定（年付码 1 年 / 月付码 1 个月）。月 $10 / 年 $100。订阅后解锁分析。扫码付款后输入作者私发的解锁码；并请留下您的联系方式，便于作者主动发码。',
+          subCodes: SUB_CODES,
+          contact: true,
+          contactPlaceholder: '微信 ID 或邮箱（点击订阅后会自动复制到剪贴板）'
         }, function () { gateCheck(); });
         return;
       }

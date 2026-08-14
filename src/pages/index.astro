@@ -80,10 +80,19 @@ const kb = {
 const kbMap = Object.fromEntries(kb.chapters.map((c) => [c.slug, c]));
 const kbGroups = [
   { title: '① 技术面入门：K线 · 趋势 · 量价', en: 'Chart · Trend · Volume', items: ['kb01','kb02','kb03','kb04','kb05','kb06','kb07','kb08'] },
-  { title: '② 技术面指标：均线 · 动能 · 组合', en: 'Indicators', items: ['kb09','kb10','kb11','kb12','kb13','kb14','kb15','kb16','kb17','kb18','kb19'] },
-  { title: '③ 基本面：读懂三张报表', en: 'Financial Statements', items: ['kb20','kb21','kb22','kb23','kb24','kb25'] },
-  { title: '④ 估值 · 分红 · 仓位 · 风控', en: 'Valuation · Risk', items: ['kb26','kb27','kb28','kb29','kb30','kb31'] },
+  { title: '② 指标基础：均线 · MACD · 量能', en: 'Indicators · Basic', items: ['kb09','kb10','kb11','kb14','kb15'] },
+  { title: '③ 指标进阶：背离 · DMI · RSI · KDJ · BOLL · 组合', en: 'Indicators · Advanced', items: ['kb12','kb13','kb16','kb17','kb18','kb19'] },
+  { title: '④ 基本面：读懂三张报表', en: 'Financial Statements', items: ['kb20','kb21','kb22','kb23','kb24','kb25'] },
+  { title: '⑤ 估值 · 分红 · 仓位 · 风控', en: 'Valuation · Risk', items: ['kb26','kb27','kb28','kb29','kb30','kb31'] },
 ];
+
+// —— 入门指南：两张从零开始的导论 + 4 篇最关键的小课 ——
+const guides = [
+  { slug: 'guide-indicators-101', title: '指标入门：MACD / PE / PB 一张图讲清', desc: '新手第一站。三大基础指标是什么、怎么看、怎么组合。', level: '入门' },
+  { slug: 'guide-pick-indicators', title: '如何挑选重要指标——别被几十个指标淹没', desc: '把指标归三类，新手只学 3-4 个，组合使用、避坑要点。', level: '入门' },
+];
+const guideMap = Object.fromEntries(guides.map((g) => [g.slug, g]));
+const guideEssentials = ['kb09','kb11','kb14','kb26']; // 三件套基础包
 
 // —— 循序渐进分组：基金定投专栏按模块拆 5 块 ——
 const courseMap = Object.fromEntries(course.chapters.map((c) => [c.slug, c]));
@@ -136,11 +145,43 @@ const courseGroups = [
       <section class="path">
         <h2>🧭 建议学习顺序</h2>
         <ol class="path-steps">
-          <li><b>打地基</b>：先通读「股票知识小课堂」①→②→③→④，建立看盘与读财报的基本语汇。</li>
+          <li><b>打地基</b>：零基础先看绿色「🟢 从零开始学指标」两篇导论 + 4 篇必看迷你课，再通读「股票知识小课堂」①→②→③→④，建立看盘与读财报的基本语汇。</li>
           <li><b>建体系</b>：进入「基金定投实战」模块 A→B→C，掌握四步定投与四类基金的周期策略。</li>
           <li><b>做个股</b>：模块 D 选股实战 + 模块 E 综合配置，把方法拼成自己的方案。</li>
           <li><b>用工具</b>：配合「动态选股」自动判断周期与仓位（订阅制）。</li>
         </ol>
+      </section>
+
+      <section class="guide-block">
+        <h2>🟢 从零开始学指标 <span class="en">Start from Zero</span></h2>
+        <p class="series-desc">零基础也别怕。先看下面两篇「导论」，再补 4 篇最关键的迷你课，就能看懂后面所有指标内容。</p>
+
+        <div class="guide-cards">
+          {guides.map((g) => (
+            <a class="guide-card" href={`${base}blog/${g.slug}`}>
+              <span class="guide-level">{g.level}</span>
+              <span class="guide-title">{g.title}</span>
+              <span class="guide-desc">{g.desc}</span>
+            </a>
+          ))}
+        </div>
+
+        <h3 class="ess-h">📌 必看 4 篇（指标三件套基础包）</h3>
+        <ul class="post-list">
+          {guideEssentials.map((slug) => {
+            const c = kbMap[slug];
+            return (
+              <li>
+                <a href={`${base}blog/${c.slug}`}>
+                  <span class="ch-no">{slug.slice(2)}</span>
+                  {c.title}
+                  <span class="badge free">免费</span>
+                </a>
+                <div class="date">{c.desc}</div>
+              </li>
+            );
+          })}
+        </ul>
       </section>
 
       <section class="series-block">
@@ -214,6 +255,16 @@ const courseGroups = [
       .path h2 { font-size: 20px; margin: 0 0 10px; }
       .path-steps { margin: 0; padding-left: 20px; color: var(--fg); font-size: 14.5px; line-height: 1.95; }
       .path-steps b { color: var(--accent); }
+      .guide-block { margin-top: 30px; background: linear-gradient(135deg, rgba(46,160,67,0.08), rgba(21,101,192,0.06)); border: 1px solid #2ea043; border-radius: 14px; padding: 22px 22px 10px; }
+      .guide-block > h2 { font-size: 22px; border-left: 4px solid #2ea043; padding-left: 10px; margin: 0 0 6px; }
+      .guide-block > h2 .en { font-size: 14px; color: var(--muted); font-weight: 400; margin-left: 6px; }
+      .guide-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0 6px; }
+      .guide-card { display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg); text-decoration: none; transition: border-color .15s, transform .12s; }
+      .guide-card:hover { border-color: #2ea043; transform: translateY(-2px); }
+      .guide-level { align-self: flex-start; background: rgba(46,160,67,0.14); color: #2ea043; font-size: 12px; font-weight: 700; padding: 1px 10px; border-radius: 999px; }
+      .guide-title { color: var(--fg); font-weight: 700; font-size: 16.5px; line-height: 1.5; }
+      .guide-desc { color: var(--muted); font-size: 13px; line-height: 1.7; }
+      .ess-h { font-size: 16px; margin: 16px 0 6px; color: var(--accent); }
       .series-block { margin-top: 30px; }
       .series-block > h2 { font-size: 22px; border-left: 4px solid var(--accent); padding-left: 10px; }
       .series-block > h2 .en { font-size: 14px; color: var(--muted); font-weight: 400; margin-left: 6px; }

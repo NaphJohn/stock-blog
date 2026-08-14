@@ -1,0 +1,451 @@
+<!DOCTYPE html><html lang="zh"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light dark"><script src="/stock-blog/paywall.js"></script><script>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          if (t !== 'light' && t !== 'dark') {
+            t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script><title>指标入门：MACD / PE / PB 一张图讲清 · 股市笔记</title><meta name="description" content="指标入门 · 一张图讲清 MACD、PE、PB 三大基础指标是什么、怎么读、怎么用，新手第一站。"><link rel="stylesheet" href="/stock-blog/_astro/ch1-intro.b8wxSEGk.css"></head> <body> <header class="site-header"> <a href="/stock-blog/" class="brand">股市笔记</a> <nav> <a href="/stock-blog/">股票知识小课堂</a> <span class="lang-switch"><span class="cur">中文</span></span> <button id="bookmark-toggle" class="header-btn" type="button" aria-label="书签" title="书签">🔖</button> <button id="theme-toggle" class="theme-toggle" type="button" aria-label="切换日间/夜间模式">🌙</button> </nav> </header> <div id="bookmarks-panel" class="bookmarks-panel" hidden> <div class="bookmarks-head"> <strong>书签</strong> <button id="bookmarks-close" type="button" aria-label="关闭">×</button> </div> <ul id="bookmarks-list" class="bookmarks-list"></ul> <p id="bookmarks-empty" class="bookmarks-empty">暂无书签，在文章页点击「收藏」按钮即可添加。</p> </div> <div id="hl-toolbar" class="hl-toolbar" hidden> <button data-type="highlight" type="button" title="高亮">🖍️ 高亮</button> <button data-type="underline" type="button" title="下划线">➖ 下划线</button> <button data-type="clear" type="button" title="清除本页标记">❌ 清除</button> </div> <script>
+  (function () {
+    var btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    function sync() {
+      var t = document.documentElement.getAttribute('data-theme');
+      btn.textContent = t === 'dark' ? '☀️' : '🌙';
+      syncGiscus(t);
+    }
+    btn.addEventListener('click', function () {
+      var cur = document.documentElement.getAttribute('data-theme');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      sync();
+    });
+    sync();
+  })();
+
+  // 书签面板
+  (function () {
+    var toggle = document.getElementById('bookmark-toggle');
+    var panel = document.getElementById('bookmarks-panel');
+    var close = document.getElementById('bookmarks-close');
+    var list = document.getElementById('bookmarks-list');
+    var empty = document.getElementById('bookmarks-empty');
+    if (!toggle || !panel) return;
+
+    function getBookmarks() {
+      try { return JSON.parse(localStorage.getItem('blog-bookmarks') || '[]'); }
+      catch (e) { return []; }
+    }
+    function saveBookmarks(arr) {
+      try { localStorage.setItem('blog-bookmarks', JSON.stringify(arr)); } catch (e) {}
+    }
+    function render() {
+      var bm = getBookmarks();
+      list.innerHTML = '';
+      if (!bm.length) {
+        empty.style.display = 'block';
+        list.style.display = 'none';
+        return;
+      }
+      empty.style.display = 'none';
+      list.style.display = 'block';
+      bm.forEach(function (b) {
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = b.url;
+        a.textContent = b.title || b.url;
+        a.title = b.title || b.url;
+        var del = document.createElement('button');
+        del.type = 'button';
+        del.textContent = '删除';
+        del.title = '删除书签';
+        del.addEventListener('click', function () {
+          saveBookmarks(getBookmarks().filter(function (x) { return x.url !== b.url; }));
+          render();
+        });
+        li.appendChild(a);
+        li.appendChild(del);
+        list.appendChild(li);
+      });
+    }
+    function open() { panel.hidden = false; render(); }
+    function closeFn() { panel.hidden = true; }
+    toggle.addEventListener('click', function () { panel.hidden ? open() : closeFn(); });
+    close && close.addEventListener('click', closeFn);
+    document.addEventListener('click', function (e) {
+      if (!panel.hidden && !panel.contains(e.target) && e.target !== toggle) closeFn();
+    });
+    window.__renderBookmarks = render;
+  })();
+
+  function syncGiscus(theme) {
+    var iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+    try {
+      iframe.contentWindow.postMessage({ giscus: { setConfig: { theme: theme === 'dark' ? 'dark' : 'light' } } }, 'https://giscus.app');
+    } catch (e) {}
+  }
+
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      syncGiscus(document.documentElement.getAttribute('data-theme'));
+    }, 1200);
+  });
+</script>  <main> <span class="series-tag">系列：股票知识小课堂</span> <h1>指标入门：MACD / PE / PB 一张图讲清</h1> <time datetime="2026-08-14">2026年8月14日</time> <div id="post-wrap" data-free="1" style="position:relative"> <article class="prose" id="post-content"> <blockquote>
+<p>本文是《股票知识小课堂》的<strong>导论</strong>——给完全没接触过技术指标 / 估值指标的新手。读完这一篇，你就有了后文 kb09 / kb11 / kb26 等”单项”详解所需的整体框架。</p>
+</blockquote>
+<p><strong>一句话总结</strong>：<strong>MACD 看”动能和方向”，PE / PB 看”贵不贵”</strong>。三件套组合起来用：方向对 + 动能足 + 估值合理 = 较安全买点。</p>
+<h2 id="一三大指标各管什么">一、三大指标各管什么</h2>
+<ul>
+<li>
+<p><strong>MACD</strong>（技术面 · 动能指标）</p>
+<ul>
+<li>全称：指数平滑异同移动平均线（Moving Average Convergence Divergence）</li>
+<li>干什么：把”快慢两条均线的差”画成线 + 红绿柱，看<strong>价格上涨 / 下跌的动能和方向</strong></li>
+<li>在哪看：股价图下面那一栏，DIF 线 / DEA 线 / 红绿柱</li>
+<li>怎么用：金叉偏多、死叉偏空、背离看反转（详见 [kb11] / [kb12] / [kb14]）</li>
+</ul>
+</li>
+<li>
+<p><strong>PE 市盈率</strong>（基本面 · 估值指标）</p>
+<ul>
+<li>全称：Price / Earnings per Share（股价 ÷ 每股盈利）</li>
+<li>干什么：按当前盈利<strong>多少年回本</strong>（理论值）</li>
+<li>数字含义：PE=10 → 10 年回本（“便宜”）；PE=100 → 100 年（“贵”）</li>
+<li>怎么用：同行业内横向比 + PE 分位（[kb26]）。<strong>不是越低越好</strong>，要看行业属性和增速</li>
+</ul>
+</li>
+<li>
+<p><strong>PB 市净率</strong>（基本面 · 估值指标）</p>
+<ul>
+<li>全称：Price / Book value per Share（股价 ÷ 每股净资产）</li>
+<li>干什么：市价相对公司”家底”贵了多少</li>
+<li>适用：银行、地产、资源等<strong>重资产</strong>行业（[kb27]）</li>
+<li>怎么用：PB&#x3C;1 通常意味着市场认为资产可能有问题；PB>5 偏贵（行业而定）</li>
+</ul>
+</li>
+</ul>
+<h2 id="二一张图看懂三件套">二、一张图看懂三件套</h2>
+<div class="fig">
+<svg viewBox="0 0 680 380" role="img" aria-label="MACD/PE/PB 三大指标定位图">
+  <text x="40" y="28" font-size="15" font-weight="bold" fill="#111827">三件套定位：MACD（动能） + PE（盈利估值） + PB（资产估值）</text>
+  <!-- 股价区 -->
+  <rect x="40" y="55" width="600" height="100" fill="#f8fafc" stroke="#cbd5e1"></rect>
+  <text x="50" y="76" font-size="12" font-weight="bold" fill="#0f172a">① 股价（K线 + 均线）</text>
+  <path d="M60,140 C150,120 200,130 260,100 C320,72 380,90 440,70 C500,55 560,68 620,60" fill="none" stroke="#1f2937" stroke-width="2"></path>
+  <line x1="60" y1="120" x2="620" y2="120" stroke="#9ca3af" stroke-dasharray="3 3" stroke-width="1"></line>
+  <text x="50" y="148" font-size="10" fill="#6b7280">→ 趋势看均线（[kb09]）</text>
+  <!-- MACD 区 -->
+  <rect x="40" y="165" width="600" height="80" fill="#eff6ff" stroke="#93c5fd"></rect>
+  <text x="50" y="186" font-size="12" font-weight="bold" fill="#1d4ed8">② MACD（动能 / 方向）</text>
+  <text x="50" y="208" font-size="11" fill="#1f2937">DIF 线 + DEA 线 + 红绿柱</text>
+  <rect x="170" y="195" width="6" height="14" fill="#16a34a"></rect>
+  <rect x="180" y="195" width="6" height="10" fill="#16a34a"></rect>
+  <rect x="190" y="195" width="6" height="6" fill="#16a34a"></rect>
+  <rect x="200" y="200" width="6" height="3" fill="#dc2626"></rect>
+  <rect x="210" y="200" width="6" height="2" fill="#dc2626"></rect>
+  <text x="240" y="215" font-size="10" fill="#6b7280">金叉 = 偏多 / 死叉 = 偏空 / 背离 = 反转预警</text>
+  <text x="50" y="235" font-size="10" fill="#6b7280">→ 详解：[kb11]（基础）/ [kb12]（背离）/ [kb14]（看图）</text>
+  <!-- 估值区 -->
+  <rect x="40" y="255" width="290" height="100" fill="#fef3c7" stroke="#fcd34d"></rect>
+  <text x="50" y="276" font-size="12" font-weight="bold" fill="#b45309">③ PE 市盈率（盈利估值）</text>
+  <text x="50" y="296" font-size="11" fill="#1f2937">PE = 股价 / 每股收益</text>
+  <text x="50" y="313" font-size="10" fill="#6b7280">- 数字越小越"便宜"（同行业对比）</text>
+  <text x="50" y="328" font-size="10" fill="#6b7280">- PE 分位比绝对值更有参考价值</text>
+  <text x="50" y="345" font-size="10" fill="#6b7280">→ 详见 [kb26]</text>
+  <rect x="350" y="255" width="290" height="100" fill="#f0fdf4" stroke="#86efac"></rect>
+  <text x="360" y="276" font-size="12" font-weight="bold" fill="#15803d">④ PB 市净率（资产估值）</text>
+  <text x="360" y="296" font-size="11" fill="#1f2937">PB = 股价 / 每股净资产</text>
+  <text x="360" y="313" font-size="10" fill="#6b7280">- 银行 / 地产 / 资源 等重资产必备</text>
+  <text x="360" y="328" font-size="10" fill="#6b7280">- PB&#x3C;1 不一定便宜（看资产质量）</text>
+  <text x="360" y="345" font-size="10" fill="#6b7280">→ 详见 [kb27]</text>
+</svg>
+<div class="cap">图：三大指标的"位置分工"——股价 / MACD 看技术面，PE / PB 看基本面估值</div>
+</div>
+<h2 id="三怎么用这三件套">三、怎么用这”三件套”</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>情景</th><th>三件套信号</th><th>怎么动</th></tr></thead><tbody><tr><td>趋势向上 + 动能转强 + 估值合理</td><td>价格在 MA60 上 + MACD 零轴上金叉 + PE 处于近 5 年 30% 分位以下</td><td>较优买点（顺大势 + 低估值）</td></tr><tr><td>趋势向上 + 动能转弱</td><td>价格还在 MA60 上 + MACD 顶背离</td><td>警惕，准备减仓</td></tr><tr><td>趋势向下 + 估值便宜</td><td>价格跌破 MA60 + PE 历史 20% 分位以下</td><td>不接飞刀，等反转信号（MACD 金叉）再分批</td></tr><tr><td>趋势向上 + 估值高估</td><td>价格强势 + PE 历史 80% 分位以上</td><td>不追高，已有仓考虑分批止盈</td></tr></tbody></table>
+<h2 id="四新手最容易踩的坑">四、新手最容易踩的坑</h2>
+<ol>
+<li><strong>单指标盲信</strong>：MACD 金叉就买、PE 低就买，都是错的——金叉可能是反弹中继、PE 低可能是”价值陷阱”（行业在衰退）。</li>
+<li><strong>PE / PB 不分行业</strong>：把科技股 PE=30 跟银行 PE=6 放一起比，毫无意义。每个行业有自己的合理区间。</li>
+<li><strong>MACD 当预测工具</strong>：MACD 是<strong>滞后</strong>指标，用来<strong>确认</strong>趋势，不用来预测顶部 / 底部。</li>
+<li><strong>只看绝对值不看分位</strong>：当前 PE=15 算贵还是便宜？答案取决于它<strong>在历史 5 年里处于什么分位</strong>。分位比绝对值重要。</li>
+</ol>
+<h2 id="五读完这篇之后建议阅读顺序">五、读完这篇之后，建议阅读顺序</h2>
+<ul>
+<li>想看”动能”细节 → [kb11 MACD 基础] → [kb12 MACD 背离] → [kb14 MACD 看图]</li>
+<li>想看”估值”细节 → [kb26 PE 详解] → [kb27 PB / PS] → [kb28 PEG / DCF]</li>
+<li>想看”怎么组合” → [kb19 指标组合实战]</li>
+<li>想看”为什么只学这几个就够” → <a href="#">如何挑选重要指标（元方法）</a></li>
+</ul>
+<blockquote>
+<p>📌 一句话记住：<strong>MACD 看方向和力度，PE / PB 看贵不贵，三者一组合，胜过任何”金叉买入”</strong>。</p>
+</blockquote>
+<blockquote>
+<p>⚠️ 本文为方法框架示意，不构成任何投资或交易建议。市场有风险，决策需谨慎。</p>
+</blockquote> </article> <div class="paywall-veil" id="paywall-veil" hidden> <h3>☕️ 请作者喝咖啡</h3> <p>后续章节欢迎请作者喝杯咖啡（最低 ¥1），输入作者私发的解锁码即可解锁本专栏全部内容。</p> <button class="pbtn" id="veil-btn" type="button">打赏解锁</button> </div> </div> <section class="engage"> <div class="engage-actions"> <button id="like-btn" class="like-btn" type="button" aria-pressed="false"> <span class="like-ico">👍</span> <span class="like-label">点赞</span> <span id="like-count" class="like-count">0</span> </button> <button id="bookmark-btn" class="bookmark-btn" type="button" aria-pressed="false"> <span class="bookmark-ico">🔖</span> <span id="bookmark-label" class="bookmark-label">收藏</span> </button> </div> <p class="engage-tip">觉得有用？欢迎点赞、收藏，或请我喝杯咖啡 ☕</p> <div class="reward"> <div class="reward-col"> <div class="reward-qr"> <img src="/stock-blog/reward/alipay.png" alt="支付宝收款码" loading="lazy"> </div> <p>支付宝</p> </div> <div class="reward-col"> <div class="reward-qr"> <img src="/stock-blog/reward/wechat.png" alt="微信收款码" loading="lazy"> </div> <p>微信</p> </div> </div> </section> <section class="comments" aria-label="评论"> <h2 id="comments">💬 留言</h2> <div class="giscus-hint">
+评论由 <a href="https://giscus.app" target="_blank" rel="noopener noreferrer">Giscus</a> 驱动（基于 GitHub Discussions）。
+          当前仓库 <code>NaphJohn/stock-blog</code> 尚未启用 Discussions 或未安装 Giscus App：请在 GitHub 仓库 Settings → General → Features 勾选 Discussions，并到 github.com/apps/giscus 安装本仓库后刷新，评论区即自动显示。
+</div> <div class="giscus"></div> <script src="https://giscus.app/client.js" data-repo="NaphJohn/stock-blog" data-repo-id="R_PLACEHOLDER_REPO_ID" data-category="Announcements" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="zh-CN" crossorigin="anonymous" async>
+        </script> <script>
+          // Giscus 成功加载后，自动隐藏配置提示框
+          (function () {
+            var hint = document.querySelector('.giscus-hint');
+            if (!hint) return;
+            var tries = 0;
+            var iv = setInterval(function () {
+              tries++;
+              if (document.querySelector('iframe.giscus-frame')) {
+                hint.style.display = 'none';
+                clearInterval(iv);
+              } else if (tries > 40) {
+                clearInterval(iv); // 约 20s 仍未加载，说明配置缺失，保留提示
+              }
+            }, 500);
+          })();
+        </script> </section> </main> <script>
+      // 点赞
+      (function () {
+        var btn = document.getElementById('like-btn');
+        if (!btn) return;
+        var cnt = document.getElementById('like-count');
+        var key = 'like:' + location.pathname;
+        function read() { try { return localStorage.getItem(key) === '1'; } catch (e) { return false; } }
+        function render() {
+          var liked = read();
+          btn.classList.toggle('liked', liked);
+          btn.setAttribute('aria-pressed', liked ? 'true' : 'false');
+          cnt.textContent = liked ? '1' : '0';
+        }
+        render();
+        btn.addEventListener('click', function () {
+          var liked = !read();
+          try { localStorage.setItem(key, liked ? '1' : '0'); } catch (e) {}
+          render();
+          if (liked) { btn.classList.remove('pop'); void btn.offsetWidth; btn.classList.add('pop'); }
+        });
+      })();
+
+      // 收藏 / 书签
+      (function () {
+        var btn = document.getElementById('bookmark-btn');
+        if (!btn) return;
+        var label = document.getElementById('bookmark-label');
+        var key = 'blog-bookmarks';
+        var url = location.pathname;
+        function get() {
+          try { return JSON.parse(localStorage.getItem(key) || '[]'); }
+          catch (e) { return []; }
+        }
+        function isSaved() { return get().some(function (b) { return b.url === url; }); }
+        function render() {
+          var saved = isSaved();
+          btn.classList.toggle('saved', saved);
+          btn.setAttribute('aria-pressed', saved ? 'true' : 'false');
+          if (label) label.textContent = saved ? '已收藏' : '收藏';
+          if (window.__renderBookmarks) window.__renderBookmarks();
+        }
+        btn.addEventListener('click', function () {
+          var list = get();
+          if (isSaved()) {
+            list = list.filter(function (b) { return b.url !== url; });
+          } else {
+            var h1 = document.querySelector('h1');
+            var title = h1 ? h1.textContent.trim() : document.title;
+            list.unshift({ url: url, title: title, lang: document.documentElement.lang || 'zh', added: Date.now() });
+          }
+          try { localStorage.setItem(key, JSON.stringify(list)); } catch (e) {}
+          render();
+        });
+        render();
+      })();
+
+      // 划线 / 下划线 / 清除高亮
+      (function () {
+        var article = document.getElementById('post-content');
+        if (!article) return;
+        var toolbar = document.getElementById('hl-toolbar');
+        var storageKey = 'blog-highlights:' + location.pathname;
+        var pendingRange = null;
+
+        function getSaved() {
+          try { return JSON.parse(localStorage.getItem(storageKey) || '[]'); }
+          catch (e) { return []; }
+        }
+        function save(list) {
+          try { localStorage.setItem(storageKey, JSON.stringify(list)); } catch (e) {}
+        }
+
+        function showToolbar(x, y) {
+          toolbar.hidden = false;
+          toolbar.style.left = x + 'px';
+          toolbar.style.top = Math.max(8, y - 8) + 'px';
+        }
+        function hideToolbar() {
+          toolbar.hidden = true;
+          pendingRange = null;
+        }
+
+        function getTextNodes(root) {
+          var nodes = [];
+          var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+          var n;
+          while ((n = walker.nextNode())) {
+            if (n.textContent.trim()) nodes.push(n);
+          }
+          return nodes;
+        }
+
+        function wrapNode(node, start, end, type) {
+          var text = node.textContent;
+          var before = text.slice(0, start);
+          var target = text.slice(start, end);
+          var after = text.slice(end);
+          var el = document.createElement(type === 'highlight' ? 'mark' : 'span');
+          el.className = type === 'highlight' ? 'user-hl' : 'user-ul';
+          el.textContent = target;
+          var frag = document.createDocumentFragment();
+          if (before) frag.appendChild(document.createTextNode(before));
+          frag.appendChild(el);
+          if (after) frag.appendChild(document.createTextNode(after));
+          node.parentNode.replaceChild(frag, node);
+          return el;
+        }
+
+        function applyHighlight(range, type) {
+          var text = range.toString().trim();
+          if (!text) return;
+          var sc = range.startContainer, so = range.startOffset;
+          var ec = range.endContainer, eo = range.endOffset;
+          if (sc === ec && sc.nodeType === 3) {
+            wrapNode(sc, so, eo, type);
+          } else {
+            var wrapper = document.createElement(type === 'highlight' ? 'mark' : 'span');
+            wrapper.className = type === 'highlight' ? 'user-hl' : 'user-ul';
+            try { wrapper.appendChild(range.extractContents()); }
+            catch (e) { return; }
+            range.insertNode(wrapper);
+          }
+          save(getSaved().concat({ text: text, type: type, created: Date.now() }));
+        }
+
+        function clearAll() {
+          article.querySelectorAll('.user-hl, .user-ul').forEach(function (el) {
+            var parent = el.parentNode;
+            while (el.firstChild) parent.insertBefore(el.firstChild, el);
+            parent.removeChild(el);
+            parent.normalize();
+          });
+          save([]);
+        }
+
+        function restore() {
+          var saved = getSaved();
+          if (!saved.length) return;
+          saved.forEach(function (item) {
+            var text = item.text;
+            var type = item.type;
+            var nodes = getTextNodes(article);
+            for (var i = 0; i < nodes.length; i++) {
+              var node = nodes[i];
+              var idx = node.textContent.indexOf(text);
+              if (idx >= 0) {
+                wrapNode(node, idx, idx + text.length, type);
+                break;
+              }
+            }
+          });
+        }
+
+        document.addEventListener('mouseup', function (e) {
+          // 忽略在工具栏上的点击
+          if (toolbar.contains(e.target)) return;
+          setTimeout(function () {
+            var sel = window.getSelection();
+            if (!sel.rangeCount || sel.isCollapsed) { hideToolbar(); return; }
+            var range = sel.getRangeAt(0);
+            var container = range.commonAncestorContainer;
+            if (container.nodeType === 3) container = container.parentElement;
+            if (!container.closest('article.prose')) { hideToolbar(); return; }
+            pendingRange = range.cloneRange();
+            var rect = range.getBoundingClientRect();
+            showToolbar(rect.left + rect.width / 2 + window.scrollX, rect.top + window.scrollY);
+          }, 10);
+        });
+
+        toolbar.addEventListener('click', function (e) {
+          var btn = e.target.closest('button');
+          if (!btn) return;
+          var type = btn.getAttribute('data-type');
+          if (type === 'clear') {
+            clearAll();
+            hideToolbar();
+            window.getSelection().removeAllRanges();
+            return;
+          }
+          if (!pendingRange) return;
+          applyHighlight(pendingRange, type);
+          hideToolbar();
+          window.getSelection().removeAllRanges();
+        });
+
+        restore();
+      })();
+    </script> <script>
+      // 付费章节遮罩：未解锁则模糊正文 + 显示打赏解锁层
+      (function () {
+        var wrap = document.getElementById('post-wrap');
+        if (!wrap) return;
+        if (wrap.getAttribute('data-free') === '1') return;
+        if (!window.MingLiPay) return;
+        if (MingLiPay.isChapterUnlocked()) return;
+        var veil = document.getElementById('paywall-veil');
+        wrap.classList.add('article-lock');
+        if (veil) veil.hidden = false;
+        var btn = document.getElementById('veil-btn');
+        if (btn) btn.addEventListener('click', function () {
+          MingLiPay.showTipModal({
+            title: '请作者喝咖啡 ☕️',
+            desc: '请作者喝杯咖啡后（最低 ¥1），输入作者私发的解锁码，即可解锁本专栏全部内容；作者本人免付费。',
+            unlockCode: btoa('gushi2026ch')
+          }, function () {
+            wrap.classList.remove('article-lock');
+            if (veil) veil.hidden = true;
+          });
+        });
+      })();
+    </script> <footer>© 2026 股市笔记 · 托管于 GitHub Pages</footer> </body></html>
