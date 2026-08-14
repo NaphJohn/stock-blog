@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light dark"><script src="/stock-blog/paywall.js"></script><script>
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light dark"><script src="/stock-blog/paywall.js"></script><script>
       (function () {
         try {
           var t = localStorage.getItem('theme');
@@ -8,7 +8,7 @@
           document.documentElement.setAttribute('data-theme', t);
         } catch (e) {}
       })();
-    </script><title>如何挑选重要指标——别被几十个指标淹没 · 股市笔记</title><meta name="description" content="指标方法 · 把几十个指标归为三类（趋势 / 动量 / 估值），新手只学 3-4 个，组合使用、避坑要点。"><link rel="stylesheet" href="/stock-blog/_astro/ch1-intro.b8wxSEGk.css"></head> <body> <header class="site-header"> <a href="/stock-blog/" class="brand">股市笔记</a> <nav> <a href="/stock-blog/">股票知识小课堂</a> <span class="lang-switch"> <span class="cur">中文</span><span class="sep">/</span><a href="/stock-blog/en/blog/guide-pick-indicators">English</a> </span> <button id="bookmark-toggle" class="header-btn" type="button" aria-label="书签" title="书签">🔖</button> <button id="theme-toggle" class="theme-toggle" type="button" aria-label="切换日间/夜间模式">🌙</button> </nav> </header> <div id="bookmarks-panel" class="bookmarks-panel" hidden> <div class="bookmarks-head"> <strong>书签</strong> <button id="bookmarks-close" type="button" aria-label="关闭">×</button> </div> <ul id="bookmarks-list" class="bookmarks-list"></ul> <p id="bookmarks-empty" class="bookmarks-empty">暂无书签，在文章页点击「收藏」按钮即可添加。</p> </div> <div id="hl-toolbar" class="hl-toolbar" hidden> <button data-type="highlight" type="button" title="高亮">🖍️ 高亮</button> <button data-type="underline" type="button" title="下划线">➖ 下划线</button> <button data-type="clear" type="button" title="清除本页标记">❌ 清除</button> </div> <script>
+    </script><title>Getting started with indicators: MACD / PE / PB in one picture · Market Notes</title><meta name="description" content="Indicator primer · One picture to understand the three core indicators MACD, PE, PB — what they are, how to read them, how to use them. The first stop for beginners."><link rel="stylesheet" href="/stock-blog/_astro/ch1-intro.b8wxSEGk.css"></head> <body> <header class="site-header"> <a href="/stock-blog/en/" class="brand">Market Notes</a> <nav> <a href="/stock-blog/en/">Stock Knowledge 101</a> <span class="lang-switch"> <a href="/stock-blog/blog/guide-indicators-101">中文</a><span class="sep">/</span><span class="cur">English</span> </span> <button id="bookmark-toggle" class="header-btn" type="button" aria-label="书签" title="书签">🔖</button> <button id="theme-toggle" class="theme-toggle" type="button" aria-label="切换日间/夜间模式">🌙</button> </nav> </header> <div id="bookmarks-panel" class="bookmarks-panel" hidden> <div class="bookmarks-head"> <strong>书签</strong> <button id="bookmarks-close" type="button" aria-label="关闭">×</button> </div> <ul id="bookmarks-list" class="bookmarks-list"></ul> <p id="bookmarks-empty" class="bookmarks-empty">暂无书签，在文章页点击「收藏」按钮即可添加。</p> </div> <div id="hl-toolbar" class="hl-toolbar" hidden> <button data-type="highlight" type="button" title="高亮">🖍️ 高亮</button> <button data-type="underline" type="button" title="下划线">➖ 下划线</button> <button data-type="clear" type="button" title="清除本页标记">❌ 清除</button> </div> <script>
   (function () {
     var btn = document.getElementById('theme-toggle');
     if (!btn) return;
@@ -95,114 +95,142 @@
       syncGiscus(document.documentElement.getAttribute('data-theme'));
     }, 1200);
   });
-</script>  <main> <span class="series-tag">系列：股票知识小课堂</span> <h1>如何挑选重要指标——别被几十个指标淹没</h1> <time datetime="2026-08-14">2026年8月14日</time> <div id="post-wrap" data-free="1" style="position:relative"> <article class="prose" id="post-content"> <blockquote>
-<p>新手最常问的：“市面上几十种指标，我该学哪些？“答案是：<strong>学三类里各挑一个代表，组合用，别贪多</strong>。</p>
+</script>  <main> <span class="series-tag">系列：Stock Knowledge 101</span> <h1>Getting started with indicators: MACD / PE / PB in one picture</h1> <time datetime="2026-08-14">August 14, 2026</time> <div id="post-wrap" data-free="1" style="position:relative"> <article class="prose" id="post-content"> <blockquote>
+<p>This is the <strong>intro</strong> to <em>Stock Knowledge 101</em> — for readers who have never touched technical or valuation indicators. After this one page you’ll have the overall framework needed for the later single-topic deep dives like kb09 / kb11 / kb26.</p>
 </blockquote>
-<h2 id="一指标的三大类先分类再挑">一、指标的三大类（先分类再挑）</h2>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>类别</th><th>回答什么问题</th><th>代表指标</th><th>新手只学谁</th></tr></thead><tbody><tr><td><strong>趋势</strong></td><td>现在的方向是涨是跌？</td><td>均线 MA、ADX、趋势线</td><td>MA（5 / 20 / 60）</td></tr><tr><td><strong>动量 / 动能</strong></td><td>这个方向有多强？是不是在减弱？</td><td>MACD、RSI、KDJ、BOLL</td><td>MACD</td></tr><tr><td><strong>估值</strong></td><td>现在贵不贵？</td><td>PE、PB、PS、PEG、DCF</td><td>PE（重资产加 PB）</td></tr></tbody></table>
-<p>学完这三类各 1 个 = 入门完毕。其它指标都是这三大类的”变体 / 补充”，等你真用顺了再学。</p>
-<h2 id="二新手三件套建议">二、新手三件套建议</h2>
+<p><strong>One-line summary</strong>: <strong>MACD reads “momentum and direction”, PE / PB read “how expensive it is”</strong>. Use the trio together: right direction + enough momentum + reasonable valuation = a safer entry.</p>
+<h2 id="1-what-does-each-of-the-three-indicators-do">1. What does each of the three indicators do?</h2>
 <ul>
-<li><strong>趋势：MA20 / MA60</strong>（[kb09]）</li>
-<li><strong>动量：MACD</strong>（[kb11] / [kb14]）</li>
-<li><strong>估值：PE（加 PB）</strong>（[kb26] / [kb27]）</li>
+<li>
+<p><strong>MACD</strong> (technical · momentum)</p>
+<ul>
+<li>Full name: Moving Average Convergence Divergence</li>
+<li>What it does: draws the “gap between fast and slow moving averages” as a line + red/green bars, to read the <strong>strength and direction of price up/down movement</strong></li>
+<li>Where to see it: the panel below the price chart — DIF line / DEA line / red-green bars</li>
+<li>How to use: golden cross = bullish, death cross = bearish, divergence = reversal warning (see [kb11] / [kb12] / [kb14])</li>
 </ul>
-<p><strong>三件套的角色</strong>：</p>
+</li>
+<li>
+<p><strong>PE (Price/Earnings ratio)</strong> (fundamental · valuation)</p>
 <ul>
-<li>均线告诉你”大方向能不能做”（不在 MA60 上方就别重仓）；</li>
-<li>MACD 告诉你”动能变强还是变弱”（背离 = 预警）；</li>
-<li>PE / PB 告诉你”在这个位置买，划不划算”。</li>
+<li>Full name: Price / Earnings per Share (price ÷ earnings per share)</li>
+<li>What it does: how many years to break even at current earnings (theoretical)</li>
+<li>Reading the number: PE=10 → break even in 10 years (“cheap”); PE=100 → 100 years (“expensive”)</li>
+<li>How to use: compare within the same industry + PE percentile ([kb26]). <strong>Lower is not always better</strong> — depends on industry and growth</li>
 </ul>
-<p><strong>三件都亮绿灯 = 较优；只亮 1-2 个 = 谨慎；三件都红灯 = 远离</strong>。</p>
-<h2 id="三组合使用三原则">三、组合使用三原则</h2>
-<ol>
-<li><strong>不同类指标互相印证</strong>：均线 + MACD + PE 同时偏多 = 强信号；如果 MACD 金叉但 PE 在历史 90% 分位，要警惕高位接盘。</li>
-<li><strong>同一类指标不要重复学</strong>：MA + 趋势线 + ADX 都是看趋势的，学一个就够。</li>
-<li><strong>指标用来”证伪 / 确认”，不预测</strong>：你心里先有个判断（比如”这只跌多了，可能反弹”），再用指标去<strong>确认</strong>；别看到金叉就反推”要涨了”。</li>
-</ol>
-<h2 id="四容易踩的坑">四、容易踩的坑</h2>
-<ol>
-<li><strong>指标越多越好？错</strong>。3-4 个足够。堆 10 个指标只会让你”既想多又想空”。</li>
-<li><strong>越复杂越准？错</strong>。MACD 的本质就两条线 + 红绿柱；BOLL 就是中轨 ± 2 倍标准差。复杂的是包装，逻辑都是基础统计。</li>
-<li><strong>指标能预测顶部 / 底部？错</strong>。指标都是<strong>滞后</strong>的（基于历史价格算出来的）。它们的价值是<strong>确认</strong>趋势，<strong>不是预测</strong>。</li>
-<li><strong>不同周期用同一套指标？错</strong>。短线看 MA5 / MACD 日线；中线看 MA20 / 60 + 周线 MACD；长线看估值（PE / PB 分位）。</li>
-</ol>
-<h2 id="五不同投资风格的指标套餐">五、不同投资风格的”指标套餐”</h2>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>风格</th><th>套餐</th><th>重点看</th></tr></thead><tbody><tr><td><strong>短线（数日）</strong></td><td>MA5 + MACD + 量能</td><td>金叉死叉、量价配合</td></tr><tr><td><strong>波段（数周 - 数月）</strong></td><td>MA20 / 60 + MACD + PE 分位</td><td>趋势 + 估值底部</td></tr><tr><td><strong>长线（年）</strong></td><td>MA250 + ROE + PE / PB 分位</td><td>价值与质地</td></tr><tr><td><strong>定投（不择时）</strong></td><td>PE 分位 + 资产质量</td><td>便宜时多买，贵时少买</td></tr></tbody></table>
-<h2 id="六读完这篇之后">六、读完这篇之后</h2>
+</li>
+<li>
+<p><strong>PB (Price/Book ratio)</strong> (fundamental · valuation)</p>
 <ul>
-<li>想学”三件套”里每件的具体用法 → [指标入门：MACD / PE / PB 一张图讲清]</li>
-<li>想直接看图实战 → [kb19 指标组合实战]</li>
-<li>想知道为什么”低 PE” ≠ “该买” → [kb26 PE 详解]</li>
+<li>Full name: Price / Book value per Share (price ÷ net assets per share)</li>
+<li>What it does: how much the market price marks up the company’s “net worth”</li>
+<li>Best for: asset-heavy sectors like banks, real estate, resources ([kb27])</li>
+<li>How to use: PB&#x3C;1 often means the market doubts asset quality; PB>5 is pricey (industry-dependent)</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-one-picture-to-understand-the-trio">2. One picture to understand the trio</h2>
+<div class="fig">
+<svg viewBox="0 0 680 440" role="img" aria-label="MACD/PE/PB trio positioning chart">
+  <text x="40" y="28" font-size="15" font-weight="bold" fill="#111827">Trio positioning: MACD (momentum) + PE (earnings valuation) + PB (asset valuation)</text>
+  <!-- price -->
+  <rect x="40" y="55" width="600" height="95" fill="#f8fafc" stroke="#cbd5e1"></rect>
+  <text x="50" y="76" font-size="12" font-weight="bold" fill="#0f172a">① Price (candles + moving averages)</text>
+  <path d="M60,140 C150,120 200,130 260,100 C320,72 380,90 440,70 C500,55 560,68 620,60" fill="none" stroke="#1f2937" stroke-width="2"></path>
+  <line x1="60" y1="120" x2="620" y2="120" stroke="#9ca3af" stroke-dasharray="3 3" stroke-width="1"></line>
+  <text x="50" y="148" font-size="10" fill="#6b7280">→ trend: moving averages ([kb09])</text>
+  <!-- MACD -->
+  <rect x="40" y="165" width="600" height="130" fill="#eff6ff" stroke="#93c5fd"></rect>
+  <text x="50" y="186" font-size="12" font-weight="bold" fill="#1d4ed8">② MACD (momentum / direction)</text>
+  <line x1="55" y1="252" x2="370" y2="252" stroke="#9ca3af" stroke-width="1"></line>
+  <text x="55" y="248" font-size="8" fill="#6b7280">0</text>
+  <path d="M55,266 C100,263 135,258 175,250 C215,242 250,240 290,226 C320,216 350,214 370,210" fill="none" stroke="#1d4ed8" stroke-width="2"></path>
+  <path d="M55,258 C100,257 135,254 175,250 C215,247 250,248 290,237 C320,231 350,229 370,226" fill="none" stroke="#ea580c" stroke-width="2"></path>
+  <circle cx="175" cy="250" r="3.5" fill="#16a34a"></circle>
+  <text x="128" y="238" font-size="9" fill="#16a34a">golden cross</text>
+  <rect x="300" y="244" width="5" height="8" fill="#16a34a"></rect>
+  <rect x="308" y="247" width="5" height="5" fill="#16a34a"></rect>
+  <rect x="316" y="252" width="5" height="4" fill="#dc2626"></rect>
+  <rect x="324" y="252" width="5" height="5" fill="#dc2626"></rect>
+  <rect x="332" y="252" width="5" height="7" fill="#dc2626"></rect>
+  <text x="55" y="284" font-size="9" fill="#6b7280">green bars↑=momentum up · red bars↓=momentum down</text>
+</svg><p><text x="400" y="206" font-size="10.5" fill="#1f2937">DIF (fast) = EMA12 − EMA26</text>
+<text x="400" y="222" font-size="10.5" fill="#1f2937">DEA (slow) = 9-day smooth of DIF</text>
+<text x="400" y="238" font-size="10.5" fill="#1f2937">bars = 2 × (DIF − DEA)</text>
+<text x="400" y="257" font-size="10" fill="#16a34a">golden cross (DIF above DEA) = bullish</text>
+<text x="400" y="271" font-size="10" fill="#dc2626">death cross = bearish · divergence = reversal warning</text>
+<text x="400" y="287" font-size="9" fill="#6b7280">→ details: [kb11] (basics) / [kb12] (divergence) / [kb14] (reading)</text></p>
+  <!-- valuation -->
+  <rect x="40" y="310" width="290" height="100" fill="#fef3c7" stroke="#fcd34d">
+  <text x="50" y="331" font-size="12" font-weight="bold" fill="#b45309">③ PE (earnings valuation)</text>
+  <text x="50" y="351" font-size="11" fill="#1f2937">PE = price / earnings per share</text>
+  <text x="50" y="368" font-size="10" fill="#6b7280">- smaller = "cheaper" (same industry)</text>
+  <text x="50" y="383" font-size="10" fill="#6b7280">- PE percentile beats absolute value</text>
+  <text x="50" y="400" font-size="10" fill="#6b7280">→ see [kb26]</text>
+  <rect x="350" y="310" width="290" height="100" fill="#f0fdf4" stroke="#86efac">
+  <text x="360" y="331" font-size="12" font-weight="bold" fill="#15803d">④ PB (asset valuation)</text>
+  <text x="360" y="351" font-size="11" fill="#1f2937">PB = price / book value per share</text>
+  <text x="360" y="368" font-size="10" fill="#6b7280">- banks / real estate / resources (asset-heavy)</text>
+  <text x="360" y="383" font-size="10" fill="#6b7280">- PB&#x3C;1 not always cheap (asset quality)</text>
+  <text x="360" y="400" font-size="10" fill="#6b7280">→ see [kb27]</text>
+
+<div class="cap">Fig: the "division of labor" of the three indicators — price / MACD for technicals, PE / PB for fundamental valuation</div>
+</rect></rect></div>
+<h2 id="3-how-to-use-the-trio">3. How to use the trio</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Scenario</th><th>Trio signal</th><th>What to do</th></tr></thead><tbody><tr><td>Uptrend + momentum strengthening + reasonable valuation</td><td>Price above MA60 + MACD golden cross above zero + PE in bottom 30% of 5-yr range</td><td>Good entry (ride the trend + cheap valuation)</td></tr><tr><td>Uptrend + momentum weakening</td><td>Price still above MA60 + MACD bearish divergence</td><td>Caution, prepare to reduce</td></tr><tr><td>Downtrend + cheap valuation</td><td>Price below MA60 + PE in bottom 20% of history</td><td>Don’t catch a falling knife; wait for reversal signal (MACD golden cross) then scale in</td></tr><tr><td>Uptrend + overvaluation</td><td>Price strong + PE above 80% of history</td><td>Don’t chase; if holding, consider taking profit in tranches</td></tr></tbody></table>
+<h2 id="4-traps-beginners-fall-into">4. Traps beginners fall into</h2>
+<ol>
+<li><strong>Blind faith in a single indicator</strong>: buying on MACD golden cross or low PE alone is wrong — a golden cross can be a bounce midpoint, a low PE can be a “value trap” (declining industry).</li>
+<li><strong>Comparing PE / PB across industries</strong>: comparing a tech stock PE=30 with a bank PE=6 is meaningless. Each industry has its own reasonable range.</li>
+<li><strong>Treating MACD as a predictor</strong>: MACD is a <strong>lagging</strong> indicator — use it to <strong>confirm</strong> a trend, not to predict tops/bottoms.</li>
+<li><strong>Looking at absolute value, not percentile</strong>: is PE=15 expensive or cheap? It depends on its <strong>percentile over the past 5 years</strong>. Percentile matters more than the absolute number.</li>
+</ol>
+<h2 id="5-suggested-reading-order-after-this">5. Suggested reading order after this</h2>
+<ul>
+<li>Want “momentum” details → [kb11 MACD basics] → [kb12 MACD divergence] → [kb14 reading MACD]</li>
+<li>Want “valuation” details → [kb26 PE deep dive] → [kb27 PB / PS] → [kb28 PEG / DCF]</li>
+<li>Want “how to combine” → [kb19 indicator combo practice]</li>
+<li>Want “why just a few is enough” → [How to pick important indicators (meta-method)] (#)</li>
 </ul>
 <blockquote>
-<p>📌 选指标的原则不是”多”，是”够用且互相补充”。三类各一个，足够应对 80% 的判断。</p>
+<p>📌 Remember in one line: <strong>MACD reads direction and strength, PE / PB read expensiveness; combine the three and you beat any “buy on golden cross” rule.</strong></p>
 </blockquote>
 <blockquote>
-<p>⚠️ 本文为方法框架示意，不构成任何投资或交易建议。市场有风险，决策需谨慎。</p>
+<p>⚠️ This article is a methodological illustration and does not constitute any investment or trading advice. Markets are risky; decide with caution.</p>
 </blockquote> </article> <div class="paywall-veil" id="paywall-veil" hidden> <h3>☕️ 请作者喝咖啡</h3> <p>后续章节欢迎请作者喝杯咖啡（最低 ¥1），输入作者私发的解锁码即可解锁本专栏全部内容。</p> <button class="pbtn" id="veil-btn" type="button">打赏解锁</button> </div> </div> <section class="engage"> <div class="engage-actions"> <button id="like-btn" class="like-btn" type="button" aria-pressed="false"> <span class="like-ico">👍</span> <span class="like-label">点赞</span> <span id="like-count" class="like-count">0</span> </button> <button id="bookmark-btn" class="bookmark-btn" type="button" aria-pressed="false"> <span class="bookmark-ico">🔖</span> <span id="bookmark-label" class="bookmark-label">收藏</span> </button> </div> <p class="engage-tip">觉得有用？欢迎点赞、收藏，或请我喝杯咖啡 ☕</p> <div class="reward"> <div class="reward-col"> <div class="reward-qr"> <img src="/stock-blog/reward/alipay.png" alt="支付宝收款码" loading="lazy"> </div> <p>支付宝</p> </div> <div class="reward-col"> <div class="reward-qr"> <img src="/stock-blog/reward/wechat.png" alt="微信收款码" loading="lazy"> </div> <p>微信</p> </div> </div> </section> <section class="comments" aria-label="评论"> <h2 id="comments">💬 留言</h2> <div class="giscus-hint">
 评论由 <a href="https://giscus.app" target="_blank" rel="noopener noreferrer">Giscus</a> 驱动（基于 GitHub Discussions）。
           当前仓库 <code>NaphJohn/stock-blog</code> 尚未启用 Discussions 或未安装 Giscus App：请在 GitHub 仓库 Settings → General → Features 勾选 Discussions，并到 github.com/apps/giscus 安装本仓库后刷新，评论区即自动显示。
-</div> <div class="giscus"></div> <script src="https://giscus.app/client.js" data-repo="NaphJohn/stock-blog" data-repo-id="R_PLACEHOLDER_REPO_ID" data-category="Announcements" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="zh-CN" crossorigin="anonymous" async>
+</div> <div class="giscus"></div> <script src="https://giscus.app/client.js" data-repo="NaphJohn/stock-blog" data-repo-id="R_PLACEHOLDER_REPO_ID" data-category="Announcements" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="en" crossorigin="anonymous" async>
         </script> <script>
           // Giscus 成功加载后，自动隐藏配置提示框
           (function () {
@@ -430,4 +458,4 @@
           });
         });
       })();
-    </script> <footer>© 2026 股市笔记 · 托管于 GitHub Pages</footer> </body></html>
+    </script> <footer>© 2026 Market Notes · Hosted on GitHub Pages</footer> </body></html>

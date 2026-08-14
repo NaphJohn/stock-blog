@@ -8,6 +8,7 @@ free: true
 level: 入门
 lang: zh
 altLang: English
+altHref: /en/blog/guide-pick-indicators
 pubDate: 2026-08-14
 ---
 
