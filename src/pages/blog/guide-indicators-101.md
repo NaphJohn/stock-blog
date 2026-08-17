@@ -12,7 +12,7 @@ altHref: /en/blog/guide-indicators-101
 pubDate: 2026-08-14
 ---
 
-> 本文是《股票知识小课堂》的**导论**——给完全没接触过技术指标 / 估值指标的新手。读完这一篇，你就有了后文 kb09 / kb11 / kb26 等"单项"详解所需的整体框架。
+> 本文是《股票知识小课堂》的**导论**——给完全没接触过技术指标 / 估值指标的新手。读完这一篇，你就有了后文 K04 / K05 / K09 等"单项"详解所需的整体框架。
 
 **一句话总结**：**MACD 看"动能和方向"，PE / PB 看"贵不贵"**。三件套组合起来用：方向对 + 动能足 + 估值合理 = 较安全买点。
 
@@ -22,18 +22,18 @@ pubDate: 2026-08-14
   - 全称：指数平滑异同移动平均线（Moving Average Convergence Divergence）
   - 干什么：把"快慢两条均线的差"画成线 + 红绿柱，看**价格上涨 / 下跌的动能和方向**
   - 在哪看：股价图下面那一栏，DIF 线 / DEA 线 / 红绿柱
-  - 怎么用：金叉偏多、死叉偏空、背离看反转（详见 [kb11] / [kb12] / [kb14]）
+  - 怎么用：金叉偏多、死叉偏空、背离看反转（详见 [K05] / [K05] / [K05]）
 
 - **PE 市盈率**（基本面 · 估值指标）
   - 全称：Price / Earnings per Share（股价 ÷ 每股盈利）
   - 干什么：按当前盈利**多少年回本**（理论值）
   - 数字含义：PE=10 → 10 年回本（"便宜"）；PE=100 → 100 年（"贵"）
-  - 怎么用：同行业内横向比 + PE 分位（[kb26]）。**不是越低越好**，要看行业属性和增速
+  - 怎么用：同行业内横向比 + PE 分位（[K09]）。**不是越低越好**，要看行业属性和增速
 
 - **PB 市净率**（基本面 · 估值指标）
   - 全称：Price / Book value per Share（股价 ÷ 每股净资产）
   - 干什么：市价相对公司"家底"贵了多少
-  - 适用：银行、地产、资源等**重资产**行业（[kb27]）
+  - 适用：银行、地产、资源等**重资产**行业（[K09]）
   - 怎么用：PB<1 通常意味着市场认为资产可能有问题；PB>5 偏贵（行业而定）
 
 ## 二、一张图看懂三件套
@@ -47,7 +47,7 @@ pubDate: 2026-08-14
   <text x="50" y="76" font-size="12" font-weight="bold" fill="#0f172a">① 股价（K线 + 均线）</text>
   <path d="M60,140 C150,120 200,130 260,100 C320,72 380,90 440,70 C500,55 560,68 620,60" fill="none" stroke="#1f2937" stroke-width="2"/>
   <line x1="60" y1="120" x2="620" y2="120" stroke="#9ca3af" stroke-dasharray="3 3" stroke-width="1"/>
-  <text x="50" y="148" font-size="10" fill="#6b7280">→ 趋势看均线（[kb09]）</text>
+  <text x="50" y="148" font-size="10" fill="#6b7280">→ 趋势看均线（[K04]）</text>
 
   <!-- MACD 区 -->
   <rect x="40" y="165" width="600" height="130" fill="#eff6ff" stroke="#93c5fd"/>
@@ -73,7 +73,7 @@ pubDate: 2026-08-14
   <text x="400" y="238" font-size="10.5" fill="#1f2937">红绿柱 = 2 ×（DIF − DEA）</text>
   <text x="400" y="257" font-size="10" fill="#16a34a">金叉（DIF 上穿 DEA）= 偏多</text>
   <text x="400" y="271" font-size="10" fill="#dc2626">死叉 = 偏空 · 背离 = 反转预警</text>
-  <text x="400" y="287" font-size="9" fill="#6b7280">→ 详解：[kb11]（基础）/ [kb12]（背离）/ [kb14]（看图）</text>
+  <text x="400" y="287" font-size="9" fill="#6b7280">→ 详解：[K05]（基础）/ [K05]（背离）/ [K05]（看图）</text>
 
   <!-- 估值区 -->
   <rect x="40" y="310" width="290" height="100" fill="#fef3c7" stroke="#fcd34d"/>
@@ -81,14 +81,14 @@ pubDate: 2026-08-14
   <text x="50" y="351" font-size="11" fill="#1f2937">PE = 股价 / 每股收益</text>
   <text x="50" y="368" font-size="10" fill="#6b7280">- 数字越小越"便宜"（同行业对比）</text>
   <text x="50" y="383" font-size="10" fill="#6b7280">- PE 分位比绝对值更有参考价值</text>
-  <text x="50" y="400" font-size="10" fill="#6b7280">→ 详见 [kb26]</text>
+  <text x="50" y="400" font-size="10" fill="#6b7280">→ 详见 [K09]</text>
 
   <rect x="350" y="310" width="290" height="100" fill="#f0fdf4" stroke="#86efac"/>
   <text x="360" y="331" font-size="12" font-weight="bold" fill="#15803d">④ PB 市净率（资产估值）</text>
   <text x="360" y="351" font-size="11" fill="#1f2937">PB = 股价 / 每股净资产</text>
   <text x="360" y="368" font-size="10" fill="#6b7280">- 银行 / 地产 / 资源 等重资产必备</text>
   <text x="360" y="383" font-size="10" fill="#6b7280">- PB&lt;1 不一定便宜（看资产质量）</text>
-  <text x="360" y="400" font-size="10" fill="#6b7280">→ 详见 [kb27]</text>
+  <text x="360" y="400" font-size="10" fill="#6b7280">→ 详见 [K09]</text>
 </svg>
 <div class="cap">图：三大指标的"位置分工"——股价 / MACD 看技术面，PE / PB 看基本面估值</div>
 </div>
@@ -111,9 +111,9 @@ pubDate: 2026-08-14
 
 ## 五、读完这篇之后，建议阅读顺序
 
-- 想看"动能"细节 → [kb11 MACD 基础] → [kb12 MACD 背离] → [kb14 MACD 看图]
-- 想看"估值"细节 → [kb26 PE 详解] → [kb27 PB / PS] → [kb28 PEG / DCF]
-- 想看"怎么组合" → [kb19 指标组合实战]
+- 想看"动能"细节 → [K05 MACD 基础] → [K05 MACD 背离] → [K05 MACD 看图]
+- 想看"估值"细节 → [K09 PE 详解] → [K09 PB / PS] → [K09 PEG / DCF]
+- 想看"怎么组合" → [K06 指标组合实战]
 - 想看"为什么只学这几个就够" → [如何挑选重要指标（元方法）](#)
 
 > 📌 一句话记住：**MACD 看方向和力度，PE / PB 看贵不贵，三者一组合，胜过任何"金叉买入"**。

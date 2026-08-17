@@ -26,9 +26,9 @@ Learn one from each of the three types = entry complete. The rest are "variants 
 
 ## 2. Recommended beginner trio
 
-- **Trend: MA20 / MA60** ([kb09])
-- **Momentum: MACD** ([kb11] / [kb14])
-- **Valuation: PE (add PB)** ([kb26] / [kb27])
+- **Trend: MA20 / MA60** ([K04])
+- **Momentum: MACD** ([K05] / [K05])
+- **Valuation: PE (add PB)** ([K09] / [K09])
 
 **Roles of the trio**:
 - Moving averages tell you "can I even trade the big direction" (don't overweight if below MA60);
@@ -62,8 +62,8 @@ Learn one from each of the three types = entry complete. The rest are "variants 
 ## 6. After reading this
 
 - Want each item's specific usage in the "trio" → [Getting started with indicators: MACD / PE / PB in one picture]
-- Want chart practice → [kb19 indicator combo practice]
-- Want to know why "low PE" ≠ "should buy" → [kb26 PE deep dive]
+- Want chart practice → [K06 indicator combo practice]
+- Want to know why "low PE" ≠ "should buy" → [K09 PE deep dive]
 
 > 📌 The principle of picking indicators is not "more", but "enough and mutually complementary". One per type is enough for 80% of judgments.
 

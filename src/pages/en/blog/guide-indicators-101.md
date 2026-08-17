@@ -12,7 +12,7 @@ altHref: /blog/guide-indicators-101
 pubDate: 2026-08-14
 ---
 
-> This is the **intro** to *Stock Knowledge 101* — for readers who have never touched technical or valuation indicators. After this one page you'll have the overall framework needed for the later single-topic deep dives like kb09 / kb11 / kb26.
+> This is the **intro** to *Stock Knowledge 101* — for readers who have never touched technical or valuation indicators. After this one page you'll have the overall framework needed for the later single-topic deep dives like K04 / K05 / K09.
 
 **One-line summary**: **MACD reads "momentum and direction", PE / PB read "how expensive it is"**. Use the trio together: right direction + enough momentum + reasonable valuation = a safer entry.
 
@@ -22,18 +22,18 @@ pubDate: 2026-08-14
   - Full name: Moving Average Convergence Divergence
   - What it does: draws the "gap between fast and slow moving averages" as a line + red/green bars, to read the **strength and direction of price up/down movement**
   - Where to see it: the panel below the price chart — DIF line / DEA line / red-green bars
-  - How to use: golden cross = bullish, death cross = bearish, divergence = reversal warning (see [kb11] / [kb12] / [kb14])
+  - How to use: golden cross = bullish, death cross = bearish, divergence = reversal warning (see [K05] / [K05] / [K05])
 
 - **PE (Price/Earnings ratio)** (fundamental · valuation)
   - Full name: Price / Earnings per Share (price ÷ earnings per share)
   - What it does: how many years to break even at current earnings (theoretical)
   - Reading the number: PE=10 → break even in 10 years ("cheap"); PE=100 → 100 years ("expensive")
-  - How to use: compare within the same industry + PE percentile ([kb26]). **Lower is not always better** — depends on industry and growth
+  - How to use: compare within the same industry + PE percentile ([K09]). **Lower is not always better** — depends on industry and growth
 
 - **PB (Price/Book ratio)** (fundamental · valuation)
   - Full name: Price / Book value per Share (price ÷ net assets per share)
   - What it does: how much the market price marks up the company's "net worth"
-  - Best for: asset-heavy sectors like banks, real estate, resources ([kb27])
+  - Best for: asset-heavy sectors like banks, real estate, resources ([K09])
   - How to use: PB<1 often means the market doubts asset quality; PB>5 is pricey (industry-dependent)
 
 ## 2. One picture to understand the trio
@@ -47,7 +47,7 @@ pubDate: 2026-08-14
   <text x="50" y="76" font-size="12" font-weight="bold" fill="#0f172a">① Price (candles + moving averages)</text>
   <path d="M60,140 C150,120 200,130 260,100 C320,72 380,90 440,70 C500,55 560,68 620,60" fill="none" stroke="#1f2937" stroke-width="2"/>
   <line x1="60" y1="120" x2="620" y2="120" stroke="#9ca3af" stroke-dasharray="3 3" stroke-width="1"/>
-  <text x="50" y="148" font-size="10" fill="#6b7280">→ trend: moving averages ([kb09])</text>
+  <text x="50" y="148" font-size="10" fill="#6b7280">→ trend: moving averages ([K04])</text>
 
   <!-- MACD -->
   <rect x="40" y="165" width="600" height="130" fill="#eff6ff" stroke="#93c5fd"/>
@@ -71,7 +71,7 @@ pubDate: 2026-08-14
   <text x="400" y="238" font-size="10.5" fill="#1f2937">bars = 2 × (DIF − DEA)</text>
   <text x="400" y="257" font-size="10" fill="#16a34a">golden cross (DIF above DEA) = bullish</text>
   <text x="400" y="271" font-size="10" fill="#dc2626">death cross = bearish · divergence = reversal warning</text>
-  <text x="400" y="287" font-size="9" fill="#6b7280">→ details: [kb11] (basics) / [kb12] (divergence) / [kb14] (reading)</text>
+  <text x="400" y="287" font-size="9" fill="#6b7280">→ details: [K05] (basics) / [K05] (divergence) / [K05] (reading)</text>
 
   <!-- valuation -->
   <rect x="40" y="310" width="290" height="100" fill="#fef3c7" stroke="#fcd34d"/>
@@ -79,14 +79,14 @@ pubDate: 2026-08-14
   <text x="50" y="351" font-size="11" fill="#1f2937">PE = price / earnings per share</text>
   <text x="50" y="368" font-size="10" fill="#6b7280">- smaller = "cheaper" (same industry)</text>
   <text x="50" y="383" font-size="10" fill="#6b7280">- PE percentile beats absolute value</text>
-  <text x="50" y="400" font-size="10" fill="#6b7280">→ see [kb26]</text>
+  <text x="50" y="400" font-size="10" fill="#6b7280">→ see [K09]</text>
 
   <rect x="350" y="310" width="290" height="100" fill="#f0fdf4" stroke="#86efac"/>
   <text x="360" y="331" font-size="12" font-weight="bold" fill="#15803d">④ PB (asset valuation)</text>
   <text x="360" y="351" font-size="11" fill="#1f2937">PB = price / book value per share</text>
   <text x="360" y="368" font-size="10" fill="#6b7280">- banks / real estate / resources (asset-heavy)</text>
   <text x="360" y="383" font-size="10" fill="#6b7280">- PB&lt;1 not always cheap (asset quality)</text>
-  <text x="360" y="400" font-size="10" fill="#6b7280">→ see [kb27]</text>
+  <text x="360" y="400" font-size="10" fill="#6b7280">→ see [K09]</text>
 </svg>
 <div class="cap">Fig: the "division of labor" of the three indicators — price / MACD for technicals, PE / PB for fundamental valuation</div>
 </div>
@@ -109,9 +109,9 @@ pubDate: 2026-08-14
 
 ## 5. Suggested reading order after this
 
-- Want "momentum" details → [kb11 MACD basics] → [kb12 MACD divergence] → [kb14 reading MACD]
-- Want "valuation" details → [kb26 PE deep dive] → [kb27 PB / PS] → [kb28 PEG / DCF]
-- Want "how to combine" → [kb19 indicator combo practice]
+- Want "momentum" details → [K05 MACD basics] → [K05 MACD divergence] → [K05 reading MACD]
+- Want "valuation" details → [K09 PE deep dive] → [K09 PB / PS] → [K09 PEG / DCF]
+- Want "how to combine" → [K06 indicator combo practice]
 - Want "why just a few is enough" → [How to pick important indicators (meta-method)] (#)
 
 > 📌 Remember in one line: **MACD reads direction and strength, PE / PB read expensiveness; combine the three and you beat any "buy on golden cross" rule.**
