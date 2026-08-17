@@ -16,6 +16,20 @@ const {
 } = frontmatter;
 const base = import.meta.env.BASE_URL;
 const giscusLang = lang === 'zh' ? 'zh-CN' : 'en';
+
+// 同系列文章导航：列出本系列全部文章 + 上/下一篇（中英文各自独立）
+const allMd = [
+  ...(await Astro.glob('../pages/blog/*.md')),
+  ...(await Astro.glob('../pages/en/blog/*.md')),
+];
+const seriesPosts = series
+  ? allMd
+      .filter((p) => (p.frontmatter.series || '') === series && p.url && (p.frontmatter.lang || 'zh') === lang)
+      .sort((a, b) => (a.file || '').localeCompare(b.file || ''))
+  : [];
+const curIdx = seriesPosts.findIndex((p) => p.url === Astro.url.pathname);
+const prevPost = curIdx > 0 ? seriesPosts[curIdx - 1] : null;
+const nextPost = curIdx >= 0 && curIdx < seriesPosts.length - 1 ? seriesPosts[curIdx + 1] : null;
 const _d = pubDate instanceof Date ? pubDate : (pubDate ? new Date(pubDate) : null);
 const dateLabel = _d
   ? (lang === 'en'
@@ -91,6 +105,28 @@ const dateIso = _d ? _d.toISOString().slice(0, 10) : '';
           </div>
         </div>
       </section>
+
+      {seriesPosts.length > 1 && (
+        <section class="series-nav" aria-label="系列导航">
+          <h2>📚 本系列：{series}（共 {seriesPosts.length} 篇）</h2>
+          <ul class="series-list">
+            {seriesPosts.map((p, i) => (
+              <li class={i === curIdx ? 'cur' : ''}>
+                <a href={p.url}>{p.frontmatter.title}</a>
+                {p.frontmatter.free ? <span class="sf free">免费</span> : <span class="sf paid">☕</span>}
+              </li>
+            ))}
+          </ul>
+          <nav class="prev-next">
+            {prevPost
+              ? <a class="pn prev" href={prevPost.url}>← 上一篇：{prevPost.frontmatter.title}</a>
+              : <span class="pn empty" />}
+            {nextPost
+              ? <a class="pn next" href={nextPost.url}>下一篇：{nextPost.frontmatter.title} →</a>
+              : <span class="pn empty" />}
+          </nav>
+        </section>
+      )}
 
       <section class="comments" aria-label="评论">
         <h2 id="comments">💬 留言</h2>
@@ -346,6 +382,25 @@ const dateIso = _d ? _d.toISOString().slice(0, 10) : '';
         });
       })();
     </script>
+    <style is:global>
+      .series-nav { margin: 36px 0 8px; border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; background: var(--code-bg); }
+      .series-nav h2 { font-size: 17px; margin: 0 0 12px; }
+      .series-list { list-style: none; padding: 0; margin: 0 0 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 18px; }
+      .series-list li { font-size: 13.5px; display: flex; align-items: center; gap: 6px; }
+      .series-list li.cur a { color: var(--accent); font-weight: 700; }
+      .series-list a { color: var(--fg); text-decoration: none; line-height: 1.5; }
+      .series-list a:hover { text-decoration: underline; }
+      .series-list .sf { font-size: 11px; padding: 0 6px; border-radius: 999px; flex-shrink: 0; }
+      .series-list .sf.free { background: rgba(21,101,192,0.10); color: var(--accent); }
+      .series-list .sf.paid { background: rgba(214,48,49,0.12); color: #d63031; }
+      .prev-next { display: flex; justify-content: space-between; gap: 12px; border-top: 1px dashed var(--border); padding-top: 12px; }
+      .prev-next .pn { font-size: 13.5px; color: var(--accent); text-decoration: none; flex: 1; min-width: 0; }
+      .prev-next .pn.next { text-align: right; }
+      .prev-next .pn.empty { flex: 1; }
+      .prev-next .pn:hover { text-decoration: underline; }
+      @media (max-width: 560px) { .series-list { grid-template-columns: 1fr; } }
+    </style>
+
     <footer>© 2026 {lang === 'en' ? 'Market Notes' : '股市笔记'} · {lang === 'en' ? 'Hosted on GitHub Pages' : '托管于 GitHub Pages'}</footer>
   </body>
 </html>
