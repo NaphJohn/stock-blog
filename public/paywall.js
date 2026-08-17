@@ -316,7 +316,7 @@
         } catch (e) {}
       }
       // 根据匹配到的档位取天数（优先用配置的 days，否则查 PRICING 表）
-      var p = PRICING[curr][matchedTier] || PRICING.CNY[matchedTier] || PRICing.USD.yearly;
+      var p = PRICING[curr][matchedTier] || PRICING.CNY[matchedTier] || PRICING.USD.yearly;
       var days = p.days;
       unlockSub(matchedTier, days);
       var st = subState();
