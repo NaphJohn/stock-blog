@@ -70,6 +70,8 @@ const courseGroups = [
   { title: 'D · Stock Picking', en: '选股实战', desc: 'From undervalued screening and shorting to leading stocks.', items: ['ch20-undervalued','ch21-long-short','ch22-leading-stocks'] },
   { title: 'E · Portfolio', en: '综合配置', desc: 'Assemble everything into one executable personal plan.', items: ['ch23-10w-finance','ch24-fund-types'] },
 ];
+
+const zsxqUrl = 'https://t.zsxq.com/PLACEHOLDER'; // TODO: replace with your Knowledge Planet share link
 ---
 
 <!doctype html>
@@ -117,6 +119,13 @@ const courseGroups = [
           <li><b>Stocks</b>: module D stock picking + module E portfolio — turn the method into your own plan.</li>
           <li><b>Tool</b>: pair with the "Dynamic Picker" to auto-judge cycle & position (subscription).</li>
         </ol>
+      </section>
+
+      <section class="zsxq-cta">
+        <h2>🪐 Want a more systematic companion?</h2>
+        <p>Join the Knowledge Planet 「<b>股市笔记 · 基金定投实战圈 / Market Notes · DCA Circle</b>」: the full 23-chapter column as clean articles + weekly market notes + Q&amp;A + portfolio tracking + quarterly live streams. Blog readers who unlocked with code <b>gushi2026ch</b> get <b>50% off</b>.</p>
+        <p class="price"><span>Early-bird <b>¥99/yr</b></span><span>Standard <b>¥199/yr</b> (~¥0.54/day)</span><span>Auto-renew ¥365/yr</span></p>
+        <a class="btn" href={zsxqUrl} target="_blank" rel="noopener">🪐 Join the Planet</a>
       </section>
 
       <section class="series-block">
@@ -208,6 +217,14 @@ const courseGroups = [
       .badge.free { background: rgba(21,101,192,0.10); color: var(--accent); }
       .badge.paid { background: rgba(214,48,49,0.12); color: #d63031; }
       .foot-note { color: var(--muted); font-size: 13px; margin-top: 36px; text-align: center; }
+      .zsxq-cta { margin-top: 28px; padding: 22px; border: 1px solid #7c3aed; border-radius: 12px; background: rgba(124,58,237,0.07); }
+      .zsxq-cta h2 { margin: 0 0 8px; font-size: 20px; }
+      .zsxq-cta p { color: var(--fg); font-size: 15px; line-height: 1.8; }
+      .zsxq-cta p b { color: #7c3aed; }
+      .zsxq-cta .price { margin: 10px 0 0; display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14px; color: var(--muted); }
+      .zsxq-cta .price b { color: #7c3aed; }
+      .zsxq-cta .btn { display: inline-block; margin-top: 14px; padding: 11px 24px; border-radius: 999px; background: #7c3aed; color: #fff; text-decoration: none; font-size: 15px; }
+      .zsxq-cta .btn:hover { opacity: .92; }
       footer { text-align: center; color: var(--muted); font-size: 13px; padding: 32px 16px; border-top: 1px solid var(--border); margin-top: 24px; }
     </style>
   </body>

@@ -35,6 +35,7 @@ const course = {
   ],
 };
 const freeCount = course.chapters.filter((c) => c.free).length;
+const zsxqUrl = 'https://t.zsxq.com/PLACEHOLDER'; // TODO: replace with your Knowledge Planet share link
 ---
 
 <SiteHeader lang="en" altLang="中文" altHref="/course" />
@@ -59,6 +60,13 @@ const freeCount = course.chapters.filter((c) => c.free).length;
     <h2>📈 Want it easier?</h2>
     <p>Use the <b>Stock Picker</b>: enter a ticker + your investable amount, and it reads the cycle, suggests how to invest, how much, and a DCA plan. Subscription only: $10/mo or $100/yr.</p>
     <a class="btn" href={`${base}en/selector`}>Open Stock Picker</a>
+  </section>
+
+  <section class="zsxq-cta">
+    <h2>🪐 Want a more systematic companion?</h2>
+    <p>Join the Knowledge Planet 「<b>股市笔记 · 基金定投实战圈 / Market Notes · DCA Circle</b>」: the full 23-chapter column as clean articles + weekly market notes + Q&amp;A + portfolio tracking + quarterly live streams. Blog readers who unlocked with code <b>gushi2026ch</b> get <b>50% off</b>.</p>
+    <p class="price"><span>Early-bird <b>¥99/yr</b></span><span>Standard <b>¥199/yr</b> (~¥0.54/day)</span><span>Auto-renew ¥365/yr</span></p>
+    <a class="btn" href={zsxqUrl} target="_blank" rel="noopener">🪐 Join the Planet</a>
   </section>
 
   <p class="foot-note">⚠️ For learning and entertainment only — not investment advice.</p>
@@ -87,5 +95,13 @@ const freeCount = course.chapters.filter((c) => c.free).length;
   .sel-cta b { color: var(--accent); }
   .btn { display: inline-block; margin-top: 12px; padding: 11px 24px; border-radius: 999px; background: var(--accent); color: #fff; text-decoration: none; font-size: 15px; }
   .btn:hover { opacity: .92; }
+  .zsxq-cta { margin-top: 22px; padding: 22px; border: 1px solid #7c3aed; border-radius: 12px; background: rgba(124,58,237,0.07); }
+  .zsxq-cta h2 { margin: 0 0 8px; font-size: 20px; }
+  .zsxq-cta p { color: var(--fg); font-size: 15px; line-height: 1.8; }
+  .zsxq-cta p b { color: #7c3aed; }
+  .zsxq-cta .price { margin: 10px 0 0; display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14px; color: var(--muted); }
+  .zsxq-cta .price b { color: #7c3aed; }
+  .zsxq-cta .btn { display: inline-block; margin-top: 14px; padding: 11px 24px; border-radius: 999px; background: #7c3aed; color: #fff; text-decoration: none; font-size: 15px; }
+  .zsxq-cta .btn:hover { opacity: .92; }
   .foot-note { color: var(--muted); font-size: 13px; margin-top: 28px; text-align: center; }
 </style>

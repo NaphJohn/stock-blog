@@ -35,6 +35,7 @@ const course = {
   ],
 };
 const freeCount = course.chapters.filter((c) => c.free).length;
+const zsxqUrl = 'https://t.zsxq.com/PLACEHOLDER'; // TODO: 替换为「股市笔记 · 基金定投实战圈」的星球分享短链
 ---
 
 <SiteHeader lang="zh" altLang="English" altHref="/en/course" />
@@ -59,6 +60,13 @@ const freeCount = course.chapters.filter((c) => c.free).length;
     <h2>📈 还想更省心？</h2>
     <p>用「动态选股」工具：输入一只股票 + 你的可投金额，自动判断当前处在什么周期、该怎么投、投多少、如何定投。该工具为<b>订阅制</b>（月 $10 / 年 $100）。</p>
     <a class="btn" href={`${base}selector`}>前往动态选股</a>
+  </section>
+
+  <section class="zsxq-cta">
+    <h2>🪐 想要更系统的陪伴式学习？</h2>
+    <p>欢迎加入知识星球「<b>股市笔记 · 基金定投实战圈</b>」：23 节专栏完整图文稿 + 每周市场点评 + 提问答疑 + 调仓跟踪 + 季度直播。博客前 4 节免费读者，凭博客解锁码 <b>gushi2026ch</b> 加入可<b>享 5 折</b>。</p>
+    <p class="price"><span>早鸟 <b>¥99/年</b></span><span>标准 <b>¥199/年</b>（约 ¥0.54/天）</span><span>连续包年 ¥365/年</span></p>
+    <a class="btn" href={zsxqUrl} target="_blank" rel="noopener">🪐 加入知识星球</a>
   </section>
 
   <p class="foot-note">⚠️ 本站内容仅供学习娱乐，不构成任何投资或交易建议。</p>
@@ -87,5 +95,13 @@ const freeCount = course.chapters.filter((c) => c.free).length;
   .sel-cta b { color: var(--accent); }
   .btn { display: inline-block; margin-top: 12px; padding: 11px 24px; border-radius: 999px; background: var(--accent); color: #fff; text-decoration: none; font-size: 15px; }
   .btn:hover { opacity: .92; }
+  .zsxq-cta { margin-top: 22px; padding: 22px; border: 1px solid #7c3aed; border-radius: 12px; background: rgba(124,58,237,0.07); }
+  .zsxq-cta h2 { margin: 0 0 8px; font-size: 20px; }
+  .zsxq-cta p { color: var(--fg); font-size: 15px; line-height: 1.8; }
+  .zsxq-cta p b { color: #7c3aed; }
+  .zsxq-cta .price { margin: 10px 0 0; display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14px; color: var(--muted); }
+  .zsxq-cta .price b { color: #7c3aed; }
+  .zsxq-cta .btn { display: inline-block; margin-top: 14px; padding: 11px 24px; border-radius: 999px; background: #7c3aed; color: #fff; text-decoration: none; font-size: 15px; }
+  .zsxq-cta .btn:hover { opacity: .92; }
   .foot-note { color: var(--muted); font-size: 13px; margin-top: 28px; text-align: center; }
 </style>
